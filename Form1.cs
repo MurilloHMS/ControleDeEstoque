@@ -1,5 +1,6 @@
 using ControleDeEstoqueProauto.Models;
 using DocumentFormat.OpenXml.Wordprocessing;
+using System.Data.SqlClient;
 
 namespace ControleDeEstoqueProauto
 {
@@ -120,6 +121,13 @@ namespace ControleDeEstoqueProauto
 
             Produtos produtos = new Produtos();
             var retorno = await produtos.GetForName(descricao.ToString());
+            Movimentacoes mov = new Movimentacoes();
+            var retornoMov = await mov.GetForID(retorno.IDSistema);
+            if (retornoMov != null) 
+            {
+                txtEstoqueAtual.Text = retornoMov.Quantidade.ToString();
+                dtpDataUltimaAlteracao.Value = retornoMov.Data;
+            }
             txtDescricao.Text = retorno.Descricao;
             txtID.Text = retorno.IDSistema.ToString();
             txtEstoqueMin.Text = retorno.EstoqueMinimo.ToString();
@@ -129,7 +137,47 @@ namespace ControleDeEstoqueProauto
 
         private void btnInserir_Click(object sender, EventArgs e)
         {
+            try
+            {
+                Movimentacoes mov = new Movimentacoes();
+                mov.IDSistema = int.Parse(txtID.Text);
+                mov.Data = DateTime.Parse(dtpData.Value.ToString()).ToUniversalTime();
+                int estoqueAtual = int.TryParse(txtEstoqueAtual.Text, out int result ) ? result : 0;
+                int estoque = int.Parse(numQuantidade.Value.ToString());
+                int valor = 0;
+                if(estoqueAtual > 0)
+                {
+                    if (rbAcrescentar.Checked)
+                    {
+                        valor = estoqueAtual + estoque;
+                    }
+                    else if (rbRemover.Checked)
+                    {
+                        valor = estoqueAtual + estoque;
+                    }
+                }
+                else
+                {
+                    valor = estoque;
+                }
+                if (valor.Equals(0))
+                {
+                    MessageBox.Show("Ocorreu um erro ao incluir a movimentacao", "Erro ao incluir movimentacao", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                mov.Quantidade =valor ;
+                mov.Add();
+                MessageBox.Show("Movimentação incluida Com Sucesso!", "Concluido", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+            catch(Exception)
+            {
+                throw;
+            }
         }
     }
 }

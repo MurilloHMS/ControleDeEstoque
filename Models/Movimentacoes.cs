@@ -15,6 +15,7 @@ namespace ControleDeEstoqueProauto.Models
         public int Quantidade { get; set; }
 
         private readonly DAL<Movimentacoes> _dal = new DAL<Movimentacoes>();
+        
 
         #region Crud
         public async Task Add()
@@ -39,7 +40,7 @@ namespace ControleDeEstoqueProauto.Models
 
         public async Task<Movimentacoes> GetForID(int id)
         {
-            return await _dal.GetForAsync(x => x.ID.Equals(id));
+            return await _dal.GetForAsync(x => x.IDSistema.Equals(id));
         }
 
         public async Task<IEnumerable<Movimentacoes>> GetListForID(int id)
