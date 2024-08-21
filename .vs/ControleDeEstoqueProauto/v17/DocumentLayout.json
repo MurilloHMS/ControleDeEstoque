@@ -3,32 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\proau\\OneDrive - Murillo HMS\\Projetos\\2 - Sistemas\\ControleDeEstoqueProauto\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8E9575FE-C210-4F84-BA9D-1CE6538C1FB7}|ControleDeEstoqueProauto.csproj|c:\\users\\proau\\onedrive - murillo hms\\projetos\\2 - sistemas\\controledeestoqueproauto\\models\\contextcontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8E9575FE-C210-4F84-BA9D-1CE6538C1FB7}|ControleDeEstoqueProauto.csproj|solutionrelative:models\\contextcontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E9575FE-C210-4F84-BA9D-1CE6538C1FB7}|ControleDeEstoqueProauto.csproj|c:\\users\\proau\\onedrive - murillo hms\\projetos\\2 - sistemas\\controledeestoqueproauto\\models\\configurationmanagerhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8E9575FE-C210-4F84-BA9D-1CE6538C1FB7}|ControleDeEstoqueProauto.csproj|solutionrelative:models\\configurationmanagerhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E9575FE-C210-4F84-BA9D-1CE6538C1FB7}|ControleDeEstoqueProauto.csproj|c:\\users\\proau\\onedrive - murillo hms\\projetos\\2 - sistemas\\controledeestoqueproauto\\models\\dal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8E9575FE-C210-4F84-BA9D-1CE6538C1FB7}|ControleDeEstoqueProauto.csproj|solutionrelative:models\\dal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E9575FE-C210-4F84-BA9D-1CE6538C1FB7}|ControleDeEstoqueProauto.csproj|c:\\users\\proau\\onedrive - murillo hms\\projetos\\2 - sistemas\\controledeestoqueproauto\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{8E9575FE-C210-4F84-BA9D-1CE6538C1FB7}|ControleDeEstoqueProauto.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E9575FE-C210-4F84-BA9D-1CE6538C1FB7}|ControleDeEstoqueProauto.csproj|c:\\users\\proau\\onedrive - murillo hms\\projetos\\2 - sistemas\\controledeestoqueproauto\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8E9575FE-C210-4F84-BA9D-1CE6538C1FB7}|ControleDeEstoqueProauto.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8E9575FE-C210-4F84-BA9D-1CE6538C1FB7}|ControleDeEstoqueProauto.csproj|c:\\users\\proau\\onedrive - murillo hms\\projetos\\2 - sistemas\\controledeestoqueproauto\\models\\movimentacoes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8E9575FE-C210-4F84-BA9D-1CE6538C1FB7}|ControleDeEstoqueProauto.csproj|solutionrelative:models\\movimentacoes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8E9575FE-C210-4F84-BA9D-1CE6538C1FB7}|ControleDeEstoqueProauto.csproj|c:\\users\\proau\\onedrive - murillo hms\\projetos\\2 - sistemas\\controledeestoqueproauto\\models\\produtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8E9575FE-C210-4F84-BA9D-1CE6538C1FB7}|ControleDeEstoqueProauto.csproj|solutionrelative:models\\produtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8E9575FE-C210-4F84-BA9D-1CE6538C1FB7}|ControleDeEstoqueProauto.csproj|c:\\users\\proau\\onedrive - murillo hms\\projetos\\2 - sistemas\\controledeestoqueproauto\\models\\movimentacoes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8E9575FE-C210-4F84-BA9D-1CE6538C1FB7}|ControleDeEstoqueProauto.csproj|solutionrelative:models\\movimentacoes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8E9575FE-C210-4F84-BA9D-1CE6538C1FB7}|ControleDeEstoqueProauto.csproj|c:\\users\\proau\\onedrive - murillo hms\\projetos\\2 - sistemas\\controledeestoqueproauto\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8E9575FE-C210-4F84-BA9D-1CE6538C1FB7}|ControleDeEstoqueProauto.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8E9575FE-C210-4F84-BA9D-1CE6538C1FB7}|ControleDeEstoqueProauto.csproj|c:\\users\\proau\\onedrive - murillo hms\\projetos\\2 - sistemas\\controledeestoqueproauto\\frm_configuracoes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{8E9575FE-C210-4F84-BA9D-1CE6538C1FB7}|ControleDeEstoqueProauto.csproj|solutionrelative:frm_configuracoes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8E9575FE-C210-4F84-BA9D-1CE6538C1FB7}|ControleDeEstoqueProauto.csproj|c:\\users\\proau\\onedrive - murillo hms\\projetos\\2 - sistemas\\controledeestoqueproauto\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{8E9575FE-C210-4F84-BA9D-1CE6538C1FB7}|ControleDeEstoqueProauto.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,8 +30,34 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Movimentacoes.cs",
+              "DocumentMoniker": "C:\\Users\\proau\\OneDrive - Murillo HMS\\Projetos\\2 - Sistemas\\ControleDeEstoqueProauto\\Models\\Movimentacoes.cs",
+              "RelativeDocumentMoniker": "Models\\Movimentacoes.cs",
+              "ToolTip": "C:\\Users\\proau\\OneDrive - Murillo HMS\\Projetos\\2 - Sistemas\\ControleDeEstoqueProauto\\Models\\Movimentacoes.cs",
+              "RelativeToolTip": "Models\\Movimentacoes.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAuwC4AAABLAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-21T19:08:37.608Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Produtos.cs",
+              "DocumentMoniker": "C:\\Users\\proau\\OneDrive - Murillo HMS\\Projetos\\2 - Sistemas\\ControleDeEstoqueProauto\\Models\\Produtos.cs",
+              "RelativeDocumentMoniker": "Models\\Produtos.cs",
+              "ToolTip": "C:\\Users\\proau\\OneDrive - Murillo HMS\\Projetos\\2 - Sistemas\\ControleDeEstoqueProauto\\Models\\Produtos.cs",
+              "RelativeToolTip": "Models\\Produtos.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAA9wC4AAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-21T18:45:28.213Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:1408094023:0:{bf84ea66-d821-4dba-b1b1-2777d8574775}"
@@ -50,92 +68,39 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ConfigurationManagerHelper.cs",
-              "DocumentMoniker": "C:\\Users\\proau\\OneDrive - Murillo HMS\\Projetos\\2 - Sistemas\\ControleDeEstoqueProauto\\Models\\ConfigurationManagerHelper.cs",
-              "RelativeDocumentMoniker": "Models\\ConfigurationManagerHelper.cs",
-              "ToolTip": "C:\\Users\\proau\\OneDrive - Murillo HMS\\Projetos\\2 - Sistemas\\ControleDeEstoqueProauto\\Models\\ConfigurationManagerHelper.cs",
-              "RelativeToolTip": "Models\\ConfigurationManagerHelper.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAAA9wD8AAAAJAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "Frm_Configuracoes.cs [Projeto]",
+              "DocumentMoniker": "C:\\Users\\proau\\OneDrive - Murillo HMS\\Projetos\\2 - Sistemas\\ControleDeEstoqueProauto\\Frm_Configuracoes.cs",
+              "RelativeDocumentMoniker": "Frm_Configuracoes.cs",
+              "ToolTip": "C:\\Users\\proau\\OneDrive - Murillo HMS\\Projetos\\2 - Sistemas\\ControleDeEstoqueProauto\\Frm_Configuracoes.cs [Projeto]",
+              "RelativeToolTip": "Frm_Configuracoes.cs [Projeto]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-21T15:36:27.722Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ContextControl.cs",
-              "DocumentMoniker": "C:\\Users\\proau\\OneDrive - Murillo HMS\\Projetos\\2 - Sistemas\\ControleDeEstoqueProauto\\Models\\ContextControl.cs",
-              "RelativeDocumentMoniker": "Models\\ContextControl.cs",
-              "ToolTip": "C:\\Users\\proau\\OneDrive - Murillo HMS\\Projetos\\2 - Sistemas\\ControleDeEstoqueProauto\\Models\\ContextControl.cs",
-              "RelativeToolTip": "Models\\ContextControl.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAB6AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-21T15:01:15.393Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-21T15:52:06.136Z",
+              "EditorCaption": " [Projeto]"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "DAL.cs",
-              "DocumentMoniker": "C:\\Users\\proau\\OneDrive - Murillo HMS\\Projetos\\2 - Sistemas\\ControleDeEstoqueProauto\\Models\\DAL.cs",
-              "RelativeDocumentMoniker": "Models\\DAL.cs",
-              "ToolTip": "C:\\Users\\proau\\OneDrive - Murillo HMS\\Projetos\\2 - Sistemas\\ControleDeEstoqueProauto\\Models\\DAL.cs",
-              "RelativeToolTip": "Models\\DAL.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADEAAABQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-21T14:57:53.615Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Movimentacoes.cs",
-              "DocumentMoniker": "C:\\Users\\proau\\OneDrive - Murillo HMS\\Projetos\\2 - Sistemas\\ControleDeEstoqueProauto\\Models\\Movimentacoes.cs",
-              "RelativeDocumentMoniker": "Models\\Movimentacoes.cs",
-              "ToolTip": "C:\\Users\\proau\\OneDrive - Murillo HMS\\Projetos\\2 - Sistemas\\ControleDeEstoqueProauto\\Models\\Movimentacoes.cs",
-              "RelativeToolTip": "Models\\Movimentacoes.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T18:57:05.503Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Produtos.cs",
-              "DocumentMoniker": "C:\\Users\\proau\\OneDrive - Murillo HMS\\Projetos\\2 - Sistemas\\ControleDeEstoqueProauto\\Models\\Produtos.cs",
-              "RelativeDocumentMoniker": "Models\\Produtos.cs",
-              "ToolTip": "C:\\Users\\proau\\OneDrive - Murillo HMS\\Projetos\\2 - Sistemas\\ControleDeEstoqueProauto\\Models\\Produtos.cs",
-              "RelativeToolTip": "Models\\Produtos.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T17:03:17.676Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
               "Title": "Form1.cs",
               "DocumentMoniker": "C:\\Users\\proau\\OneDrive - Murillo HMS\\Projetos\\2 - Sistemas\\ControleDeEstoqueProauto\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
               "ToolTip": "C:\\Users\\proau\\OneDrive - Murillo HMS\\Projetos\\2 - Sistemas\\ControleDeEstoqueProauto\\Form1.cs",
               "RelativeToolTip": "Form1.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAQwDYAAABDAAAAAAAAAA==",
+              "ViewState": "AgIAACgAAAAAAAAAAADwv0UAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T15:49:18.415Z",
+              "WhenOpened": "2024-08-21T15:50:44.646Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Form1.cs [Projeto]",
               "DocumentMoniker": "C:\\Users\\proau\\OneDrive - Murillo HMS\\Projetos\\2 - Sistemas\\ControleDeEstoqueProauto\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
               "ToolTip": "C:\\Users\\proau\\OneDrive - Murillo HMS\\Projetos\\2 - Sistemas\\ControleDeEstoqueProauto\\Form1.cs [Projeto]",
               "RelativeToolTip": "Form1.cs [Projeto]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T14:45:53.041Z",
+              "WhenOpened": "2024-08-21T15:50:32.696Z",
               "EditorCaption": " [Projeto]"
             }
           ]

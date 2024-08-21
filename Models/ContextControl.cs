@@ -9,6 +9,7 @@ namespace ControleDeEstoqueProauto.Models
         private readonly string _databaseProvider;
 
         #region DbSets
+        public DbSet<Produtos> produtos {  get; set; }
 
         #endregion
 
@@ -32,6 +33,12 @@ namespace ControleDeEstoqueProauto.Models
             {
                 throw new InvalidOperationException("Database provider not supported.");
             }
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Produtos>().HasKey(c => c.IDSistema);
+            base.OnModelCreating(modelBuilder);
         }
 
 

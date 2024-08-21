@@ -80,6 +80,7 @@
             listBoxProdutos.Name = "listBoxProdutos";
             listBoxProdutos.Size = new Size(298, 694);
             listBoxProdutos.TabIndex = 0;
+            listBoxProdutos.SelectedIndexChanged += listBoxProdutos_SelectedIndexChanged;
             listBoxProdutos.KeyDown += listBoxProdutos_KeyDown;
             // 
             // groupBox1
@@ -167,6 +168,7 @@
             label2.Size = new Size(18, 15);
             label2.TabIndex = 2;
             label2.Text = "ID";
+            label2.MouseDoubleClick += label2_MouseDoubleClick;
             // 
             // label4
             // 
@@ -216,6 +218,7 @@
             ckbVerificarEstoqueMin.TabIndex = 1;
             ckbVerificarEstoqueMin.Text = "Verificar Produtos Estoque Mínimo";
             ckbVerificarEstoqueMin.UseVisualStyleBackColor = true;
+            ckbVerificarEstoqueMin.MouseClick += ckbVerificarEstoqueMin_MouseClick;
             // 
             // tabControl1
             // 

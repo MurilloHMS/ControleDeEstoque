@@ -1,14 +1,50 @@
 ﻿using ClosedXML.Excel;
+using System.ComponentModel.DataAnnotations;
 
 namespace ControleDeEstoqueProauto.Models
 {
     public class Produtos
     {
-        public required int IDSistema { get; set; }
-        public required string Descricao { get; set; }
+        [Required]
+        public int IDSistema { get; set; }
+        [Required]
+        public string Descricao { get; set; }
         public int ? EstoqueMinimo { get; set; }
 
+        private readonly DAL<Produtos> _dal = new DAL<Produtos>();
 
+        #region Crud
+        public async Task Add()
+        {
+            await _dal.AddAsync(this);
+        }
+
+        public async Task Update()
+        {
+            await _dal.UpdateAsync(this);
+        }
+
+        public async Task Delete()
+        {
+            await _dal.DeleteAsync(this);
+        }
+
+        public async Task<IEnumerable<Produtos>> GetAll() 
+        { 
+            return await _dal.GetAllAsync(); 
+        }
+        
+        public async Task<Produtos> GetForID(int id)
+        {
+            return await _dal.GetForAsync(x => x.IDSistema.Equals(id));
+        }
+
+        public async Task<Produtos> GetForName(string name)
+        {
+            return await _dal.GetForAsync(x => x.Descricao.Equals(name));
+        }
+
+        #endregion
         public static IEnumerable<Produtos> ObterProdutosDeExcel()
         {
             string arquivo = string.Empty;
