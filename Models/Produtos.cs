@@ -4,9 +4,9 @@ namespace ControleDeEstoqueProauto.Models
 {
     public class Produtos
     {
-        public int IDSistema { get; set; }
-        public string Descricao { get; set; }
-        public int EstoqueMinimo { get; set; }
+        public required int IDSistema { get; set; }
+        public required string Descricao { get; set; }
+        public int ? EstoqueMinimo { get; set; }
 
 
         public static IEnumerable<Produtos> ObterProdutosDeExcel()

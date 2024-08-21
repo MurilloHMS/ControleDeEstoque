@@ -119,6 +119,9 @@
             txtEstoqueMin.ReadOnly = true;
             txtEstoqueMin.Size = new Size(100, 23);
             txtEstoqueMin.TabIndex = 7;
+            txtEstoqueMin.KeyDown += txtEstoqueMin_KeyDown;
+            txtEstoqueMin.KeyPress += txtEstoqueMin_KeyPress;
+            txtEstoqueMin.MouseDoubleClick += txtEstoqueMin_MouseDoubleClick;
             // 
             // txtEstoqueAtual
             // 

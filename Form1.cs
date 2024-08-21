@@ -31,12 +31,12 @@ namespace ControleDeEstoqueProauto
 
         private void btnBuscarMovimentacoes_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void listBoxProdutos_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.F5)
+            if (e.KeyCode == Keys.F5)
             {
                 var dados = Produtos.ObterProdutosDeExcel().ToList();
                 listBoxProdutos.Items.Clear();
@@ -47,6 +47,12 @@ namespace ControleDeEstoqueProauto
                 }
                 listBoxProdutos.Sorted = true;
             }
+        }
+
+        private void txtEstoqueMin_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            e.Handled = !char.IsDigit(e.KeyChar) && e.KeyChar != 08 ? true : false;
         }
     }
 }
