@@ -1,4 +1,6 @@
 ﻿using ClosedXML.Excel;
+using ControleDeEstoqueProauto.Migrations;
+using SQLitePCL;
 using System.ComponentModel.DataAnnotations;
 
 namespace ControleDeEstoqueProauto.Models
@@ -12,6 +14,7 @@ namespace ControleDeEstoqueProauto.Models
         public int ? EstoqueMinimo { get; set; }
 
         private readonly DAL<Produtos> _dal = new DAL<Produtos>();
+        private readonly DAL<Movimentacoes> _dalM = new DAL<Movimentacoes>();
 
         #region Crud
         public async Task Add()
@@ -43,6 +46,27 @@ namespace ControleDeEstoqueProauto.Models
         {
             return await _dal.GetForAsync(x => x.Descricao.Equals(name));
         }
+
+        public async Task<IEnumerable<Produtos>> GetProductLowStorage()
+        {
+            var produtos = await _dal.GetAllAsync();
+            var movimentacoes = await _dalM.GetAllAsync();
+
+            var produtosComEstoqueBaixo = produtos
+                .Select(produto => new
+                {
+                    Produto = produto,
+                    QuantidadeTotal = movimentacoes
+                        .Where(m => m.IDSistema == produto.IDSistema)
+                        .Sum(m => m.Quantidade)
+                })
+                .Where(p => p.Produto.EstoqueMinimo.HasValue && p.QuantidadeTotal <= p.Produto.EstoqueMinimo.Value)
+                .Select(p => p.Produto)
+                .ToList();
+
+            return produtosComEstoqueBaixo;
+        }
+
 
         #endregion
         public static IEnumerable<Produtos> ObterProdutosDeExcel()

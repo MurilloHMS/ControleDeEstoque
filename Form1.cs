@@ -124,7 +124,12 @@ namespace ControleDeEstoqueProauto
             txtID.Text = retorno.IDSistema.ToString();
             txtEstoqueMin.Text = retorno.EstoqueMinimo.ToString();
 
-            
+
+        }
+
+        private void btnInserir_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

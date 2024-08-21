@@ -10,6 +10,7 @@ namespace ControleDeEstoqueProauto.Models
 
         #region DbSets
         public DbSet<Produtos> produtos {  get; set; }
+        public DbSet<Movimentacoes> movimentacoes { get; set; }
 
         #endregion
 
@@ -38,6 +39,7 @@ namespace ControleDeEstoqueProauto.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Produtos>().HasKey(c => c.IDSistema);
+            modelBuilder.Entity<Movimentacoes>().HasKey(c => c.ID);
             base.OnModelCreating(modelBuilder);
         }
 

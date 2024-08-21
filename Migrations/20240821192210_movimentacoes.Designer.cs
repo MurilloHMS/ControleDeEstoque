@@ -3,6 +3,7 @@ using System;
 using ControleDeEstoqueProauto.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ControleDeEstoqueProauto.Migrations
 {
     [DbContext(typeof(ContextControl))]
-    partial class ContextControlModelSnapshot : ModelSnapshot
+    [Migration("20240821192210_movimentacoes")]
+    partial class movimentacoes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -268,6 +268,7 @@
             btnInserir.TabIndex = 13;
             btnInserir.Text = "Inserir";
             btnInserir.UseVisualStyleBackColor = true;
+            btnInserir.Click += btnInserir_Click;
             // 
             // rbRemover
             // 
