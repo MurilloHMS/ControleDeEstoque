@@ -47,6 +47,7 @@ namespace ControleDeEstoqueProauto.Models
             return await _dal.GetForAsync(x => x.Descricao.Equals(name));
         }
 
+
         public async Task<IEnumerable<Produtos>> GetProductLowStorage()
         {
             var produtos = await _dal.GetAllAsync();
