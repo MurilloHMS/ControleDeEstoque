@@ -2,6 +2,7 @@
 using ControleDeEstoqueProauto.Migrations;
 using SQLitePCL;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.CompilerServices;
 
 namespace ControleDeEstoqueProauto.Models
 {
@@ -70,6 +71,7 @@ namespace ControleDeEstoqueProauto.Models
 
         public static IEnumerable<Produtos> ObterProdutosDeExcel()
         {
+            
             string arquivo = string.Empty;
 
             using (OpenFileDialog ofd = new OpenFileDialog()) 

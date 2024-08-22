@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             listBoxProdutos = new ListBox();
             groupBox1 = new GroupBox();
             dtpDataUltimaAlteracao = new DateTimePicker();
@@ -84,6 +85,7 @@
             listBoxProdutos.Name = "listBoxProdutos";
             listBoxProdutos.Size = new Size(298, 649);
             listBoxProdutos.TabIndex = 0;
+            listBoxProdutos.DrawItem += listBoxProdutos_DrawItem;
             listBoxProdutos.SelectedIndexChanged += listBoxProdutos_SelectedIndexChanged;
             listBoxProdutos.KeyDown += listBoxProdutos_KeyDown;
             // 
@@ -119,6 +121,7 @@
             // 
             // txtEstoqueMin
             // 
+            txtEstoqueMin.BackColor = Color.FromArgb(216, 224, 228);
             txtEstoqueMin.Location = new Point(702, 68);
             txtEstoqueMin.Name = "txtEstoqueMin";
             txtEstoqueMin.ReadOnly = true;
@@ -130,7 +133,7 @@
             // 
             // txtEstoqueAtual
             // 
-            txtEstoqueAtual.BackColor = SystemColors.InactiveCaption;
+            txtEstoqueAtual.BackColor = Color.FromArgb(216, 224, 228);
             txtEstoqueAtual.Location = new Point(403, 68);
             txtEstoqueAtual.Name = "txtEstoqueAtual";
             txtEstoqueAtual.ReadOnly = true;
@@ -139,7 +142,7 @@
             // 
             // txtDescricao
             // 
-            txtDescricao.BackColor = SystemColors.InactiveCaption;
+            txtDescricao.BackColor = Color.FromArgb(216, 224, 228);
             txtDescricao.Location = new Point(119, 68);
             txtDescricao.Name = "txtDescricao";
             txtDescricao.ReadOnly = true;
@@ -148,7 +151,7 @@
             // 
             // txtID
             // 
-            txtID.BackColor = SystemColors.InactiveCaption;
+            txtID.BackColor = Color.FromArgb(216, 224, 228);
             txtID.Location = new Point(44, 68);
             txtID.Name = "txtID";
             txtID.ReadOnly = true;
@@ -300,9 +303,10 @@
             // rbRemover
             // 
             rbRemover.AutoSize = true;
+            rbRemover.FlatStyle = FlatStyle.System;
             rbRemover.Location = new Point(456, 80);
             rbRemover.Name = "rbRemover";
-            rbRemover.Size = new Size(78, 19);
+            rbRemover.Size = new Size(84, 20);
             rbRemover.TabIndex = 12;
             rbRemover.TabStop = true;
             rbRemover.Text = "REMOVER";
@@ -311,9 +315,10 @@
             // rbAcrescentar
             // 
             rbAcrescentar.AutoSize = true;
+            rbAcrescentar.FlatStyle = FlatStyle.System;
             rbAcrescentar.Location = new Point(351, 80);
             rbAcrescentar.Name = "rbAcrescentar";
-            rbAcrescentar.Size = new Size(103, 19);
+            rbAcrescentar.Size = new Size(109, 20);
             rbAcrescentar.TabIndex = 11;
             rbAcrescentar.TabStop = true;
             rbAcrescentar.Text = "ACRESCENTAR";
@@ -396,10 +401,19 @@
             dgvMovimentacoes.AllowUserToDeleteRows = false;
             dgvMovimentacoes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvMovimentacoes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Window;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(99, 194, 157);
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            dgvMovimentacoes.DefaultCellStyle = dataGridViewCellStyle1;
             dgvMovimentacoes.Dock = DockStyle.Bottom;
             dgvMovimentacoes.Location = new Point(3, 121);
             dgvMovimentacoes.Name = "dgvMovimentacoes";
             dgvMovimentacoes.ReadOnly = true;
+            dgvMovimentacoes.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             dgvMovimentacoes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvMovimentacoes.Size = new Size(860, 497);
             dgvMovimentacoes.TabIndex = 12;

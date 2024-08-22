@@ -1,8 +1,8 @@
 using ControleDeEstoqueProauto.Models;
-using DocumentFormat.OpenXml.Wordprocessing;
 using Microsoft.VisualBasic;
 using System.Data.SqlClient;
 using System.Text;
+using System.Windows.Forms;
 
 namespace ControleDeEstoqueProauto
 {
@@ -14,34 +14,46 @@ namespace ControleDeEstoqueProauto
             InitializeComponent();
             AtualizarProdutos();
             AvisaProdutosComEstoqueMinimo();
+            listBoxProdutos.DrawMode = DrawMode.OwnerDrawFixed;
+            listBoxProdutos.DrawItem += new DrawItemEventHandler(listBoxProdutos_DrawItem);
         }
         #region Metodos 
         private async Task AtualizarProdutos()
         {
-            Produtos produtos = new Produtos();
-            _produtos = await produtos.GetAll();
-
-            listBoxProdutos.Items.Clear();
-            //foreach (var i in retorno)
-            //{
-            //    listBoxProdutos.Items.Add(i.ToString());
-            //}
-            listBoxProdutos.Items.AddRange(_produtos.Select(p => p.Descricao).ToArray());
-            listBoxProdutos.Sorted = true;
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
+                await AtualizarListaDeProdutos(() => new Produtos().GetAll());
+            }
+            finally
+            {
+                this.Cursor= Cursors.Default;
+            }
         }
         private async Task AvisaProdutosComEstoqueMinimo()
         {
-            Produtos produtos = new Produtos();
-            var produto = await produtos.GetProductLowStorage();
-            if (produto.Count() < 1) { return; }
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine("Atenção os itens Abaixo estão com o estoque abaixo do Mínimo");
-            sb.AppendLine();
-            foreach (var i in produto)
+            try
             {
-                sb.AppendLine(i.ToString());
+                Produtos produtos = new Produtos();
+                var produto = await produtos.GetProductLowStorage();
+
+                if (produto.Count() < 1) { return; }
+
+                StringBuilder sb = new StringBuilder();
+                sb.AppendLine("Atenção os itens abaixo estão com o estoque abaixo do mínimo:");
+                sb.AppendLine();
+
+                foreach (var i in produto)
+                {
+                    sb.AppendLine(i.ToString());
+                }
+
+                MessageBox.Show(sb.ToString(), "Itens com estoque baixo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-            MessageBox.Show(sb.ToString(), "Itens Com estoque baixo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocorreu um erro ao verificar o estoque mínimo: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         private async Task RetornaRegistrosComEstoqueMinimo()
         {
@@ -54,48 +66,57 @@ namespace ControleDeEstoqueProauto
 
         private async Task IncluirNovosRegistros()
         {
-            var dados = Produtos.ObterProdutosDeExcel().ToList();
+            try
+            {
+                this.Cursor = Cursors.WaitCursor; 
+                var dados = Produtos.ObterProdutosDeExcel().ToList();
+                listBoxProdutos.Items.Clear();
+
+                Produtos produtos = new Produtos();
+                _produtos = await produtos.GetAll();
+
+                foreach (var i in dados)
+                {
+                    Produtos produto = new Produtos
+                    {
+                        IDSistema = i.IDSistema,
+                        Descricao = i.Descricao,
+                        EstoqueMinimo = i.EstoqueMinimo ?? null
+                    };
+
+                    if (_produtos.Any(p => p.IDSistema == i.IDSistema))
+                    {
+                        produto.Update();
+                    }
+                    else
+                    {
+                        produto.Add();
+                    }
+                }
+
+                _produtos = await produtos.GetAll();
+                listBoxProdutos.Items.AddRange(_produtos.Select(p => p.Descricao).ToArray());
+                listBoxProdutos.Sorted = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao incluir ou atualizar registros: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default; // Restaura o cursor original
+            }
+        }
+
+        private async Task AtualizarListaDeProdutos(Func<Task<IEnumerable<Produtos>>> obterProdutos)
+        {
+            _produtos = await obterProdutos();
+
             listBoxProdutos.Items.Clear();
-            Produtos retornos = new Produtos();
-            _produtos = await retornos.GetAll();
-            if (_produtos.Count() < 1)
-            {
-                foreach (var i in dados)
-                {
-                    Produtos produto = new Produtos();
-                    produto.IDSistema = i.IDSistema;
-                    produto.Descricao = i.Descricao;
-                    produto.EstoqueMinimo = i.EstoqueMinimo ?? null;
-                    produto.Add();
-                }
-            }
-            else
-            {
-                foreach (var i in dados)
-                {
-                    Produtos produto = new Produtos();
-                    produto.IDSistema = i.IDSistema;
-                    produto.Descricao = i.Descricao;
-                    produto.EstoqueMinimo = i.EstoqueMinimo ?? null;
-                    produto.Update();
-                }
-            }
-
-            Produtos produtos = new Produtos();
-            _produtos = await produtos.GetAll();
-            //foreach (var i in _produtos)
-            //{
-            //    Produtos p = new Produtos();
-            //    p.IDSistema = i.IDSistema;
-            //    p.Descricao = i.Descricao;
-            //    p.EstoqueMinimo = i.EstoqueMinimo ?? null;
-            //    listBoxProdutos.Items.Add(p);
-            //}
-            //listBoxProdutos.Sorted = true;
-
             listBoxProdutos.Items.AddRange(_produtos.Select(p => p.Descricao).ToArray());
             listBoxProdutos.Sorted = true;
         }
+
         #endregion
         private void txtEstoqueMin_MouseDoubleClick(object sender, MouseEventArgs e)
         {
@@ -307,6 +328,26 @@ namespace ControleDeEstoqueProauto
 
             listBoxProdutos.Items.Clear();
             listBoxProdutos.Items.AddRange(filtro.Select(p => p.Descricao).ToArray());
+        }
+
+        private void listBoxProdutos_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            if (e.Index < 0) return;
+
+            if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+            {
+                e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(99, 194, 157)), e.Bounds);
+            }
+            else
+            {
+                e.Graphics.FillRectangle(new SolidBrush(e.BackColor), e.Bounds);
+            }
+
+            
+            e.Graphics.DrawString(listBoxProdutos.Items[e.Index].ToString(), e.Font, new SolidBrush(e.ForeColor), e.Bounds, StringFormat.GenericDefault);
+
+            
+            e.DrawFocusRectangle();
         }
     }
 }
