@@ -42,6 +42,7 @@
             label6 = new Label();
             label5 = new Label();
             groupBox4 = new GroupBox();
+            textBox1 = new TextBox();
             pictureBox1 = new PictureBox();
             ckbVerificarEstoqueMin = new CheckBox();
             tabControl1 = new TabControl();
@@ -79,9 +80,9 @@
             listBoxProdutos.Dock = DockStyle.Bottom;
             listBoxProdutos.FormattingEnabled = true;
             listBoxProdutos.ItemHeight = 15;
-            listBoxProdutos.Location = new Point(3, 97);
+            listBoxProdutos.Location = new Point(3, 112);
             listBoxProdutos.Name = "listBoxProdutos";
-            listBoxProdutos.Size = new Size(298, 664);
+            listBoxProdutos.Size = new Size(298, 649);
             listBoxProdutos.TabIndex = 0;
             listBoxProdutos.SelectedIndexChanged += listBoxProdutos_SelectedIndexChanged;
             listBoxProdutos.KeyDown += listBoxProdutos_KeyDown;
@@ -202,6 +203,7 @@
             // 
             // groupBox4
             // 
+            groupBox4.Controls.Add(textBox1);
             groupBox4.Controls.Add(pictureBox1);
             groupBox4.Controls.Add(ckbVerificarEstoqueMin);
             groupBox4.Controls.Add(listBoxProdutos);
@@ -212,6 +214,15 @@
             groupBox4.TabIndex = 2;
             groupBox4.TabStop = false;
             groupBox4.Text = "Selecione o produto para alterar";
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(3, 89);
+            textBox1.Name = "textBox1";
+            textBox1.PlaceholderText = "Digite um produto para filtrar";
+            textBox1.Size = new Size(298, 23);
+            textBox1.TabIndex = 3;
+            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // pictureBox1
             // 
@@ -227,7 +238,7 @@
             // ckbVerificarEstoqueMin
             // 
             ckbVerificarEstoqueMin.AutoSize = true;
-            ckbVerificarEstoqueMin.Location = new Point(96, 73);
+            ckbVerificarEstoqueMin.Location = new Point(96, 69);
             ckbVerificarEstoqueMin.Name = "ckbVerificarEstoqueMin";
             ckbVerificarEstoqueMin.Size = new Size(209, 19);
             ckbVerificarEstoqueMin.TabIndex = 1;
@@ -491,5 +502,6 @@
         private Label label1;
         private PictureBox pictureBox1;
         private CheckBox ckbBuscarPorPeriodo;
+        private TextBox textBox1;
     }
 }

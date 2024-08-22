@@ -8,6 +8,7 @@ namespace ControleDeEstoqueProauto
 {
     public partial class Form1 : Form
     {
+        private IEnumerable<Produtos> _produtos;
         public Form1()
         {
             InitializeComponent();
@@ -18,24 +19,25 @@ namespace ControleDeEstoqueProauto
         private async Task AtualizarProdutos()
         {
             Produtos produtos = new Produtos();
-            var retorno = await produtos.GetAll();
+            _produtos = await produtos.GetAll();
 
             listBoxProdutos.Items.Clear();
-            foreach (var i in retorno)
-            {
-                listBoxProdutos.Items.Add(i.ToString());
-            }
+            //foreach (var i in retorno)
+            //{
+            //    listBoxProdutos.Items.Add(i.ToString());
+            //}
+            listBoxProdutos.Items.AddRange(_produtos.Select(p => p.Descricao).ToArray());
             listBoxProdutos.Sorted = true;
         }
         private async Task AvisaProdutosComEstoqueMinimo()
         {
             Produtos produtos = new Produtos();
-            var retorno = await produtos.GetProductLowStorage();
-            if (retorno.Count() < 1) { return; }
+            var produto = await produtos.GetProductLowStorage();
+            if (produto.Count() < 1) { return; }
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("Atenção os itens Abaixo estão com o estoque abaixo do Mínimo");
             sb.AppendLine();
-            foreach (var i in retorno)
+            foreach (var i in produto)
             {
                 sb.AppendLine(i.ToString());
             }
@@ -44,12 +46,9 @@ namespace ControleDeEstoqueProauto
         private async Task RetornaRegistrosComEstoqueMinimo()
         {
             Produtos produtos = new Produtos();
-            var retorno = await produtos.GetProductLowStorage();
+            _produtos = await produtos.GetProductLowStorage();
             listBoxProdutos.Items.Clear();
-            foreach (var i in retorno)
-            {
-                listBoxProdutos.Items.Add(i.ToString());
-            }
+            listBoxProdutos.Items.AddRange(_produtos.Select(p => p.Descricao).ToArray());
             listBoxProdutos.Sorted = true;
         }
 
@@ -58,8 +57,8 @@ namespace ControleDeEstoqueProauto
             var dados = Produtos.ObterProdutosDeExcel().ToList();
             listBoxProdutos.Items.Clear();
             Produtos retornos = new Produtos();
-            var dadoss = await retornos.GetAll();
-            if (dadoss.Count() < 1)
+            _produtos = await retornos.GetAll();
+            if (_produtos.Count() < 1)
             {
                 foreach (var i in dados)
                 {
@@ -83,15 +82,18 @@ namespace ControleDeEstoqueProauto
             }
 
             Produtos produtos = new Produtos();
-            var retorno = await produtos.GetAll();
-            foreach (var i in retorno)
-            {
-                Produtos p = new Produtos();
-                p.IDSistema = i.IDSistema;
-                p.Descricao = i.Descricao;
-                p.EstoqueMinimo = i.EstoqueMinimo ?? null;
-                listBoxProdutos.Items.Add(p);
-            }
+            _produtos = await produtos.GetAll();
+            //foreach (var i in _produtos)
+            //{
+            //    Produtos p = new Produtos();
+            //    p.IDSistema = i.IDSistema;
+            //    p.Descricao = i.Descricao;
+            //    p.EstoqueMinimo = i.EstoqueMinimo ?? null;
+            //    listBoxProdutos.Items.Add(p);
+            //}
+            //listBoxProdutos.Sorted = true;
+
+            listBoxProdutos.Items.AddRange(_produtos.Select(p => p.Descricao).ToArray());
             listBoxProdutos.Sorted = true;
         }
         #endregion
@@ -241,6 +243,8 @@ namespace ControleDeEstoqueProauto
                     mov.Quantidade = valor;
                     mov.Add();
                     MessageBox.Show("Movimentação incluida Com Sucesso!", "Concluido", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txtEstoqueAtual.Text = valor.ToString();
+                    dtpDataUltimaAlteracao.Value = DateTime.Parse(dtpData.Value.ToString()).ToUniversalTime();
                 }
                 else
                 {
@@ -278,9 +282,9 @@ namespace ControleDeEstoqueProauto
 
         private void dgvMovimentacoes_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode is Keys.Delete) 
+            if (e.KeyCode is Keys.Delete)
             {
-                if (dgvMovimentacoes.SelectedRows.Count > 0) 
+                if (dgvMovimentacoes.SelectedRows.Count > 0)
                 {
                     DataGridViewRow selectedRow = dgvMovimentacoes.SelectedRows[0];
                     var cellValue = selectedRow.Cells["ID"].Value.ToString();
@@ -294,6 +298,15 @@ namespace ControleDeEstoqueProauto
                     }
                 }
             }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            string search = textBox1.Text.ToLower();
+            var filtro = _produtos.Where(p => p.Descricao.ToLower().Contains(search)).ToArray();
+
+            listBoxProdutos.Items.Clear();
+            listBoxProdutos.Items.AddRange(filtro.Select(p => p.Descricao).ToArray());
         }
     }
 }
