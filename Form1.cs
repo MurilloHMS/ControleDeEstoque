@@ -383,5 +383,10 @@ namespace ControleDeEstoqueProauto
                 MessageBox.Show("Não foi possível abrir o link. Erro: " + ex.Message);
             }
         }
+
+        private void txtEstoqueMin_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

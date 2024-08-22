@@ -122,12 +122,12 @@
             // 
             // txtEstoqueMin
             // 
-            txtEstoqueMin.BackColor = Color.FromArgb(216, 224, 228);
             txtEstoqueMin.Location = new Point(702, 68);
             txtEstoqueMin.Name = "txtEstoqueMin";
             txtEstoqueMin.ReadOnly = true;
             txtEstoqueMin.Size = new Size(100, 23);
             txtEstoqueMin.TabIndex = 7;
+            txtEstoqueMin.TextChanged += txtEstoqueMin_TextChanged;
             txtEstoqueMin.KeyDown += txtEstoqueMin_KeyDown;
             txtEstoqueMin.KeyPress += txtEstoqueMin_KeyPress;
             txtEstoqueMin.MouseDoubleClick += txtEstoqueMin_MouseDoubleClick;
