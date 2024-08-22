@@ -27,7 +27,7 @@ namespace ControleDeEstoqueProauto
             }
             finally
             {
-                this.Cursor= Cursors.Default;
+                this.Cursor = Cursors.Default;
             }
         }
         private async Task AvisaProdutosComEstoqueMinimo()
@@ -68,7 +68,7 @@ namespace ControleDeEstoqueProauto
         {
             try
             {
-                this.Cursor = Cursors.WaitCursor; 
+                this.Cursor = Cursors.WaitCursor;
                 var dados = Produtos.ObterProdutosDeExcel().ToList();
                 listBoxProdutos.Items.Clear();
 
@@ -343,11 +343,45 @@ namespace ControleDeEstoqueProauto
                 e.Graphics.FillRectangle(new SolidBrush(e.BackColor), e.Bounds);
             }
 
-            
+
             e.Graphics.DrawString(listBoxProdutos.Items[e.Index].ToString(), e.Font, new SolidBrush(e.ForeColor), e.Bounds, StringFormat.GenericDefault);
 
-            
+
             e.DrawFocusRectangle();
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            try
+            {
+                var psi = new System.Diagnostics.ProcessStartInfo
+                {
+                    FileName = @"https://github.com/murillohms",
+                    UseShellExecute = true // Abre o link no navegador padrão
+                };
+                System.Diagnostics.Process.Start(psi);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Não foi possível abrir o link. Erro: " + ex.Message);
+            }
+        }
+
+        private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                var psi = new System.Diagnostics.ProcessStartInfo
+                {
+                    FileName = @"https://proautokimium.com.br/",
+                    UseShellExecute = true // Abre o link no navegador padrão
+                };
+                System.Diagnostics.Process.Start(psi);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Não foi possível abrir o link. Erro: " + ex.Message);
+            }
         }
     }
 }

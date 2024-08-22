@@ -64,6 +64,7 @@
             label3 = new Label();
             dtpDe = new DateTimePicker();
             label1 = new Label();
+            linkLabel1 = new LinkLabel();
             groupBox1.SuspendLayout();
             groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -216,7 +217,6 @@
             groupBox4.Size = new Size(304, 764);
             groupBox4.TabIndex = 2;
             groupBox4.TabStop = false;
-            groupBox4.Text = "Selecione o produto para alterar";
             // 
             // textBox1
             // 
@@ -229,6 +229,7 @@
             // 
             // pictureBox1
             // 
+            pictureBox1.Cursor = Cursors.Hand;
             pictureBox1.Dock = DockStyle.Top;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(3, 19);
@@ -237,6 +238,7 @@
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
+            pictureBox1.MouseClick += pictureBox1_MouseClick;
             // 
             // ckbVerificarEstoqueMin
             // 
@@ -453,11 +455,26 @@
             label1.TabIndex = 2;
             label1.Text = "DE";
             // 
+            // linkLabel1
+            // 
+            linkLabel1.AutoSize = true;
+            linkLabel1.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            linkLabel1.LinkArea = new LinkArea(18, 22);
+            linkLabel1.Location = new Point(1046, 1);
+            linkLabel1.Name = "linkLabel1";
+            linkLabel1.Size = new Size(131, 20);
+            linkLabel1.TabIndex = 4;
+            linkLabel1.TabStop = true;
+            linkLabel1.Text = "Desenvolvido Por: MHMS";
+            linkLabel1.UseCompatibleTextRendering = true;
+            linkLabel1.LinkClicked += linkLabel1_LinkClicked;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1184, 764);
+            Controls.Add(linkLabel1);
             Controls.Add(tabControl1);
             Controls.Add(groupBox4);
             Icon = (Icon)resources.GetObject("$this.Icon");
@@ -479,6 +496,7 @@
             groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvMovimentacoes).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -517,5 +535,6 @@
         private PictureBox pictureBox1;
         private CheckBox ckbBuscarPorPeriodo;
         private TextBox textBox1;
+        private LinkLabel linkLabel1;
     }
 }
