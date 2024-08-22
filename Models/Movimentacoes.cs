@@ -39,9 +39,13 @@ namespace ControleDeEstoqueProauto.Models
             return await _dal.GetAllAsync();
         }
 
-        public async Task<Movimentacoes> GetForID(int id)
+        public async Task<Movimentacoes> GetForIDSistema(int id)
         {
             return await _dal.GetForAsync(x => x.IDSistema.Equals(id));
+        }
+        public async Task<Movimentacoes> GetForID(int id)
+        {
+            return await _dal.GetForAsync(x => x.ID.Equals(id));
         }
 
         public async Task<IEnumerable<Movimentacoes>> GetListForID(int id)

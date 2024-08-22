@@ -1,5 +1,6 @@
 using ControleDeEstoqueProauto.Models;
 using DocumentFormat.OpenXml.Wordprocessing;
+using Microsoft.VisualBasic;
 using System.Data.SqlClient;
 using System.Text;
 
@@ -71,7 +72,6 @@ namespace ControleDeEstoqueProauto
             }
             else
             {
-
                 foreach (var i in dados)
                 {
                     Produtos produto = new Produtos();
@@ -176,7 +176,7 @@ namespace ControleDeEstoqueProauto
                 Produtos produtos = new Produtos();
                 var retorno = await produtos.GetForName(descricao.ToString());
                 Movimentacoes mov = new Movimentacoes();
-                var retornoMov = await mov.GetForID(retorno.IDSistema);
+                var retornoMov = await mov.GetForIDSistema(retorno.IDSistema);
                 if (retornoMov != null)
                 {
                     txtEstoqueAtual.Text = retornoMov.Quantidade.ToString();
@@ -210,7 +210,7 @@ namespace ControleDeEstoqueProauto
         {
             try
             {
-                if(rbAcrescentar.Checked || rbRemover.Checked)
+                if (rbAcrescentar.Checked || rbRemover.Checked)
                 {
                     Movimentacoes mov = new Movimentacoes();
                     mov.IDSistema = int.Parse(txtID.Text);
@@ -273,7 +273,27 @@ namespace ControleDeEstoqueProauto
 
         private async void btnBuscarMovimentacoes_Click_1(object sender, EventArgs e)
         {
-           
+
+        }
+
+        private void dgvMovimentacoes_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode is Keys.Delete) 
+            {
+                if (dgvMovimentacoes.SelectedRows.Count > 0) 
+                {
+                    DataGridViewRow selectedRow = dgvMovimentacoes.SelectedRows[0];
+                    var cellValue = selectedRow.Cells["ID"].Value.ToString();
+
+                    DialogResult msg = MessageBox.Show("Atenção!\nDeseja Deletar o registro informado? \nEssa ação é irreversível!", "Deletar Registro", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (msg is DialogResult.Yes)
+                    {
+                        Movimentacoes mov = new Movimentacoes();
+                        mov.ID = int.Parse(cellValue);
+                        mov.Delete();
+                    }
+                }
+            }
         }
     }
 }
