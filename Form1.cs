@@ -30,6 +30,7 @@ namespace ControleDeEstoqueProauto
         {
             Produtos produtos = new Produtos();
             var retorno = await produtos.GetProductLowStorage();
+            if (retorno.Count() < 1) { return; }
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("Atenção os itens Abaixo estão com o estoque abaixo do Mínimo");
             sb.AppendLine();
@@ -37,14 +38,14 @@ namespace ControleDeEstoqueProauto
             {
                 sb.AppendLine(i.ToString());
             }
-            MessageBox.Show(sb.ToString());
+            MessageBox.Show(sb.ToString(), "Itens Com estoque baixo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
         private async Task RetornaRegistrosComEstoqueMinimo()
         {
             Produtos produtos = new Produtos();
             var retorno = await produtos.GetProductLowStorage();
             listBoxProdutos.Items.Clear();
-            foreach(var i in retorno)
+            foreach (var i in retorno)
             {
                 listBoxProdutos.Items.Add(i.ToString());
             }
@@ -55,14 +56,30 @@ namespace ControleDeEstoqueProauto
         {
             var dados = Produtos.ObterProdutosDeExcel().ToList();
             listBoxProdutos.Items.Clear();
-
-            foreach (var i in dados)
+            Produtos retornos = new Produtos();
+            var dadoss = await retornos.GetAll();
+            if (dadoss.Count() < 1)
             {
-                Produtos produto = new Produtos();
-                produto.IDSistema = i.IDSistema;
-                produto.Descricao = i.Descricao;
-                produto.EstoqueMinimo = i.EstoqueMinimo ?? null;
-                produto.Update();
+                foreach (var i in dados)
+                {
+                    Produtos produto = new Produtos();
+                    produto.IDSistema = i.IDSistema;
+                    produto.Descricao = i.Descricao;
+                    produto.EstoqueMinimo = i.EstoqueMinimo ?? null;
+                    produto.Add();
+                }
+            }
+            else
+            {
+
+                foreach (var i in dados)
+                {
+                    Produtos produto = new Produtos();
+                    produto.IDSistema = i.IDSistema;
+                    produto.Descricao = i.Descricao;
+                    produto.EstoqueMinimo = i.EstoqueMinimo ?? null;
+                    produto.Update();
+                }
             }
 
             Produtos produtos = new Produtos();
@@ -95,7 +112,7 @@ namespace ControleDeEstoqueProauto
                     Produtos produtos = new Produtos();
                     produtos.IDSistema = int.Parse(txtID.Text);
                     produtos.Descricao = txtDescricao.Text;
-                    produtos.EstoqueMinimo = int.Parse(txtEstoqueMin.Text);
+                    produtos.EstoqueMinimo = int.TryParse(txtEstoqueMin.Text, out int valor) ? valor : null;
                     produtos.Update();
                     txtEstoqueMin.ReadOnly = true;
 
@@ -168,6 +185,17 @@ namespace ControleDeEstoqueProauto
                 txtDescricao.Text = retorno.Descricao;
                 txtID.Text = retorno.IDSistema.ToString();
                 txtEstoqueMin.Text = retorno.EstoqueMinimo.ToString();
+
+                if (!ckbBuscarPorPeriodo.Checked)
+                {
+                    var dados = await mov.GetListForID(retorno.IDSistema);
+                    dgvMovimentacoes.DataSource = dados;
+                }
+                else
+                {
+                    var movim = await mov.GetListForDate(dtpDe.Value, dtpPara.Value);
+                    dgvMovimentacoes.DataSource = movim;
+                }
             }
             catch (Exception)
             {
@@ -182,35 +210,42 @@ namespace ControleDeEstoqueProauto
         {
             try
             {
-                Movimentacoes mov = new Movimentacoes();
-                mov.IDSistema = int.Parse(txtID.Text);
-                mov.Data = DateTime.Parse(dtpData.Value.ToString()).ToUniversalTime();
-                int estoqueAtual = int.TryParse(txtEstoqueAtual.Text, out int result) ? result : 0;
-                int estoque = int.Parse(numQuantidade.Value.ToString());
-                int valor = 0;
-                if (estoqueAtual > 0)
+                if(rbAcrescentar.Checked || rbRemover.Checked)
                 {
-                    if (rbAcrescentar.Checked)
+                    Movimentacoes mov = new Movimentacoes();
+                    mov.IDSistema = int.Parse(txtID.Text);
+                    mov.Data = DateTime.Parse(dtpData.Value.ToString()).ToUniversalTime();
+                    int estoqueAtual = int.TryParse(txtEstoqueAtual.Text, out int result) ? result : 0;
+                    int estoque = int.Parse(numQuantidade.Value.ToString());
+                    int valor = 0;
+                    if (estoqueAtual > 0)
                     {
-                        valor = estoqueAtual + estoque;
+                        if (rbAcrescentar.Checked)
+                        {
+                            valor = estoqueAtual + estoque;
+                        }
+                        else if (rbRemover.Checked)
+                        {
+                            valor = estoqueAtual - estoque;
+                        }
                     }
-                    else if (rbRemover.Checked)
+                    else
                     {
-                        valor = estoqueAtual + estoque;
+                        valor = estoque;
                     }
+                    if (valor.Equals(0))
+                    {
+                        MessageBox.Show("Ocorreu um erro ao incluir a movimentacao", "Erro ao incluir movimentacao", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    mov.Quantidade = valor;
+                    mov.Add();
+                    MessageBox.Show("Movimentação incluida Com Sucesso!", "Concluido", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    valor = estoque;
+                    MessageBox.Show("Atenção Selecione uma opção para remover ou acrescentar o estoque", "Verificação", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                if (valor.Equals(0))
-                {
-                    MessageBox.Show("Ocorreu um erro ao incluir a movimentacao", "Erro ao incluir movimentacao", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                mov.Quantidade = valor;
-                mov.Add();
-                MessageBox.Show("Movimentação incluida Com Sucesso!", "Concluido", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
             catch (SqlException)
@@ -225,7 +260,7 @@ namespace ControleDeEstoqueProauto
 
         private void ckbVerificarEstoqueMin_CheckedChanged(object sender, EventArgs e)
         {
-            if(ckbVerificarEstoqueMin.Checked)
+            if (ckbVerificarEstoqueMin.Checked)
             {
                 RetornaRegistrosComEstoqueMinimo();
             }
@@ -234,6 +269,11 @@ namespace ControleDeEstoqueProauto
                 AtualizarProdutos();
             }
 
+        }
+
+        private async void btnBuscarMovimentacoes_Click_1(object sender, EventArgs e)
+        {
+           
         }
     }
 }

@@ -141,3 +141,4 @@ C:\Users\proau\OneDrive - Murillo HMS\Projetos\2 - Sistemas\ControleDeEstoquePro
 C:\Users\proau\OneDrive - Murillo HMS\Projetos\2 - Sistemas\ControleDeEstoqueProauto\bin\Debug\net8.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\proau\OneDrive - Murillo HMS\Projetos\2 - Sistemas\ControleDeEstoqueProauto\bin\Debug\net8.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\proau\OneDrive - Murillo HMS\Projetos\2 - Sistemas\ControleDeEstoqueProauto\obj\Debug\net8.0-windows\ControleDeEstoqueProauto.sourcelink.json
+C:\Users\proau\OneDrive - Murillo HMS\Projetos\2 - Sistemas\ControleDeEstoqueProauto\obj\Debug\net8.0-windows\ControleDeEstoqueProauto.Properties.Resources.resources

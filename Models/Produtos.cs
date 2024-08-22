@@ -16,7 +16,7 @@ namespace ControleDeEstoqueProauto.Models
         private readonly DAL<Produtos> _dal = new DAL<Produtos>();
         private readonly DAL<Movimentacoes> _dalM = new DAL<Movimentacoes>();
 
-        #region Crud
+        
         public async Task Add()
         {
             await _dal.AddAsync(this);
@@ -68,8 +68,6 @@ namespace ControleDeEstoqueProauto.Models
             return produtosComEstoqueBaixo;
         }
 
-
-        #endregion
         public static IEnumerable<Produtos> ObterProdutosDeExcel()
         {
             string arquivo = string.Empty;

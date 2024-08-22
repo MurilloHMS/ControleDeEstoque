@@ -42,7 +42,7 @@ namespace ControleDeEstoqueProauto
 
         public async Task<T?> GetForAsync(Func<T, bool> func)
         {
-            return await Task.Run(() => _context.Set<T>().FirstOrDefault(func));
+            return await Task.Run(() => _context.Set<T>().LastOrDefault(func));
         }
 
         public async Task<IEnumerable<T>> GetListForAsync(Func<T, bool> func)

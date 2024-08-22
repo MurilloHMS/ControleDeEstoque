@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -46,6 +47,11 @@ namespace ControleDeEstoqueProauto.Models
         public async Task<IEnumerable<Movimentacoes>> GetListForID(int id)
         {
             return await _dal.GetListForAsync(x => x.IDSistema.Equals(id));
+        }
+
+        public async Task<IEnumerable<Movimentacoes>> GetListForDate(DateTime dataDe, DateTime dataAte)
+        {
+            return await _dal.GetListForAsync(x => x.Data >= dataDe && x.Data <= dataAte);
         }
 
         #endregion

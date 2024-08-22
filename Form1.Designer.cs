@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             listBoxProdutos = new ListBox();
             groupBox1 = new GroupBox();
             dtpDataUltimaAlteracao = new DateTimePicker();
@@ -41,6 +42,7 @@
             label6 = new Label();
             label5 = new Label();
             groupBox4 = new GroupBox();
+            pictureBox1 = new PictureBox();
             ckbVerificarEstoqueMin = new CheckBox();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
@@ -54,14 +56,15 @@
             label8 = new Label();
             tabPage2 = new TabPage();
             groupBox3 = new GroupBox();
-            btnBuscarMovimentacoes = new Button();
+            ckbBuscarPorPeriodo = new CheckBox();
             dgvMovimentacoes = new DataGridView();
-            dateTimePicker2 = new DateTimePicker();
+            dtpPara = new DateTimePicker();
             label3 = new Label();
-            dateTimePicker1 = new DateTimePicker();
+            dtpDe = new DateTimePicker();
             label1 = new Label();
             groupBox1.SuspendLayout();
             groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -76,9 +79,9 @@
             listBoxProdutos.Dock = DockStyle.Bottom;
             listBoxProdutos.FormattingEnabled = true;
             listBoxProdutos.ItemHeight = 15;
-            listBoxProdutos.Location = new Point(3, 67);
+            listBoxProdutos.Location = new Point(3, 97);
             listBoxProdutos.Name = "listBoxProdutos";
-            listBoxProdutos.Size = new Size(298, 694);
+            listBoxProdutos.Size = new Size(298, 664);
             listBoxProdutos.TabIndex = 0;
             listBoxProdutos.SelectedIndexChanged += listBoxProdutos_SelectedIndexChanged;
             listBoxProdutos.KeyDown += listBoxProdutos_KeyDown;
@@ -199,6 +202,7 @@
             // 
             // groupBox4
             // 
+            groupBox4.Controls.Add(pictureBox1);
             groupBox4.Controls.Add(ckbVerificarEstoqueMin);
             groupBox4.Controls.Add(listBoxProdutos);
             groupBox4.Dock = DockStyle.Left;
@@ -209,10 +213,21 @@
             groupBox4.TabStop = false;
             groupBox4.Text = "Selecione o produto para alterar";
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Dock = DockStyle.Top;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(3, 19);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(298, 48);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 2;
+            pictureBox1.TabStop = false;
+            // 
             // ckbVerificarEstoqueMin
             // 
             ckbVerificarEstoqueMin.AutoSize = true;
-            ckbVerificarEstoqueMin.Location = new Point(92, 39);
+            ckbVerificarEstoqueMin.Location = new Point(96, 73);
             ckbVerificarEstoqueMin.Name = "ckbVerificarEstoqueMin";
             ckbVerificarEstoqueMin.Size = new Size(209, 19);
             ckbVerificarEstoqueMin.TabIndex = 1;
@@ -340,67 +355,70 @@
             // 
             // groupBox3
             // 
-            groupBox3.Controls.Add(btnBuscarMovimentacoes);
+            groupBox3.Controls.Add(ckbBuscarPorPeriodo);
             groupBox3.Controls.Add(dgvMovimentacoes);
-            groupBox3.Controls.Add(dateTimePicker2);
+            groupBox3.Controls.Add(dtpPara);
             groupBox3.Controls.Add(label3);
-            groupBox3.Controls.Add(dateTimePicker1);
+            groupBox3.Controls.Add(dtpDe);
             groupBox3.Controls.Add(label1);
             groupBox3.Dock = DockStyle.Top;
             groupBox3.Location = new Point(3, 3);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(866, 423);
+            groupBox3.Size = new Size(866, 621);
             groupBox3.TabIndex = 17;
             groupBox3.TabStop = false;
             groupBox3.Text = "Ultimas Movimentações";
             // 
-            // btnBuscarMovimentacoes
+            // ckbBuscarPorPeriodo
             // 
-            btnBuscarMovimentacoes.Location = new Point(389, 50);
-            btnBuscarMovimentacoes.Name = "btnBuscarMovimentacoes";
-            btnBuscarMovimentacoes.Size = new Size(152, 23);
-            btnBuscarMovimentacoes.TabIndex = 13;
-            btnBuscarMovimentacoes.Text = "Buscar Movimentações";
-            btnBuscarMovimentacoes.UseVisualStyleBackColor = true;
+            ckbBuscarPorPeriodo.AutoSize = true;
+            ckbBuscarPorPeriodo.Location = new Point(462, 49);
+            ckbBuscarPorPeriodo.Name = "ckbBuscarPorPeriodo";
+            ckbBuscarPorPeriodo.Size = new Size(126, 19);
+            ckbBuscarPorPeriodo.TabIndex = 14;
+            ckbBuscarPorPeriodo.Text = "Buscar Por Periodo";
+            ckbBuscarPorPeriodo.UseVisualStyleBackColor = true;
             // 
             // dgvMovimentacoes
             // 
+            dgvMovimentacoes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvMovimentacoes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvMovimentacoes.Dock = DockStyle.Bottom;
-            dgvMovimentacoes.Location = new Point(3, 99);
+            dgvMovimentacoes.Location = new Point(3, 121);
             dgvMovimentacoes.Name = "dgvMovimentacoes";
-            dgvMovimentacoes.Size = new Size(860, 321);
+            dgvMovimentacoes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvMovimentacoes.Size = new Size(860, 497);
             dgvMovimentacoes.TabIndex = 12;
             // 
-            // dateTimePicker2
+            // dtpPara
             // 
-            dateTimePicker2.Format = DateTimePickerFormat.Short;
-            dateTimePicker2.Location = new Point(257, 50);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(105, 23);
-            dateTimePicker2.TabIndex = 10;
+            dtpPara.Format = DateTimePickerFormat.Short;
+            dtpPara.Location = new Point(349, 46);
+            dtpPara.Name = "dtpPara";
+            dtpPara.Size = new Size(105, 23);
+            dtpPara.TabIndex = 10;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(215, 56);
+            label3.Location = new Point(307, 52);
             label3.Name = "label3";
             label3.Size = new Size(36, 15);
             label3.TabIndex = 2;
             label3.Text = "PARA";
             // 
-            // dateTimePicker1
+            // dtpDe
             // 
-            dateTimePicker1.Format = DateTimePickerFormat.Short;
-            dateTimePicker1.Location = new Point(94, 50);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(105, 23);
-            dateTimePicker1.TabIndex = 10;
+            dtpDe.Format = DateTimePickerFormat.Short;
+            dtpDe.Location = new Point(186, 46);
+            dtpDe.Name = "dtpDe";
+            dtpDe.Size = new Size(105, 23);
+            dtpDe.TabIndex = 10;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(67, 56);
+            label1.Location = new Point(159, 52);
             label1.Name = "label1";
             label1.Size = new Size(21, 15);
             label1.TabIndex = 2;
@@ -413,6 +431,7 @@
             ClientSize = new Size(1184, 764);
             Controls.Add(tabControl1);
             Controls.Add(groupBox4);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Controle de Estoque";
@@ -420,6 +439,7 @@
             groupBox1.PerformLayout();
             groupBox4.ResumeLayout(false);
             groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             groupBox2.ResumeLayout(false);
@@ -460,11 +480,12 @@
         private DateTimePicker dtpData;
         private Label label8;
         private GroupBox groupBox3;
-        private Button btnBuscarMovimentacoes;
         private DataGridView dgvMovimentacoes;
-        private DateTimePicker dateTimePicker2;
+        private DateTimePicker dtpPara;
         private Label label3;
-        private DateTimePicker dateTimePicker1;
+        private DateTimePicker dtpDe;
         private Label label1;
+        private PictureBox pictureBox1;
+        private CheckBox ckbBuscarPorPeriodo;
     }
 }
