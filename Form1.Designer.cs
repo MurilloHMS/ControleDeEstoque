@@ -250,7 +250,6 @@
             ckbVerificarEstoqueMin.Text = "Verificar Produtos Estoque Mínimo";
             ckbVerificarEstoqueMin.UseVisualStyleBackColor = true;
             ckbVerificarEstoqueMin.CheckedChanged += ckbVerificarEstoqueMin_CheckedChanged;
-            ckbVerificarEstoqueMin.MouseClick += ckbVerificarEstoqueMin_MouseClick;
             // 
             // tabControl1
             // 

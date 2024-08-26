@@ -142,12 +142,6 @@ namespace ControleDeEstoqueProauto
                 }
             }
         }
-
-        private void btnBuscarMovimentacoes_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void listBoxProdutos_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F6)
