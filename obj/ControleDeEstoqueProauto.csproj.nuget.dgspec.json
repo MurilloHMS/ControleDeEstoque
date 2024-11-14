@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\proau\\OneDrive - Murillo HMS\\Projetos\\2 - Sistemas\\ControleDeEstoqueProauto\\ControleDeEstoqueProauto.csproj": {}
+    "D:\\ControleDeEstoque\\ControleDeEstoqueProauto.csproj": {}
   },
   "projects": {
-    "C:\\Users\\proau\\OneDrive - Murillo HMS\\Projetos\\2 - Sistemas\\ControleDeEstoqueProauto\\ControleDeEstoqueProauto.csproj": {
+    "D:\\ControleDeEstoque\\ControleDeEstoqueProauto.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\proau\\OneDrive - Murillo HMS\\Projetos\\2 - Sistemas\\ControleDeEstoqueProauto\\ControleDeEstoqueProauto.csproj",
+        "projectUniqueName": "D:\\ControleDeEstoque\\ControleDeEstoqueProauto.csproj",
         "projectName": "ControleDeEstoqueProauto",
-        "projectPath": "C:\\Users\\proau\\OneDrive - Murillo HMS\\Projetos\\2 - Sistemas\\ControleDeEstoqueProauto\\ControleDeEstoqueProauto.csproj",
-        "packagesPath": "C:\\Users\\proau\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\proau\\OneDrive - Murillo HMS\\Projetos\\2 - Sistemas\\ControleDeEstoqueProauto\\obj\\",
+        "projectPath": "D:\\ControleDeEstoque\\ControleDeEstoqueProauto.csproj",
+        "packagesPath": "C:\\Users\\Proauto\\.nuget\\packages\\",
+        "outputPath": "D:\\ControleDeEstoque\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\proau\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Proauto\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -114,7 +114,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

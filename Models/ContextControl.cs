@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal;
 using System.Configuration;
 
 namespace ControleDeEstoqueProauto.Models
@@ -11,6 +13,7 @@ namespace ControleDeEstoqueProauto.Models
         #region DbSets
         public DbSet<Produtos> produtos {  get; set; }
         public DbSet<Movimentacoes> movimentacoes { get; set; }
+        public DbSet<EstoqueDiario> estoqueDiarios { get; set; }
 
         #endregion
 

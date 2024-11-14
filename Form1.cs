@@ -9,6 +9,9 @@ namespace ControleDeEstoqueProauto
     public partial class Form1 : Form
     {
         private IEnumerable<Produtos> _produtos;
+
+        private System.Windows.Forms.Timer timer;
+        private bool dadosSalvosHoje = false;
         public Form1()
         {
             InitializeComponent();
@@ -16,6 +19,11 @@ namespace ControleDeEstoqueProauto
             AvisaProdutosComEstoqueMinimo();
             listBoxProdutos.DrawMode = DrawMode.OwnerDrawFixed;
             listBoxProdutos.DrawItem += new DrawItemEventHandler(listBoxProdutos_DrawItem);
+
+            timer = new();
+            timer.Interval = 60000; // 1 minuto
+            timer.Tick += Timer_Tick;
+            timer.Start();
         }
         #region Metodos 
         private async Task AtualizarProdutos()
@@ -118,6 +126,25 @@ namespace ControleDeEstoqueProauto
         }
 
         #endregion
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            
+            if (DateTime.Now.Hour >= 09 && !dadosSalvosHoje)
+            {
+                SalvarDados();
+                dadosSalvosHoje = true; 
+            }
+            else if (DateTime.Now.Hour < 09)
+            {
+                dadosSalvosHoje = false;
+            }
+        }
+
+        private void SalvarDados()
+        {
+            MessageBox.Show("Dados salvos com sucesso!");
+        }
         private void txtEstoqueMin_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             if (txtEstoqueMin.ReadOnly && !string.IsNullOrEmpty(txtID.Text))
@@ -379,6 +406,11 @@ namespace ControleDeEstoqueProauto
         }
 
         private void txtEstoqueMin_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
         {
 
         }

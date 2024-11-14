@@ -14,6 +14,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = ControleDeEstoqueProauto
-build_property.ProjectDir = C:\Users\proau\OneDrive - Murillo HMS\Projetos\2 - Sistemas\ControleDeEstoqueProauto\
+build_property.ProjectDir = D:\ControleDeEstoque\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
