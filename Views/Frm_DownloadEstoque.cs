@@ -33,21 +33,25 @@ namespace ControleDeEstoqueProauto
                     .GroupBy(m => m.IDSistema) // Agrupando novamente para garantir unicidade
                     .Select(g => g.OrderByDescending(m => m.Data).First()) // Movimentação mais recente
                     .ToList(); // Execute a consulta aqui para trazer os dados
-
+                
+                var produtos = _context.produtos.ToList();
                 using (var workbook = new XLWorkbook())
                 {
                     var worksheet = workbook.Worksheets.Add("Movimentacoes");
                     
                     worksheet.Cell(1,1).Value = "Id Sistema";
-                    worksheet.Cell(1,2).Value = "Data Do ultimo estoque";
-                    worksheet.Cell(1,3).Value = "Quantidade";
+                    worksheet.Cell(1, 2).Value = "Descrição";
+                    worksheet.Cell(1,3).Value = "Data Do ultimo estoque";
+                    worksheet.Cell(1,4).Value = "Quantidade";
 
                     for (int i = 0; i < estoqueDoDia.Count; i++)
                     {
                         var movimentacao = estoqueDoDia[i];
+                        var produto = produtos.Find(m => m.IDSistema == movimentacao.IDSistema);
                         worksheet.Cell(i + 2, 1).Value = movimentacao.IDSistema;
-                        worksheet.Cell(i + 2,2).Value = movimentacao.Data.ToString("dd/MM/yyyy");
-                        worksheet.Cell(i + 2, 3).Value = movimentacao.Quantidade;
+                        worksheet.Cell(i + 2, 2).Value = produto.Descricao;
+                        worksheet.Cell(i + 2,3).Value = movimentacao.Data.ToString("dd/MM/yyyy");
+                        worksheet.Cell(i + 2, 4).Value = movimentacao.Quantidade;
                     }
 
                     string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads","movimentacoes.xlsx");

@@ -14,8 +14,8 @@ namespace ControleDeEstoqueProauto
         public MainWindow()
         {
             InitializeComponent();
-            Task.Run(() => AtualizarProdutos());
-            Task.Run(() => AvisaProdutosComEstoqueMinimo());
+            AtualizarProdutos();
+            AvisaProdutosComEstoqueMinimo();
             listBoxProdutos.DrawMode = DrawMode.OwnerDrawFixed;
             listBoxProdutos.DrawItem += new DrawItemEventHandler(listBoxProdutos_DrawItem!);
         }
