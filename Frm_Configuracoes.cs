@@ -52,9 +52,9 @@ namespace ControleDeEstoqueProauto
 
         private void colarToolStripButton_Click(object sender, EventArgs e)
         {
-            ContextControl context = new ContextControl();
-            context.Database.EnsureCreatedAsync();
-            context.Database.MigrateAsync();
+            AppDbContext appDbContext = new AppDbContext();
+            appDbContext.Database.EnsureCreatedAsync();
+            appDbContext.Database.MigrateAsync();
 
             MessageBox.Show("Banco de Dados Criado com sucesso!");
 

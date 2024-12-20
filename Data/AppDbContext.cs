@@ -5,7 +5,7 @@ using System.Configuration;
 
 namespace ControleDeEstoqueProauto.Models
 {
-    internal class ContextControl : DbContext
+    internal class AppDbContext : DbContext
     {
         private readonly string _connectionString;
         private readonly string _databaseProvider;
@@ -17,7 +17,7 @@ namespace ControleDeEstoqueProauto.Models
 
         #endregion
 
-        public ContextControl()
+        public AppDbContext()
         {
             _databaseProvider = ConfigurationManager.AppSettings["DatabaseProvider"];
             _connectionString = ConfigurationManager.ConnectionStrings[_databaseProvider + "Connection"].ConnectionString;

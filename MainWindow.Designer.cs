@@ -1,6 +1,6 @@
 ﻿namespace ControleDeEstoqueProauto
 {
-    partial class Form1
+    partial class MainWindow
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             listBoxProdutos = new ListBox();
             groupBox1 = new GroupBox();
@@ -127,7 +127,6 @@
             txtEstoqueMin.ReadOnly = true;
             txtEstoqueMin.Size = new Size(100, 23);
             txtEstoqueMin.TabIndex = 7;
-            txtEstoqueMin.TextChanged += txtEstoqueMin_TextChanged;
             txtEstoqueMin.KeyDown += txtEstoqueMin_KeyDown;
             txtEstoqueMin.KeyPress += txtEstoqueMin_KeyPress;
             txtEstoqueMin.MouseDoubleClick += txtEstoqueMin_MouseDoubleClick;
@@ -477,10 +476,9 @@
             Controls.Add(tabControl1);
             Controls.Add(groupBox4);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Name = "Form1";
+            Name = "MainWindow";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Controle de Estoque";
-            Load += Form1_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             groupBox4.ResumeLayout(false);

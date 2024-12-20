@@ -1,29 +1,25 @@
 using ControleDeEstoqueProauto.Models;
-using Microsoft.VisualBasic;
 using System.Data.SqlClient;
 using System.Text;
-using System.Windows.Forms;
+using ControleDeEstoqueProauto.Services;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace ControleDeEstoqueProauto
 {
-    public partial class Form1 : Form
+    public partial class MainWindow : Form
     {
+        private readonly AppDbContext _context = new AppDbContext();
         private IEnumerable<Produtos> _produtos;
 
         private System.Windows.Forms.Timer timer;
-        private bool dadosSalvosHoje = false;
-        public Form1()
+        public MainWindow()
         {
             InitializeComponent();
             AtualizarProdutos();
             AvisaProdutosComEstoqueMinimo();
             listBoxProdutos.DrawMode = DrawMode.OwnerDrawFixed;
             listBoxProdutos.DrawItem += new DrawItemEventHandler(listBoxProdutos_DrawItem);
-
-            timer = new();
-            timer.Interval = 60000; // 1 minuto
-            timer.Tick += Timer_Tick;
-            timer.Start();
         }
         #region Metodos 
         private async Task AtualizarProdutos()
@@ -31,7 +27,8 @@ namespace ControleDeEstoqueProauto
             try
             {
                 this.Cursor = Cursors.WaitCursor;
-                await AtualizarListaDeProdutos(() => new Produtos().GetAll());
+                var produtos = await _context.produtos.ToListAsync();
+                await AtualizarListaDeProdutos(produtos);
             }
             finally
             {
@@ -42,31 +39,26 @@ namespace ControleDeEstoqueProauto
         {
             try
             {
-                Produtos produtos = new Produtos();
-                var produto = await produtos.GetProductLowStorage();
-
+                var produto = await new ProdutoService().ObterProdutosComEstoqueBaixo();
                 if (produto.Count() < 1) { return; }
-
                 StringBuilder sb = new StringBuilder();
-                sb.AppendLine("Atenção os itens abaixo estão com o estoque abaixo do mínimo:");
+                sb.AppendLine("AtenÃ§Ã£o os itens abaixo estÃ£o com o estoque abaixo do mÃ­nimo:");
                 sb.AppendLine();
-
                 foreach (var i in produto)
                 {
                     sb.AppendLine(i.ToString());
                 }
-
                 MessageBox.Show(sb.ToString(), "Itens com estoque baixo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ocorreu um erro ao verificar o estoque mínimo: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ocorreu um erro ao verificar o estoque mï¿½nimo: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private async Task RetornaRegistrosComEstoqueMinimo()
         {
             Produtos produtos = new Produtos();
-            _produtos = await produtos.GetProductLowStorage();
+            _produtos = await new ProdutoService().ObterProdutosComEstoqueBaixo();
             listBoxProdutos.Items.Clear();
             listBoxProdutos.Items.AddRange(_produtos.Select(p => p.Descricao).ToArray());
             listBoxProdutos.Sorted = true;
@@ -77,12 +69,9 @@ namespace ControleDeEstoqueProauto
             try
             {
                 this.Cursor = Cursors.WaitCursor;
-                var dados = Produtos.ObterProdutosDeExcel().ToList();
+                var dados = ProdutoService.ObterProdutosDoExcel();
                 listBoxProdutos.Items.Clear();
-
-                Produtos produtos = new Produtos();
-                _produtos = await produtos.GetAll();
-
+                _produtos = await _context.produtos.ToListAsync();
                 foreach (var i in dados)
                 {
                     Produtos produto = new Produtos
@@ -91,18 +80,18 @@ namespace ControleDeEstoqueProauto
                         Descricao = i.Descricao,
                         EstoqueMinimo = i.EstoqueMinimo ?? null
                     };
-
                     if (_produtos.Any(p => p.IDSistema == i.IDSistema))
                     {
-                        produto.Update();
+                        _context.produtos.Update(produto);
                     }
                     else
                     {
-                        produto.Add();
+                        _context.produtos.Add(produto);
                     }
-                }
 
-                _produtos = await produtos.GetAll();
+                    _context.SaveChanges();
+                }
+                _produtos = await _context.produtos.ToListAsync();
                 listBoxProdutos.Items.AddRange(_produtos.Select(p => p.Descricao).ToArray());
                 listBoxProdutos.Sorted = true;
             }
@@ -116,35 +105,15 @@ namespace ControleDeEstoqueProauto
             }
         }
 
-        private async Task AtualizarListaDeProdutos(Func<Task<IEnumerable<Produtos>>> obterProdutos)
+        private async Task AtualizarListaDeProdutos(IEnumerable<Produtos> obterProdutos)
         {
-            _produtos = await obterProdutos();
-
+            _produtos = obterProdutos;
             listBoxProdutos.Items.Clear();
             listBoxProdutos.Items.AddRange(_produtos.Select(p => p.Descricao).ToArray());
             listBoxProdutos.Sorted = true;
         }
-
         #endregion
-
-        private void Timer_Tick(object sender, EventArgs e)
-        {
-            
-            if (DateTime.Now.Hour >= 09 && !dadosSalvosHoje)
-            {
-                SalvarDados();
-                dadosSalvosHoje = true; 
-            }
-            else if (DateTime.Now.Hour < 09)
-            {
-                dadosSalvosHoje = false;
-            }
-        }
-
-        private void SalvarDados()
-        {
-            MessageBox.Show("Dados salvos com sucesso!");
-        }
+        
         private void txtEstoqueMin_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             if (txtEstoqueMin.ReadOnly && !string.IsNullOrEmpty(txtID.Text))
@@ -163,7 +132,8 @@ namespace ControleDeEstoqueProauto
                     produtos.IDSistema = int.Parse(txtID.Text);
                     produtos.Descricao = txtDescricao.Text;
                     produtos.EstoqueMinimo = int.TryParse(txtEstoqueMin.Text, out int valor) ? valor : null;
-                    produtos.Update();
+                    _context.produtos.Update(produtos);
+                    _context.SaveChanges();
                     txtEstoqueMin.ReadOnly = true;
 
                 }
@@ -183,13 +153,7 @@ namespace ControleDeEstoqueProauto
 
         private void txtEstoqueMin_KeyPress(object sender, KeyPressEventArgs e)
         {
-
             e.Handled = !char.IsDigit(e.KeyChar) && e.KeyChar != 08 ? true : false;
-        }
-
-        private void ckbVerificarEstoqueMin_MouseClick(object sender, MouseEventArgs e)
-        {
-
         }
 
         private void label2_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -213,17 +177,19 @@ namespace ControleDeEstoqueProauto
                 rbAcrescentar.Checked = false;
                 rbRemover.Checked = false;
                 dtpData.Value = DateTime.Now;
-                dtpDataUltimaAlteracao.Value = DateTime.Now;
+                dtpDataUltimaAlteracao.Format = DateTimePickerFormat.Custom;
+                dtpDataUltimaAlteracao.CustomFormat = " ";
                 numQuantidade.Value = 0;
                 var descricao = listBoxProdutos.SelectedItem;
 
                 Produtos produtos = new Produtos();
-                var retorno = await produtos.GetForName(descricao.ToString());
+                var retorno = await _context.produtos.Where(p => p.Descricao == descricao.ToString()).FirstOrDefaultAsync();
                 Movimentacoes mov = new Movimentacoes();
-                var retornoMov = await mov.GetForIDSistema(retorno.IDSistema);
+                var retornoMov = await _context.movimentacoes.Where(m => m.IDSistema == retorno.IDSistema).FirstOrDefaultAsync();
                 if (retornoMov != null)
                 {
                     txtEstoqueAtual.Text = retornoMov.Quantidade.ToString();
+                    dtpDataUltimaAlteracao.Format = DateTimePickerFormat.Short;
                     dtpDataUltimaAlteracao.Value = retornoMov.Data;
                 }
                 txtDescricao.Text = retorno.Descricao;
@@ -232,22 +198,19 @@ namespace ControleDeEstoqueProauto
 
                 if (!ckbBuscarPorPeriodo.Checked)
                 {
-                    var dados = await mov.GetListForID(retorno.IDSistema);
-                    dgvMovimentacoes.DataSource = dados;
+                    var data = _context.movimentacoes.Where(m => m.IDSistema == retorno.IDSistema).ToListAsync();
+                    dgvMovimentacoes.DataSource = data;
                 }
                 else
                 {
-                    var movim = await mov.GetListForDate(dtpDe.Value, dtpPara.Value);
-                    dgvMovimentacoes.DataSource = movim;
+                    var data = await _context.movimentacoes.Where(m => m.Data >= dtpDe.Value && m.Data <= dtpPara.Value).ToListAsync();
+                    dgvMovimentacoes.DataSource = data;
                 }
             }
             catch (Exception)
             {
-
                 throw;
             }
-
-
         }
 
         private void btnInserir_Click(object sender, EventArgs e)
@@ -283,14 +246,15 @@ namespace ControleDeEstoqueProauto
                         return;
                     }
                     mov.Quantidade = valor;
-                    mov.Add();
-                    MessageBox.Show("Movimentação incluida Com Sucesso!", "Concluido", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    _context.movimentacoes.Add(mov);
+                    _context.SaveChanges();
+                    MessageBox.Show("MovimentaÃ§Ã£o incluida Com Sucesso!", "Concluido", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txtEstoqueAtual.Text = valor.ToString();
                     dtpDataUltimaAlteracao.Value = DateTime.Parse(dtpData.Value.ToString()).ToUniversalTime();
                 }
                 else
                 {
-                    MessageBox.Show("Atenção Selecione uma opção para remover ou acrescentar o estoque", "Verificação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Atenï¿½ï¿½o Selecione uma opï¿½ï¿½o para remover ou acrescentar o estoque", "Verificaï¿½ï¿½o", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
             }
@@ -317,11 +281,6 @@ namespace ControleDeEstoqueProauto
 
         }
 
-        private async void btnBuscarMovimentacoes_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
         private void dgvMovimentacoes_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode is Keys.Delete)
@@ -331,12 +290,12 @@ namespace ControleDeEstoqueProauto
                     DataGridViewRow selectedRow = dgvMovimentacoes.SelectedRows[0];
                     var cellValue = selectedRow.Cells["ID"].Value.ToString();
 
-                    DialogResult msg = MessageBox.Show("Atenção!\nDeseja Deletar o registro informado? \nEssa ação é irreversível!", "Deletar Registro", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    DialogResult msg = MessageBox.Show("Atenï¿½ï¿½o!\nDeseja Deletar o registro informado? \nEssa aï¿½ï¿½o ï¿½ irreversï¿½vel!", "Deletar Registro", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (msg is DialogResult.Yes)
                     {
                         Movimentacoes mov = new Movimentacoes();
                         mov.ID = int.Parse(cellValue);
-                        mov.Delete();
+                        _context.movimentacoes.Remove(mov);
                     }
                 }
             }
@@ -378,13 +337,13 @@ namespace ControleDeEstoqueProauto
                 var psi = new System.Diagnostics.ProcessStartInfo
                 {
                     FileName = @"https://github.com/murillohms",
-                    UseShellExecute = true // Abre o link no navegador padrão
+                    UseShellExecute = true // Abre o link no navegador padrÃ£o
                 };
                 System.Diagnostics.Process.Start(psi);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Não foi possível abrir o link. Erro: " + ex.Message);
+                MessageBox.Show("Nï¿½o foi possÃ­vel abrir o link. Erro: " + ex.Message);
             }
         }
 
@@ -395,24 +354,14 @@ namespace ControleDeEstoqueProauto
                 var psi = new System.Diagnostics.ProcessStartInfo
                 {
                     FileName = @"https://proautokimium.com.br/",
-                    UseShellExecute = true // Abre o link no navegador padrão
+                    UseShellExecute = true
                 };
                 System.Diagnostics.Process.Start(psi);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Não foi possível abrir o link. Erro: " + ex.Message);
+                MessageBox.Show("NÃ£o foi possÃ­vel abrir o link. Erro: " + ex.Message);
             }
-        }
-
-        private void txtEstoqueMin_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
