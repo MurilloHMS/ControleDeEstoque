@@ -10,16 +10,14 @@ namespace ControleDeEstoqueProauto
     public partial class MainWindow : Form
     {
         private readonly AppDbContext _context = new AppDbContext();
-        private IEnumerable<Produtos> _produtos;
-
-        private System.Windows.Forms.Timer timer;
+        private IEnumerable<Produtos>? _produtos;
         public MainWindow()
         {
             InitializeComponent();
-            AtualizarProdutos();
-            AvisaProdutosComEstoqueMinimo();
+            Task.Run(() => AtualizarProdutos());
+            Task.Run(() => AvisaProdutosComEstoqueMinimo());
             listBoxProdutos.DrawMode = DrawMode.OwnerDrawFixed;
-            listBoxProdutos.DrawItem += new DrawItemEventHandler(listBoxProdutos_DrawItem);
+            listBoxProdutos.DrawItem += new DrawItemEventHandler(listBoxProdutos_DrawItem!);
         }
         #region Metodos 
         private async Task AtualizarProdutos()
@@ -52,7 +50,7 @@ namespace ControleDeEstoqueProauto
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ocorreu um erro ao verificar o estoque m�nimo: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ocorreu um erro ao verificar o estoque mínimo: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private async Task RetornaRegistrosComEstoqueMinimo()
@@ -254,7 +252,7 @@ namespace ControleDeEstoqueProauto
                 }
                 else
                 {
-                    MessageBox.Show("Aten��o Selecione uma op��o para remover ou acrescentar o estoque", "Verifica��o", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Atenção Selecione uma op��o para remover ou acrescentar o estoque", "Verificação", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
             }
@@ -362,6 +360,12 @@ namespace ControleDeEstoqueProauto
             {
                 MessageBox.Show("Não foi possível abrir o link. Erro: " + ex.Message);
             }
+        }
+
+        private void btnDownload_Click(object sender, EventArgs e)
+        {
+            Frm_DownloadEstoque frm = new Frm_DownloadEstoque();
+            frm.ShowDialog();
         }
     }
 }
