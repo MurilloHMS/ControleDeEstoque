@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            groupBox1 = new GroupBox();
-            label1 = new Label();
-            dtpDataSelecionada = new DateTimePicker();
-            btnBaixar = new Button();
+            groupBox1 = new System.Windows.Forms.GroupBox();
+            btnBaixar = new System.Windows.Forms.Button();
+            dtpDataSelecionada = new System.Windows.Forms.DateTimePicker();
+            label1 = new System.Windows.Forms.Label();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -40,47 +40,48 @@
             groupBox1.Controls.Add(btnBaixar);
             groupBox1.Controls.Add(dtpDataSelecionada);
             groupBox1.Controls.Add(label1);
-            groupBox1.Dock = DockStyle.Fill;
-            groupBox1.Location = new Point(0, 0);
+            groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            groupBox1.Location = new System.Drawing.Point(0, 0);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(250, 162);
+            groupBox1.Size = new System.Drawing.Size(250, 162);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Dados Para Download";
             // 
-            // label1
-            // 
-            label1.Location = new Point(27, 32);
-            label1.Name = "label1";
-            label1.Size = new Size(200, 45);
-            label1.TabIndex = 0;
-            label1.Text = "Selecione uma data abaixo para puxar as informações do estoque";
-            // 
-            // dtpDataSelecionada
-            // 
-            dtpDataSelecionada.Location = new Point(27, 80);
-            dtpDataSelecionada.Name = "dtpDataSelecionada";
-            dtpDataSelecionada.Size = new Size(200, 23);
-            dtpDataSelecionada.TabIndex = 1;
-            // 
             // btnBaixar
             // 
-            btnBaixar.Location = new Point(45, 119);
+            btnBaixar.Location = new System.Drawing.Point(45, 119);
             btnBaixar.Name = "btnBaixar";
-            btnBaixar.Size = new Size(152, 23);
+            btnBaixar.Size = new System.Drawing.Size(152, 23);
             btnBaixar.TabIndex = 2;
             btnBaixar.Text = "Download";
             btnBaixar.UseVisualStyleBackColor = true;
-            btnBaixar.Click += this.btnBaixar_Click;
+            btnBaixar.Click += btnBaixar_Click;
+            // 
+            // dtpDataSelecionada
+            // 
+            dtpDataSelecionada.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            dtpDataSelecionada.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            dtpDataSelecionada.Location = new System.Drawing.Point(27, 80);
+            dtpDataSelecionada.Name = "dtpDataSelecionada";
+            dtpDataSelecionada.Size = new System.Drawing.Size(200, 23);
+            dtpDataSelecionada.TabIndex = 1;
+            // 
+            // label1
+            // 
+            label1.Location = new System.Drawing.Point(27, 32);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(200, 45);
+            label1.TabIndex = 0;
+            label1.Text = "Selecione uma data abaixo para puxar as informações do estoque";
             // 
             // Frm_DownloadEstoque
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(250, 162);
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(250, 162);
             Controls.Add(groupBox1);
-            Name = "Frm_DownloadEstoque";
-            StartPosition = FormStartPosition.CenterParent;
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             Text = "Download Dados";
             groupBox1.ResumeLayout(false);
             ResumeLayout(false);
@@ -89,7 +90,7 @@
         #endregion
 
         private GroupBox groupBox1;
-        private DateTimePicker dtpDataSelecionada;
+        private System.Windows.Forms.DateTimePicker dtpDataSelecionada;
         private Label label1;
         private Button btnBaixar;
     }
