@@ -128,11 +128,12 @@ namespace ControleDeEstoqueProauto
             {
                 if (!txtEstoqueMin.ReadOnly)
                 {
-                    Produtos produtos = new Produtos();
-                    produtos.IDSistema = int.Parse(txtID.Text);
-                    produtos.Descricao = txtDescricao.Text;
-                    produtos.EstoqueMinimo = int.TryParse(txtEstoqueMin.Text, out int valor) ? valor : null;
-                    _context.produtos.Update(produtos);
+                    Produtos produto = _context.produtos.Where(p => p.IDSistema == int.Parse(txtID.Text))
+                        .FirstOrDefault();
+                    produto.IDSistema = int.Parse(txtID.Text);
+                    produto.Descricao = txtDescricao.Text;
+                    produto.EstoqueMinimo = int.TryParse(txtEstoqueMin.Text, out int valor) ? valor : null;
+                    _context.produtos.Update(produto);
                     _context.SaveChanges();
                     txtEstoqueMin.ReadOnly = true;
 
@@ -384,14 +385,11 @@ namespace ControleDeEstoqueProauto
             Application.Exit();
         }
 
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-            throw new System.NotImplementedException();
-        }
-
         private void timer1_Tick(object sender, EventArgs e)
         {
             toolStripStatusLabelTimer.Text = DateTime.Now.ToString();
         }
+
+        
     }
 }

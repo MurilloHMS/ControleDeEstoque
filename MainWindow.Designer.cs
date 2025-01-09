@@ -30,7 +30,7 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             linkLabel1 = new LinkLabel();
             menuStrip1 = new MenuStrip();
             cadastrosToolStripMenuItem1 = new ToolStripMenuItem();
@@ -171,6 +171,7 @@
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
             toolTip1.SetToolTip(pictureBox1, resources.GetString("pictureBox1.ToolTip"));
+            pictureBox1.MouseClick += pictureBox1_MouseClick;
             // 
             // btnInserir
             // 
@@ -181,6 +182,7 @@
             btnInserir.Text = "Inserir";
             toolTip1.SetToolTip(btnInserir, "Registra a movimentação do produto");
             btnInserir.UseVisualStyleBackColor = true;
+            btnInserir.Click += btnInserir_Click;
             // 
             // rbRemover
             // 
@@ -234,6 +236,9 @@
             txtEstoqueMin.Size = new Size(100, 23);
             txtEstoqueMin.TabIndex = 7;
             toolTip1.SetToolTip(txtEstoqueMin, "Clique Duas Vezes com o botão do mouse para habilitar a edição e\r\npressione ENTER para salvar");
+            txtEstoqueMin.KeyDown += txtEstoqueMin_KeyDown;
+            txtEstoqueMin.KeyPress += txtEstoqueMin_KeyPress;
+            txtEstoqueMin.MouseDoubleClick += txtEstoqueMin_MouseDoubleClick;
             // 
             // statusStrip1
             // 
@@ -273,6 +278,8 @@
             listBoxProdutos.Name = "listBoxProdutos";
             listBoxProdutos.Size = new Size(298, 543);
             listBoxProdutos.TabIndex = 6;
+            listBoxProdutos.SelectedIndexChanged += listBoxProdutos_SelectedIndexChanged;
+            listBoxProdutos.KeyDown += listBoxProdutos_KeyDown;
             // 
             // textBox1
             // 
@@ -282,6 +289,7 @@
             textBox1.PlaceholderText = "Digite um produto para filtrar";
             textBox1.Size = new Size(298, 23);
             textBox1.TabIndex = 5;
+            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // ckbVerificarEstoqueMin
             // 
@@ -293,6 +301,7 @@
             ckbVerificarEstoqueMin.TabIndex = 4;
             ckbVerificarEstoqueMin.Text = "Verificar Produtos Estoque Mínimo";
             ckbVerificarEstoqueMin.UseVisualStyleBackColor = true;
+            ckbVerificarEstoqueMin.CheckedChanged += ckbVerificarEstoqueMin_CheckedChanged;
             // 
             // tabControl1
             // 
@@ -426,6 +435,7 @@
             label2.Size = new Size(18, 15);
             label2.TabIndex = 2;
             label2.Text = "ID";
+            label2.MouseDoubleClick += label2_MouseDoubleClick;
             // 
             // label4
             // 
@@ -497,14 +507,14 @@
             dgvMovimentacoes.AllowUserToDeleteRows = false;
             dgvMovimentacoes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvMovimentacoes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Window;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(99, 194, 157);
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
-            dgvMovimentacoes.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Window;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(99, 194, 157);
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dgvMovimentacoes.DefaultCellStyle = dataGridViewCellStyle3;
             dgvMovimentacoes.Dock = DockStyle.Bottom;
             dgvMovimentacoes.Location = new Point(3, 121);
             dgvMovimentacoes.Name = "dgvMovimentacoes";
@@ -513,6 +523,7 @@
             dgvMovimentacoes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvMovimentacoes.Size = new Size(860, 497);
             dgvMovimentacoes.TabIndex = 12;
+            dgvMovimentacoes.KeyDown += dgvMovimentacoes_KeyDown;
             // 
             // dtpPara
             // 
