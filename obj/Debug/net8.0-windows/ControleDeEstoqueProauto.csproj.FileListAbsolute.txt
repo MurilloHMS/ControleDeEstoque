@@ -287,16 +287,3 @@ D:\ControleDeEstoque\obj\Debug\net8.0-windows\ControleDeEstoqueProauto.genruntim
 D:\ControleDeEstoque\obj\Debug\net8.0-windows\ref\ControleDeEstoqueProauto.dll
 D:\ControleDeEstoque\obj\Debug\net8.0-windows\ControleDeEstoqueProauto.MainWindow.resources
 D:\ControleDeEstoque\obj\Debug\net8.0-windows\ControleDeEstoqueProauto.Frm_DownloadEstoque.resources
-D:\ControleDeEstoque\bin\Debug\net8.0-windows\EPPlus.dll
-D:\ControleDeEstoque\bin\Debug\net8.0-windows\EPPlus.Interfaces.dll
-D:\ControleDeEstoque\bin\Debug\net8.0-windows\EPPlus.System.Drawing.dll
-D:\ControleDeEstoque\bin\Debug\net8.0-windows\Microsoft.Extensions.Configuration.dll
-D:\ControleDeEstoque\bin\Debug\net8.0-windows\Microsoft.Extensions.Configuration.FileExtensions.dll
-D:\ControleDeEstoque\bin\Debug\net8.0-windows\Microsoft.Extensions.Configuration.Json.dll
-D:\ControleDeEstoque\bin\Debug\net8.0-windows\Microsoft.Extensions.FileProviders.Abstractions.dll
-D:\ControleDeEstoque\bin\Debug\net8.0-windows\Microsoft.Extensions.FileProviders.Physical.dll
-D:\ControleDeEstoque\bin\Debug\net8.0-windows\Microsoft.Extensions.FileSystemGlobbing.dll
-D:\ControleDeEstoque\bin\Debug\net8.0-windows\Microsoft.IO.RecyclableMemoryStream.dll
-D:\ControleDeEstoque\bin\Debug\net8.0-windows\System.Drawing.Common.dll
-D:\ControleDeEstoque\bin\Debug\net8.0-windows\System.Security.Cryptography.Pkcs.dll
-D:\ControleDeEstoque\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll

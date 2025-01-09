@@ -111,7 +111,7 @@ namespace ControleDeEstoqueProauto
             listBoxProdutos.Sorted = true;
         }
         #endregion
-        
+
         private void txtEstoqueMin_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             if (txtEstoqueMin.ReadOnly && !string.IsNullOrEmpty(txtID.Text))
@@ -341,7 +341,7 @@ namespace ControleDeEstoqueProauto
             }
             catch (Exception ex)
             {
-                MessageBox.Show("N�o foi possível abrir o link. Erro: " + ex.Message);
+                MessageBox.Show("Não foi possível abrir o link. Erro: " + ex.Message);
             }
         }
 
@@ -366,6 +366,27 @@ namespace ControleDeEstoqueProauto
         {
             Frm_DownloadEstoque frm = new Frm_DownloadEstoque();
             frm.ShowDialog();
+        }
+
+        private void incluirNovosRegistrosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            IncluirNovosRegistros();
+        }
+
+        private void atualizarListaDeItensToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AtualizarProdutos();
+        }
+
+        private void baixarMovimentaçõesPorDataToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Frm_DownloadEstoque frm = new Frm_DownloadEstoque();
+            frm.ShowDialog();
+        }
+
+        private void sairToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

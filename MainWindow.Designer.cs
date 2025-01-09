@@ -29,43 +29,48 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            listBoxProdutos = new System.Windows.Forms.ListBox();
-            groupBox1 = new System.Windows.Forms.GroupBox();
-            dtpDataUltimaAlteracao = new System.Windows.Forms.DateTimePicker();
-            txtEstoqueMin = new System.Windows.Forms.TextBox();
-            txtEstoqueAtual = new System.Windows.Forms.TextBox();
-            txtDescricao = new System.Windows.Forms.TextBox();
-            txtID = new System.Windows.Forms.TextBox();
-            label = new System.Windows.Forms.Label();
-            label2 = new System.Windows.Forms.Label();
-            label4 = new System.Windows.Forms.Label();
-            label6 = new System.Windows.Forms.Label();
-            label5 = new System.Windows.Forms.Label();
-            groupBox4 = new System.Windows.Forms.GroupBox();
-            btnDownload = new System.Windows.Forms.Button();
-            textBox1 = new System.Windows.Forms.TextBox();
-            pictureBox1 = new System.Windows.Forms.PictureBox();
-            ckbVerificarEstoqueMin = new System.Windows.Forms.CheckBox();
-            tabControl1 = new System.Windows.Forms.TabControl();
-            tabPage1 = new System.Windows.Forms.TabPage();
-            groupBox2 = new System.Windows.Forms.GroupBox();
-            btnInserir = new System.Windows.Forms.Button();
-            rbRemover = new System.Windows.Forms.RadioButton();
-            rbAcrescentar = new System.Windows.Forms.RadioButton();
-            label7 = new System.Windows.Forms.Label();
-            numQuantidade = new System.Windows.Forms.NumericUpDown();
-            dtpData = new System.Windows.Forms.DateTimePicker();
-            label8 = new System.Windows.Forms.Label();
-            tabPage2 = new System.Windows.Forms.TabPage();
-            groupBox3 = new System.Windows.Forms.GroupBox();
-            ckbBuscarPorPeriodo = new System.Windows.Forms.CheckBox();
-            dgvMovimentacoes = new System.Windows.Forms.DataGridView();
-            dtpPara = new System.Windows.Forms.DateTimePicker();
-            label3 = new System.Windows.Forms.Label();
-            dtpDe = new System.Windows.Forms.DateTimePicker();
-            label1 = new System.Windows.Forms.Label();
-            linkLabel1 = new System.Windows.Forms.LinkLabel();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            listBoxProdutos = new ListBox();
+            groupBox1 = new GroupBox();
+            dtpDataUltimaAlteracao = new DateTimePicker();
+            txtEstoqueMin = new TextBox();
+            txtEstoqueAtual = new TextBox();
+            txtDescricao = new TextBox();
+            txtID = new TextBox();
+            label = new Label();
+            label2 = new Label();
+            label4 = new Label();
+            label6 = new Label();
+            label5 = new Label();
+            groupBox4 = new GroupBox();
+            textBox1 = new TextBox();
+            pictureBox1 = new PictureBox();
+            ckbVerificarEstoqueMin = new CheckBox();
+            tabControl1 = new TabControl();
+            tabPage1 = new TabPage();
+            groupBox2 = new GroupBox();
+            btnInserir = new Button();
+            rbRemover = new RadioButton();
+            rbAcrescentar = new RadioButton();
+            label7 = new Label();
+            numQuantidade = new NumericUpDown();
+            dtpData = new DateTimePicker();
+            label8 = new Label();
+            tabPage2 = new TabPage();
+            groupBox3 = new GroupBox();
+            ckbBuscarPorPeriodo = new CheckBox();
+            dgvMovimentacoes = new DataGridView();
+            dtpPara = new DateTimePicker();
+            label3 = new Label();
+            dtpDe = new DateTimePicker();
+            label1 = new Label();
+            linkLabel1 = new LinkLabel();
+            menuStrip1 = new MenuStrip();
+            cadastrosToolStripMenuItem1 = new ToolStripMenuItem();
+            incluirNovosRegistrosToolStripMenuItem1 = new ToolStripMenuItem();
+            atualizarListaDeItensToolStripMenuItem = new ToolStripMenuItem();
+            baixarMovimentaçõesPorDataToolStripMenuItem1 = new ToolStripMenuItem();
+            sairToolStripMenuItem = new ToolStripMenuItem();
             groupBox1.SuspendLayout();
             groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -76,16 +81,16 @@
             tabPage2.SuspendLayout();
             groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvMovimentacoes).BeginInit();
+            menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // listBoxProdutos
             // 
-            listBoxProdutos.Dock = System.Windows.Forms.DockStyle.Bottom;
             listBoxProdutos.FormattingEnabled = true;
             listBoxProdutos.ItemHeight = 15;
-            listBoxProdutos.Location = new System.Drawing.Point(3, 112);
+            listBoxProdutos.Location = new Point(3, 115);
             listBoxProdutos.Name = "listBoxProdutos";
-            listBoxProdutos.Size = new System.Drawing.Size(298, 649);
+            listBoxProdutos.Size = new Size(298, 559);
             listBoxProdutos.TabIndex = 0;
             listBoxProdutos.DrawItem += listBoxProdutos_DrawItem;
             listBoxProdutos.SelectedIndexChanged += listBoxProdutos_SelectedIndexChanged;
@@ -103,30 +108,30 @@
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(label6);
             groupBox1.Controls.Add(label5);
-            groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            groupBox1.Location = new System.Drawing.Point(3, 3);
+            groupBox1.Dock = DockStyle.Top;
+            groupBox1.Location = new Point(3, 3);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new System.Drawing.Size(866, 126);
+            groupBox1.Size = new Size(866, 126);
             groupBox1.TabIndex = 14;
             groupBox1.TabStop = false;
             groupBox1.Text = "Dados Produto";
             // 
             // dtpDataUltimaAlteracao
             // 
-            dtpDataUltimaAlteracao.CalendarMonthBackground = System.Drawing.SystemColors.InactiveCaption;
+            dtpDataUltimaAlteracao.CalendarMonthBackground = SystemColors.InactiveCaption;
             dtpDataUltimaAlteracao.Enabled = false;
-            dtpDataUltimaAlteracao.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            dtpDataUltimaAlteracao.Location = new System.Drawing.Point(520, 68);
+            dtpDataUltimaAlteracao.Format = DateTimePickerFormat.Short;
+            dtpDataUltimaAlteracao.Location = new Point(520, 68);
             dtpDataUltimaAlteracao.Name = "dtpDataUltimaAlteracao";
-            dtpDataUltimaAlteracao.Size = new System.Drawing.Size(147, 23);
+            dtpDataUltimaAlteracao.Size = new Size(147, 23);
             dtpDataUltimaAlteracao.TabIndex = 9;
             // 
             // txtEstoqueMin
             // 
-            txtEstoqueMin.Location = new System.Drawing.Point(702, 68);
+            txtEstoqueMin.Location = new Point(702, 68);
             txtEstoqueMin.Name = "txtEstoqueMin";
             txtEstoqueMin.ReadOnly = true;
-            txtEstoqueMin.Size = new System.Drawing.Size(100, 23);
+            txtEstoqueMin.Size = new Size(100, 23);
             txtEstoqueMin.TabIndex = 7;
             txtEstoqueMin.KeyDown += txtEstoqueMin_KeyDown;
             txtEstoqueMin.KeyPress += txtEstoqueMin_KeyPress;
@@ -134,46 +139,46 @@
             // 
             // txtEstoqueAtual
             // 
-            txtEstoqueAtual.BackColor = System.Drawing.Color.FromArgb(((int)((byte)216)), ((int)((byte)224)), ((int)((byte)228)));
-            txtEstoqueAtual.Location = new System.Drawing.Point(403, 68);
+            txtEstoqueAtual.BackColor = Color.FromArgb(216, 224, 228);
+            txtEstoqueAtual.Location = new Point(403, 68);
             txtEstoqueAtual.Name = "txtEstoqueAtual";
             txtEstoqueAtual.ReadOnly = true;
-            txtEstoqueAtual.Size = new System.Drawing.Size(100, 23);
+            txtEstoqueAtual.Size = new Size(100, 23);
             txtEstoqueAtual.TabIndex = 5;
             // 
             // txtDescricao
             // 
-            txtDescricao.BackColor = System.Drawing.Color.FromArgb(((int)((byte)216)), ((int)((byte)224)), ((int)((byte)228)));
-            txtDescricao.Location = new System.Drawing.Point(119, 68);
+            txtDescricao.BackColor = Color.FromArgb(216, 224, 228);
+            txtDescricao.Location = new Point(119, 68);
             txtDescricao.Name = "txtDescricao";
             txtDescricao.ReadOnly = true;
-            txtDescricao.Size = new System.Drawing.Size(267, 23);
+            txtDescricao.Size = new Size(267, 23);
             txtDescricao.TabIndex = 4;
             // 
             // txtID
             // 
-            txtID.BackColor = System.Drawing.Color.FromArgb(((int)((byte)216)), ((int)((byte)224)), ((int)((byte)228)));
-            txtID.Location = new System.Drawing.Point(44, 68);
+            txtID.BackColor = Color.FromArgb(216, 224, 228);
+            txtID.Location = new Point(44, 68);
             txtID.Name = "txtID";
             txtID.ReadOnly = true;
-            txtID.Size = new System.Drawing.Size(51, 23);
+            txtID.Size = new Size(51, 23);
             txtID.TabIndex = 3;
             // 
             // label
             // 
             label.AutoSize = true;
-            label.Location = new System.Drawing.Point(119, 50);
+            label.Location = new Point(119, 50);
             label.Name = "label";
-            label.Size = new System.Drawing.Size(70, 15);
+            label.Size = new Size(70, 15);
             label.TabIndex = 2;
             label.Text = "DESCRIÇÃO";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(44, 50);
+            label2.Location = new Point(44, 50);
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(18, 15);
+            label2.Size = new Size(18, 15);
             label2.TabIndex = 2;
             label2.Text = "ID";
             label2.MouseDoubleClick += label2_MouseDoubleClick;
@@ -181,72 +186,61 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new System.Drawing.Point(403, 50);
+            label4.Location = new Point(403, 50);
             label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(94, 15);
+            label4.Size = new Size(94, 15);
             label4.TabIndex = 2;
             label4.Text = "ESTOQUE ATUAL";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new System.Drawing.Point(702, 50);
+            label6.Location = new Point(702, 50);
             label6.Name = "label6";
-            label6.Size = new System.Drawing.Size(105, 15);
+            label6.Size = new Size(105, 15);
             label6.TabIndex = 2;
             label6.Text = "ESTOQUE MINIMO";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new System.Drawing.Point(520, 50);
+            label5.Location = new Point(520, 50);
             label5.Name = "label5";
-            label5.Size = new System.Drawing.Size(147, 15);
+            label5.Size = new Size(147, 15);
             label5.TabIndex = 2;
             label5.Text = "DATA ULTIMA ALTERAÇÃO";
             // 
             // groupBox4
             // 
-            groupBox4.Controls.Add(btnDownload);
             groupBox4.Controls.Add(textBox1);
             groupBox4.Controls.Add(pictureBox1);
             groupBox4.Controls.Add(ckbVerificarEstoqueMin);
             groupBox4.Controls.Add(listBoxProdutos);
-            groupBox4.Dock = System.Windows.Forms.DockStyle.Left;
-            groupBox4.Location = new System.Drawing.Point(0, 0);
+            groupBox4.Dock = DockStyle.Left;
+            groupBox4.Location = new Point(0, 24);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new System.Drawing.Size(304, 764);
+            groupBox4.Size = new Size(304, 677);
             groupBox4.TabIndex = 2;
             groupBox4.TabStop = false;
             // 
-            // btnDownload
-            // 
-            btnDownload.Location = new System.Drawing.Point(6, 69);
-            btnDownload.Name = "btnDownload";
-            btnDownload.Size = new System.Drawing.Size(84, 20);
-            btnDownload.TabIndex = 14;
-            btnDownload.Text = "Download";
-            btnDownload.UseVisualStyleBackColor = true;
-            btnDownload.Click += btnDownload_Click;
-            // 
             // textBox1
             // 
-            textBox1.Location = new System.Drawing.Point(3, 89);
+            textBox1.Location = new Point(3, 89);
             textBox1.Name = "textBox1";
             textBox1.PlaceholderText = "Digite um produto para filtrar";
-            textBox1.Size = new System.Drawing.Size(298, 23);
+            textBox1.Size = new Size(298, 23);
             textBox1.TabIndex = 3;
             textBox1.TextChanged += textBox1_TextChanged;
             // 
             // pictureBox1
             // 
-            pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            pictureBox1.Image = ((System.Drawing.Image)resources.GetObject("pictureBox1.Image"));
-            pictureBox1.Location = new System.Drawing.Point(3, 19);
+            pictureBox1.Cursor = Cursors.Hand;
+            pictureBox1.Dock = DockStyle.Top;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(3, 19);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new System.Drawing.Size(298, 48);
-            pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            pictureBox1.Size = new Size(298, 48);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
             pictureBox1.MouseClick += pictureBox1_MouseClick;
@@ -254,10 +248,10 @@
             // ckbVerificarEstoqueMin
             // 
             ckbVerificarEstoqueMin.AutoSize = true;
-            ckbVerificarEstoqueMin.Location = new System.Drawing.Point(96, 69);
+            ckbVerificarEstoqueMin.Location = new Point(96, 69);
             ckbVerificarEstoqueMin.Name = "ckbVerificarEstoqueMin";
-            ckbVerificarEstoqueMin.Size = new System.Drawing.Size(209, 19);
-            ckbVerificarEstoqueMin.TabIndex = 1;
+            ckbVerificarEstoqueMin.Size = new Size(209, 19);
+            ckbVerificarEstoqueMin.TabIndex = 2;
             ckbVerificarEstoqueMin.Text = "Verificar Produtos Estoque Mínimo";
             ckbVerificarEstoqueMin.UseVisualStyleBackColor = true;
             ckbVerificarEstoqueMin.CheckedChanged += ckbVerificarEstoqueMin_CheckedChanged;
@@ -266,21 +260,21 @@
             // 
             tabControl1.Controls.Add(tabPage1);
             tabControl1.Controls.Add(tabPage2);
-            tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            tabControl1.Location = new System.Drawing.Point(304, 0);
+            tabControl1.Dock = DockStyle.Fill;
+            tabControl1.Location = new Point(304, 24);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new System.Drawing.Size(880, 764);
+            tabControl1.Size = new Size(880, 677);
             tabControl1.TabIndex = 3;
             // 
             // tabPage1
             // 
             tabPage1.Controls.Add(groupBox2);
             tabPage1.Controls.Add(groupBox1);
-            tabPage1.Location = new System.Drawing.Point(4, 24);
+            tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            tabPage1.Size = new System.Drawing.Size(872, 736);
+            tabPage1.Padding = new Padding(3);
+            tabPage1.Size = new Size(872, 649);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Movimentação Produto";
             tabPage1.UseVisualStyleBackColor = true;
@@ -294,19 +288,19 @@
             groupBox2.Controls.Add(numQuantidade);
             groupBox2.Controls.Add(dtpData);
             groupBox2.Controls.Add(label8);
-            groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
-            groupBox2.Location = new System.Drawing.Point(3, 129);
+            groupBox2.Dock = DockStyle.Top;
+            groupBox2.Location = new Point(3, 129);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new System.Drawing.Size(866, 138);
+            groupBox2.Size = new Size(866, 138);
             groupBox2.TabIndex = 17;
             groupBox2.TabStop = false;
             groupBox2.Text = "Inserir Movimentação";
             // 
             // btnInserir
             // 
-            btnInserir.Location = new System.Drawing.Point(577, 74);
+            btnInserir.Location = new Point(577, 74);
             btnInserir.Name = "btnInserir";
-            btnInserir.Size = new System.Drawing.Size(116, 23);
+            btnInserir.Size = new Size(116, 23);
             btnInserir.TabIndex = 13;
             btnInserir.Text = "Inserir";
             btnInserir.UseVisualStyleBackColor = true;
@@ -315,10 +309,10 @@
             // rbRemover
             // 
             rbRemover.AutoSize = true;
-            rbRemover.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            rbRemover.Location = new System.Drawing.Point(456, 80);
+            rbRemover.FlatStyle = FlatStyle.System;
+            rbRemover.Location = new Point(456, 80);
             rbRemover.Name = "rbRemover";
-            rbRemover.Size = new System.Drawing.Size(84, 20);
+            rbRemover.Size = new Size(84, 20);
             rbRemover.TabIndex = 12;
             rbRemover.TabStop = true;
             rbRemover.Text = "REMOVER";
@@ -327,10 +321,10 @@
             // rbAcrescentar
             // 
             rbAcrescentar.AutoSize = true;
-            rbAcrescentar.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            rbAcrescentar.Location = new System.Drawing.Point(351, 80);
+            rbAcrescentar.FlatStyle = FlatStyle.System;
+            rbAcrescentar.Location = new Point(351, 80);
             rbAcrescentar.Name = "rbAcrescentar";
-            rbAcrescentar.Size = new System.Drawing.Size(109, 20);
+            rbAcrescentar.Size = new Size(109, 20);
             rbAcrescentar.TabIndex = 11;
             rbAcrescentar.TabStop = true;
             rbAcrescentar.Text = "ACRESCENTAR";
@@ -339,44 +333,44 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new System.Drawing.Point(44, 58);
+            label7.Location = new Point(44, 58);
             label7.Name = "label7";
-            label7.Size = new System.Drawing.Size(35, 15);
+            label7.Size = new Size(35, 15);
             label7.TabIndex = 2;
             label7.Text = "DATA";
             // 
             // numQuantidade
             // 
-            numQuantidade.Location = new System.Drawing.Point(207, 76);
+            numQuantidade.Location = new Point(207, 76);
             numQuantidade.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
             numQuantidade.Name = "numQuantidade";
-            numQuantidade.Size = new System.Drawing.Size(120, 23);
+            numQuantidade.Size = new Size(120, 23);
             numQuantidade.TabIndex = 8;
             // 
             // dtpData
             // 
-            dtpData.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            dtpData.Location = new System.Drawing.Point(44, 76);
+            dtpData.Format = DateTimePickerFormat.Short;
+            dtpData.Location = new Point(44, 76);
             dtpData.Name = "dtpData";
-            dtpData.Size = new System.Drawing.Size(105, 23);
+            dtpData.Size = new Size(105, 23);
             dtpData.TabIndex = 10;
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new System.Drawing.Point(207, 58);
+            label8.Location = new Point(207, 58);
             label8.Name = "label8";
-            label8.Size = new System.Drawing.Size(80, 15);
+            label8.Size = new Size(80, 15);
             label8.TabIndex = 2;
             label8.Text = "QUANTIDADE";
             // 
             // tabPage2
             // 
             tabPage2.Controls.Add(groupBox3);
-            tabPage2.Location = new System.Drawing.Point(4, 24);
+            tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            tabPage2.Size = new System.Drawing.Size(872, 736);
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(872, 649);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Filtro Movimentações";
             tabPage2.UseVisualStyleBackColor = true;
@@ -389,10 +383,10 @@
             groupBox3.Controls.Add(label3);
             groupBox3.Controls.Add(dtpDe);
             groupBox3.Controls.Add(label1);
-            groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
-            groupBox3.Location = new System.Drawing.Point(3, 3);
+            groupBox3.Dock = DockStyle.Top;
+            groupBox3.Location = new Point(3, 3);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new System.Drawing.Size(866, 621);
+            groupBox3.Size = new Size(866, 621);
             groupBox3.TabIndex = 17;
             groupBox3.TabStop = false;
             groupBox3.Text = "Ultimas Movimentações";
@@ -400,9 +394,9 @@
             // ckbBuscarPorPeriodo
             // 
             ckbBuscarPorPeriodo.AutoSize = true;
-            ckbBuscarPorPeriodo.Location = new System.Drawing.Point(462, 49);
+            ckbBuscarPorPeriodo.Location = new Point(462, 49);
             ckbBuscarPorPeriodo.Name = "ckbBuscarPorPeriodo";
-            ckbBuscarPorPeriodo.Size = new System.Drawing.Size(126, 19);
+            ckbBuscarPorPeriodo.Size = new Size(126, 19);
             ckbBuscarPorPeriodo.TabIndex = 14;
             ckbBuscarPorPeriodo.Text = "Buscar Por Periodo";
             ckbBuscarPorPeriodo.UseVisualStyleBackColor = true;
@@ -411,84 +405,134 @@
             // 
             dgvMovimentacoes.AllowUserToAddRows = false;
             dgvMovimentacoes.AllowUserToDeleteRows = false;
-            dgvMovimentacoes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dgvMovimentacoes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)((byte)99)), ((int)((byte)194)), ((int)((byte)157)));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            dgvMovimentacoes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvMovimentacoes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Window;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(99, 194, 157);
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
             dgvMovimentacoes.DefaultCellStyle = dataGridViewCellStyle1;
-            dgvMovimentacoes.Dock = System.Windows.Forms.DockStyle.Bottom;
-            dgvMovimentacoes.Location = new System.Drawing.Point(3, 121);
+            dgvMovimentacoes.Dock = DockStyle.Bottom;
+            dgvMovimentacoes.Location = new Point(3, 121);
             dgvMovimentacoes.Name = "dgvMovimentacoes";
             dgvMovimentacoes.ReadOnly = true;
-            dgvMovimentacoes.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            dgvMovimentacoes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            dgvMovimentacoes.Size = new System.Drawing.Size(860, 497);
+            dgvMovimentacoes.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            dgvMovimentacoes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvMovimentacoes.Size = new Size(860, 497);
             dgvMovimentacoes.TabIndex = 12;
             dgvMovimentacoes.KeyDown += dgvMovimentacoes_KeyDown;
             // 
             // dtpPara
             // 
-            dtpPara.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            dtpPara.Location = new System.Drawing.Point(349, 46);
+            dtpPara.Format = DateTimePickerFormat.Short;
+            dtpPara.Location = new Point(349, 46);
             dtpPara.Name = "dtpPara";
-            dtpPara.Size = new System.Drawing.Size(105, 23);
+            dtpPara.Size = new Size(105, 23);
             dtpPara.TabIndex = 10;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new System.Drawing.Point(307, 52);
+            label3.Location = new Point(307, 52);
             label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(36, 15);
+            label3.Size = new Size(36, 15);
             label3.TabIndex = 2;
             label3.Text = "PARA";
             // 
             // dtpDe
             // 
-            dtpDe.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            dtpDe.Location = new System.Drawing.Point(186, 46);
+            dtpDe.Format = DateTimePickerFormat.Short;
+            dtpDe.Location = new Point(186, 46);
             dtpDe.Name = "dtpDe";
-            dtpDe.Size = new System.Drawing.Size(105, 23);
+            dtpDe.Size = new Size(105, 23);
             dtpDe.TabIndex = 10;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(159, 52);
+            label1.Location = new Point(159, 52);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(21, 15);
+            label1.Size = new Size(21, 15);
             label1.TabIndex = 2;
             label1.Text = "DE";
             // 
             // linkLabel1
             // 
             linkLabel1.AutoSize = true;
-            linkLabel1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)0));
-            linkLabel1.LinkArea = new System.Windows.Forms.LinkArea(18, 22);
-            linkLabel1.Location = new System.Drawing.Point(1046, 1);
+            linkLabel1.Dock = DockStyle.Right;
+            linkLabel1.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            linkLabel1.LinkArea = new LinkArea(18, 22);
+            linkLabel1.Location = new Point(1053, 24);
             linkLabel1.Name = "linkLabel1";
-            linkLabel1.Size = new System.Drawing.Size(131, 20);
+            linkLabel1.Size = new Size(131, 20);
             linkLabel1.TabIndex = 4;
             linkLabel1.TabStop = true;
             linkLabel1.Text = "Desenvolvido Por: MHMS";
             linkLabel1.UseCompatibleTextRendering = true;
             linkLabel1.LinkClicked += linkLabel1_LinkClicked;
             // 
+            // menuStrip1
+            // 
+            menuStrip1.Items.AddRange(new ToolStripItem[] { cadastrosToolStripMenuItem1, sairToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(1184, 24);
+            menuStrip1.TabIndex = 5;
+            menuStrip1.Text = "menuStrip1";
+            // 
+            // cadastrosToolStripMenuItem1
+            // 
+            cadastrosToolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { incluirNovosRegistrosToolStripMenuItem1, atualizarListaDeItensToolStripMenuItem, baixarMovimentaçõesPorDataToolStripMenuItem1 });
+            cadastrosToolStripMenuItem1.Name = "cadastrosToolStripMenuItem1";
+            cadastrosToolStripMenuItem1.Size = new Size(71, 20);
+            cadastrosToolStripMenuItem1.Text = "Cadastros";
+            // 
+            // incluirNovosRegistrosToolStripMenuItem1
+            // 
+            incluirNovosRegistrosToolStripMenuItem1.Image = Properties.Resources.Plus;
+            incluirNovosRegistrosToolStripMenuItem1.Name = "incluirNovosRegistrosToolStripMenuItem1";
+            incluirNovosRegistrosToolStripMenuItem1.Size = new Size(241, 22);
+            incluirNovosRegistrosToolStripMenuItem1.Text = "Incluir Novos Registros";
+            incluirNovosRegistrosToolStripMenuItem1.Click += incluirNovosRegistrosToolStripMenuItem1_Click;
+            // 
+            // atualizarListaDeItensToolStripMenuItem
+            // 
+            atualizarListaDeItensToolStripMenuItem.Image = Properties.Resources.Update_Left_Rotation;
+            atualizarListaDeItensToolStripMenuItem.Name = "atualizarListaDeItensToolStripMenuItem";
+            atualizarListaDeItensToolStripMenuItem.Size = new Size(241, 22);
+            atualizarListaDeItensToolStripMenuItem.Text = "Atualizar Lista de Itens";
+            atualizarListaDeItensToolStripMenuItem.Click += atualizarListaDeItensToolStripMenuItem_Click;
+            // 
+            // baixarMovimentaçõesPorDataToolStripMenuItem1
+            // 
+            baixarMovimentaçõesPorDataToolStripMenuItem1.Image = Properties.Resources.Downloading_Updates;
+            baixarMovimentaçõesPorDataToolStripMenuItem1.Name = "baixarMovimentaçõesPorDataToolStripMenuItem1";
+            baixarMovimentaçõesPorDataToolStripMenuItem1.Size = new Size(241, 22);
+            baixarMovimentaçõesPorDataToolStripMenuItem1.Text = "Baixar Movimentações por data";
+            baixarMovimentaçõesPorDataToolStripMenuItem1.Click += baixarMovimentaçõesPorDataToolStripMenuItem1_Click;
+            // 
+            // sairToolStripMenuItem
+            // 
+            sairToolStripMenuItem.Name = "sairToolStripMenuItem";
+            sairToolStripMenuItem.Size = new Size(38, 20);
+            sairToolStripMenuItem.Text = "Sair";
+            sairToolStripMenuItem.Click += sairToolStripMenuItem_Click;
+            // 
             // MainWindow
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(1184, 764);
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1184, 701);
             Controls.Add(linkLabel1);
             Controls.Add(tabControl1);
             Controls.Add(groupBox4);
-            Icon = ((System.Drawing.Icon)resources.GetObject("$this.Icon"));
-            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            Controls.Add(menuStrip1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            Name = "MainWindow";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Controle de Estoque";
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
@@ -504,11 +548,11 @@
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvMovimentacoes).EndInit();
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
-
-        private System.Windows.Forms.Button btnDownload;
 
         #endregion
 
@@ -547,5 +591,11 @@
         private CheckBox ckbBuscarPorPeriodo;
         private TextBox textBox1;
         private LinkLabel linkLabel1;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem cadastrosToolStripMenuItem1;
+        private ToolStripMenuItem incluirNovosRegistrosToolStripMenuItem1;
+        private ToolStripMenuItem atualizarListaDeItensToolStripMenuItem;
+        private ToolStripMenuItem baixarMovimentaçõesPorDataToolStripMenuItem1;
+        private ToolStripMenuItem sairToolStripMenuItem;
     }
 }

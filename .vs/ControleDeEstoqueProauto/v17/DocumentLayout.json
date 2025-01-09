@@ -5,10 +5,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{8E9575FE-C210-4F84-BA9D-1CE6538C1FB7}|ControleDeEstoqueProauto.csproj|d:\\controledeestoque\\mainwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8E9575FE-C210-4F84-BA9D-1CE6538C1FB7}|ControleDeEstoqueProauto.csproj|solutionrelative:mainwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E9575FE-C210-4F84-BA9D-1CE6538C1FB7}|ControleDeEstoqueProauto.csproj|d:\\controledeestoque\\mainwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{8E9575FE-C210-4F84-BA9D-1CE6538C1FB7}|ControleDeEstoqueProauto.csproj|solutionrelative:mainwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -32,22 +28,10 @@
               "RelativeDocumentMoniker": "MainWindow.cs",
               "ToolTip": "D:\\ControleDeEstoque\\MainWindow.cs",
               "RelativeToolTip": "MainWindow.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIcBAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-20T15:10:26.48Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "MainWindow.cs [Projeto]",
-              "DocumentMoniker": "D:\\ControleDeEstoque\\MainWindow.cs",
-              "RelativeDocumentMoniker": "MainWindow.cs",
-              "ToolTip": "D:\\ControleDeEstoque\\MainWindow.cs [Projeto]",
-              "RelativeToolTip": "MainWindow.cs [Projeto]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-20T15:09:42.565Z",
-              "EditorCaption": " [Projeto]"
             }
           ]
         }
