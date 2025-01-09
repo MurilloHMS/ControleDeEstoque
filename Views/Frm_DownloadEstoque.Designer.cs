@@ -28,10 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            groupBox1 = new System.Windows.Forms.GroupBox();
-            btnBaixar = new System.Windows.Forms.Button();
-            dtpDataSelecionada = new System.Windows.Forms.DateTimePicker();
-            label1 = new System.Windows.Forms.Label();
+            components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_DownloadEstoque));
+            groupBox1 = new GroupBox();
+            btnBaixar = new Button();
+            dtpDataSelecionada = new DateTimePicker();
+            label1 = new Label();
+            toolTip1 = new ToolTip(components);
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -40,19 +43,19 @@
             groupBox1.Controls.Add(btnBaixar);
             groupBox1.Controls.Add(dtpDataSelecionada);
             groupBox1.Controls.Add(label1);
-            groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            groupBox1.Location = new System.Drawing.Point(0, 0);
+            groupBox1.Dock = DockStyle.Fill;
+            groupBox1.Location = new Point(0, 0);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new System.Drawing.Size(250, 162);
+            groupBox1.Size = new Size(250, 162);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Dados Para Download";
             // 
             // btnBaixar
             // 
-            btnBaixar.Location = new System.Drawing.Point(45, 119);
+            btnBaixar.Location = new Point(45, 119);
             btnBaixar.Name = "btnBaixar";
-            btnBaixar.Size = new System.Drawing.Size(152, 23);
+            btnBaixar.Size = new Size(152, 23);
             btnBaixar.TabIndex = 2;
             btnBaixar.Text = "Download";
             btnBaixar.UseVisualStyleBackColor = true;
@@ -60,28 +63,39 @@
             // 
             // dtpDataSelecionada
             // 
-            dtpDataSelecionada.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            dtpDataSelecionada.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            dtpDataSelecionada.Location = new System.Drawing.Point(27, 80);
+            dtpDataSelecionada.Format = DateTimePickerFormat.Short;
+            dtpDataSelecionada.ImeMode = ImeMode.NoControl;
+            dtpDataSelecionada.Location = new Point(27, 80);
             dtpDataSelecionada.Name = "dtpDataSelecionada";
-            dtpDataSelecionada.Size = new System.Drawing.Size(200, 23);
+            dtpDataSelecionada.Size = new Size(200, 23);
             dtpDataSelecionada.TabIndex = 1;
+            toolTip1.SetToolTip(dtpDataSelecionada, "Os dados baixados serão referentes a data selecionada, e caso não tenha dados\r\nna data inserida, será coletado da última data anterior");
             // 
             // label1
             // 
-            label1.Location = new System.Drawing.Point(27, 32);
+            label1.Location = new Point(27, 32);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(200, 45);
+            label1.Size = new Size(200, 45);
             label1.TabIndex = 0;
             label1.Text = "Selecione uma data abaixo para puxar as informações do estoque";
             // 
+            // toolTip1
+            // 
+            toolTip1.AutoPopDelay = 5000;
+            toolTip1.InitialDelay = 1000;
+            toolTip1.ReshowDelay = 100;
+            toolTip1.ToolTipIcon = ToolTipIcon.Info;
+            toolTip1.ToolTipTitle = "Ajuda";
+            // 
             // Frm_DownloadEstoque
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(250, 162);
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(250, 162);
             Controls.Add(groupBox1);
-            StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            Name = "Frm_DownloadEstoque";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Download Dados";
             groupBox1.ResumeLayout(false);
             ResumeLayout(false);
@@ -93,5 +107,6 @@
         private System.Windows.Forms.DateTimePicker dtpDataSelecionada;
         private Label label1;
         private Button btnBaixar;
+        private ToolTip toolTip1;
     }
 }

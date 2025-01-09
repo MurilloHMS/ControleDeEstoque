@@ -30,7 +30,7 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             linkLabel1 = new LinkLabel();
             menuStrip1 = new MenuStrip();
             cadastrosToolStripMenuItem1 = new ToolStripMenuItem();
@@ -49,6 +49,9 @@
             statusStrip1 = new StatusStrip();
             toolStripStatusLabelTimer = new ToolStripStatusLabel();
             groupBox4 = new GroupBox();
+            listBoxProdutos = new ListBox();
+            textBox1 = new TextBox();
+            ckbVerificarEstoqueMin = new CheckBox();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
             groupBox2 = new GroupBox();
@@ -73,9 +76,6 @@
             dtpDe = new DateTimePicker();
             label1 = new Label();
             timer1 = new System.Windows.Forms.Timer(components);
-            ckbVerificarEstoqueMin = new CheckBox();
-            textBox1 = new TextBox();
-            listBoxProdutos = new ListBox();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numQuantidade).BeginInit();
@@ -112,7 +112,6 @@
             menuStrip1.Size = new Size(1184, 24);
             menuStrip1.TabIndex = 5;
             menuStrip1.Text = "menuStrip1";
-            menuStrip1.ItemClicked += menuStrip1_ItemClicked;
             // 
             // cadastrosToolStripMenuItem1
             // 
@@ -131,6 +130,7 @@
             // 
             // atualizarListaDeItensToolStripMenuItem
             // 
+            atualizarListaDeItensToolStripMenuItem.Image = Properties.Resources.Update_Left_Rotation;
             atualizarListaDeItensToolStripMenuItem.Name = "atualizarListaDeItensToolStripMenuItem";
             atualizarListaDeItensToolStripMenuItem.Size = new Size(241, 22);
             atualizarListaDeItensToolStripMenuItem.Text = "Atualizar Lista de Itens";
@@ -138,6 +138,7 @@
             // 
             // baixarMovimentaçõesPorDataToolStripMenuItem1
             // 
+            baixarMovimentaçõesPorDataToolStripMenuItem1.Image = Properties.Resources.Downloading_Updates;
             baixarMovimentaçõesPorDataToolStripMenuItem1.Name = "baixarMovimentaçõesPorDataToolStripMenuItem1";
             baixarMovimentaçõesPorDataToolStripMenuItem1.Size = new Size(241, 22);
             baixarMovimentaçõesPorDataToolStripMenuItem1.Text = "Baixar Movimentações por data";
@@ -239,6 +240,7 @@
             statusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabelTimer });
             statusStrip1.Location = new Point(0, 679);
             statusStrip1.Name = "statusStrip1";
+            statusStrip1.RightToLeft = RightToLeft.Yes;
             statusStrip1.Size = new Size(1184, 22);
             statusStrip1.TabIndex = 6;
             statusStrip1.Text = "statusStrip1";
@@ -261,6 +263,36 @@
             groupBox4.Size = new Size(304, 655);
             groupBox4.TabIndex = 8;
             groupBox4.TabStop = false;
+            // 
+            // listBoxProdutos
+            // 
+            listBoxProdutos.Dock = DockStyle.Fill;
+            listBoxProdutos.FormattingEnabled = true;
+            listBoxProdutos.ItemHeight = 15;
+            listBoxProdutos.Location = new Point(3, 109);
+            listBoxProdutos.Name = "listBoxProdutos";
+            listBoxProdutos.Size = new Size(298, 543);
+            listBoxProdutos.TabIndex = 6;
+            // 
+            // textBox1
+            // 
+            textBox1.Dock = DockStyle.Top;
+            textBox1.Location = new Point(3, 86);
+            textBox1.Name = "textBox1";
+            textBox1.PlaceholderText = "Digite um produto para filtrar";
+            textBox1.Size = new Size(298, 23);
+            textBox1.TabIndex = 5;
+            // 
+            // ckbVerificarEstoqueMin
+            // 
+            ckbVerificarEstoqueMin.AutoSize = true;
+            ckbVerificarEstoqueMin.Dock = DockStyle.Top;
+            ckbVerificarEstoqueMin.Location = new Point(3, 67);
+            ckbVerificarEstoqueMin.Name = "ckbVerificarEstoqueMin";
+            ckbVerificarEstoqueMin.Size = new Size(298, 19);
+            ckbVerificarEstoqueMin.TabIndex = 4;
+            ckbVerificarEstoqueMin.Text = "Verificar Produtos Estoque Mínimo";
+            ckbVerificarEstoqueMin.UseVisualStyleBackColor = true;
             // 
             // tabControl1
             // 
@@ -465,14 +497,14 @@
             dgvMovimentacoes.AllowUserToDeleteRows = false;
             dgvMovimentacoes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvMovimentacoes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(99, 194, 157);
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dgvMovimentacoes.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Window;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(99, 194, 157);
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            dgvMovimentacoes.DefaultCellStyle = dataGridViewCellStyle1;
             dgvMovimentacoes.Dock = DockStyle.Bottom;
             dgvMovimentacoes.Location = new Point(3, 121);
             dgvMovimentacoes.Name = "dgvMovimentacoes";
@@ -521,36 +553,6 @@
             timer1.Enabled = true;
             timer1.Interval = 1000;
             timer1.Tick += timer1_Tick;
-            // 
-            // ckbVerificarEstoqueMin
-            // 
-            ckbVerificarEstoqueMin.AutoSize = true;
-            ckbVerificarEstoqueMin.Dock = DockStyle.Top;
-            ckbVerificarEstoqueMin.Location = new Point(3, 67);
-            ckbVerificarEstoqueMin.Name = "ckbVerificarEstoqueMin";
-            ckbVerificarEstoqueMin.Size = new Size(298, 19);
-            ckbVerificarEstoqueMin.TabIndex = 4;
-            ckbVerificarEstoqueMin.Text = "Verificar Produtos Estoque Mínimo";
-            ckbVerificarEstoqueMin.UseVisualStyleBackColor = true;
-            // 
-            // textBox1
-            // 
-            textBox1.Dock = DockStyle.Top;
-            textBox1.Location = new Point(3, 86);
-            textBox1.Name = "textBox1";
-            textBox1.PlaceholderText = "Digite um produto para filtrar";
-            textBox1.Size = new Size(298, 23);
-            textBox1.TabIndex = 5;
-            // 
-            // listBoxProdutos
-            // 
-            listBoxProdutos.Dock = DockStyle.Fill;
-            listBoxProdutos.FormattingEnabled = true;
-            listBoxProdutos.ItemHeight = 15;
-            listBoxProdutos.Location = new Point(3, 109);
-            listBoxProdutos.Name = "listBoxProdutos";
-            listBoxProdutos.Size = new Size(298, 543);
-            listBoxProdutos.TabIndex = 6;
             // 
             // MainWindow
             // 

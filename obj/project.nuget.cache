@@ -1,13 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "wklO9lMWcNg=",
+  "dgSpecHash": "Sf+1BeNAVCQ=",
   "success": true,
   "projectFilePath": "D:\\ControleDeEstoque\\ControleDeEstoqueProauto.csproj",
   "expectedPackageFiles": [
     "D:\\packages\\NuGet\\cache\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
     "D:\\packages\\NuGet\\cache\\closedxml\\0.102.3\\closedxml.0.102.3.nupkg.sha512",
+    "D:\\packages\\NuGet\\cache\\costura.fody\\6.0.0\\costura.fody.6.0.0.nupkg.sha512",
     "D:\\packages\\NuGet\\cache\\documentformat.openxml\\2.16.0\\documentformat.openxml.2.16.0.nupkg.sha512",
     "D:\\packages\\NuGet\\cache\\excelnumberformat\\1.1.0\\excelnumberformat.1.1.0.nupkg.sha512",
+    "D:\\packages\\NuGet\\cache\\fody\\6.8.2\\fody.6.8.2.nupkg.sha512",
     "D:\\packages\\NuGet\\cache\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "D:\\packages\\NuGet\\cache\\irony.netcore\\1.0.11\\irony.netcore.1.0.11.nupkg.sha512",
     "D:\\packages\\NuGet\\cache\\microsoft.bcl.asyncinterfaces\\6.0.0\\microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",
@@ -152,7 +154,7 @@
       "code": "NU1903",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Package 'Microsoft.Extensions.Caching.Memory' 8.0.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-qj66-m88j-hmgj",
+      "message": "O pacote 'Microsoft.Extensions.Caching.Memory' 8.0.0 tem uma alta vulnerabilidade de gravidade conhecida, https://github.com/advisories/GHSA-qj66-m88j-hmgj",
       "libraryId": "Microsoft.Extensions.Caching.Memory",
       "targetGraphs": [
         "net8.0-windows7.0"
@@ -162,7 +164,7 @@
       "code": "NU1903",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Package 'System.IO.Packaging' 6.0.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-f32c-w444-8ppv",
+      "message": "O pacote 'System.IO.Packaging' 6.0.0 tem uma alta vulnerabilidade de gravidade conhecida, https://github.com/advisories/GHSA-f32c-w444-8ppv",
       "libraryId": "System.IO.Packaging",
       "targetGraphs": [
         "net8.0-windows7.0"
@@ -172,7 +174,7 @@
       "code": "NU1903",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Package 'System.IO.Packaging' 6.0.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-qj66-m88j-hmgj",
+      "message": "O pacote 'System.IO.Packaging' 6.0.0 tem uma alta vulnerabilidade de gravidade conhecida, https://github.com/advisories/GHSA-qj66-m88j-hmgj",
       "libraryId": "System.IO.Packaging",
       "targetGraphs": [
         "net8.0-windows7.0"
@@ -182,7 +184,7 @@
       "code": "NU1903",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Package 'System.Text.Json' 8.0.4 has a known high severity vulnerability, https://github.com/advisories/GHSA-8g4q-xg66-9fp4",
+      "message": "O pacote 'System.Text.Json' 8.0.4 tem uma alta vulnerabilidade de gravidade conhecida, https://github.com/advisories/GHSA-8g4q-xg66-9fp4",
       "libraryId": "System.Text.Json",
       "targetGraphs": [
         "net8.0-windows7.0"

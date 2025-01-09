@@ -11,12 +11,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("ControleDeEstoqueProauto")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("Controle de Estoque")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+376194a82c5d7030296cc7a26c39785b91556f2c")]
-[assembly: System.Reflection.AssemblyProductAttribute("ControleDeEstoqueProauto")]
-[assembly: System.Reflection.AssemblyTitleAttribute("ControleDeEstoqueProauto")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5c46a6fdab92ca7468a816c7b40ca005f1182e67")]
+[assembly: System.Reflection.AssemblyProductAttribute("Controle de Estoque")]
+[assembly: System.Reflection.AssemblyTitleAttribute("Controle de Estoque")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 [assembly: System.Runtime.Versioning.TargetPlatformAttribute("Windows7.0")]
 [assembly: System.Runtime.Versioning.SupportedOSPlatformAttribute("Windows7.0")]

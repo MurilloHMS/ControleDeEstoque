@@ -8,7 +8,7 @@
       "version": "1.0.0",
       "restore": {
         "projectUniqueName": "D:\\ControleDeEstoque\\ControleDeEstoqueProauto.csproj",
-        "projectName": "ControleDeEstoqueProauto",
+        "projectName": "Controle de Estoque",
         "projectPath": "D:\\ControleDeEstoque\\ControleDeEstoqueProauto.csproj",
         "packagesPath": "D:\\packages\\NuGet\\cache",
         "outputPath": "D:\\ControleDeEstoque\\obj\\",
@@ -54,6 +54,12 @@
             "ClosedXML": {
               "target": "Package",
               "version": "[0.102.3, )"
+            },
+            "Costura.Fody": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.0, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
