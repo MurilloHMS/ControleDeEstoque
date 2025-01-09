@@ -68,6 +68,8 @@ namespace ControleDeEstoqueProauto
             {
                 this.Cursor = Cursors.WaitCursor;
                 var dados = ProdutoService.ObterProdutosDoExcel();
+                if (!dados.Any() && dados is null) return;
+
                 listBoxProdutos.Items.Clear();
                 _produtos = await _context.produtos.ToListAsync();
                 foreach (var i in dados)
@@ -158,7 +160,6 @@ namespace ControleDeEstoqueProauto
         {
             if (e.Button == MouseButtons.Right)
             {
-
                 Frm_Configuracoes frm = new Frm_Configuracoes();
                 frm.ShowDialog();
             }
@@ -362,12 +363,6 @@ namespace ControleDeEstoqueProauto
             }
         }
 
-        private void btnDownload_Click(object sender, EventArgs e)
-        {
-            Frm_DownloadEstoque frm = new Frm_DownloadEstoque();
-            frm.ShowDialog();
-        }
-
         private void incluirNovosRegistrosToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             IncluirNovosRegistros();
@@ -387,6 +382,16 @@ namespace ControleDeEstoqueProauto
         private void sairToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            toolStripStatusLabelTimer.Text = DateTime.Now.ToString();
         }
     }
 }

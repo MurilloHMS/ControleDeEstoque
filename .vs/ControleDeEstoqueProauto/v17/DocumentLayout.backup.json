@@ -3,12 +3,20 @@
   "WorkspaceRootPath": "D:\\ControleDeEstoque\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8E9575FE-C210-4F84-BA9D-1CE6538C1FB7}|ControleDeEstoqueProauto.csproj|D:\\ControleDeEstoque\\mainwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{8E9575FE-C210-4F84-BA9D-1CE6538C1FB7}|ControleDeEstoqueProauto.csproj|d:\\controledeestoque\\mainwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{8E9575FE-C210-4F84-BA9D-1CE6538C1FB7}|ControleDeEstoqueProauto.csproj|solutionrelative:mainwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8E9575FE-C210-4F84-BA9D-1CE6538C1FB7}|ControleDeEstoqueProauto.csproj|d:\\controledeestoque\\mainwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8E9575FE-C210-4F84-BA9D-1CE6538C1FB7}|ControleDeEstoqueProauto.csproj|solutionrelative:mainwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8E9575FE-C210-4F84-BA9D-1CE6538C1FB7}|ControleDeEstoqueProauto.csproj|d:\\controledeestoque\\mainwindow.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8E9575FE-C210-4F84-BA9D-1CE6538C1FB7}|ControleDeEstoqueProauto.csproj|solutionrelative:mainwindow.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8E9575FE-C210-4F84-BA9D-1CE6538C1FB7}|ControleDeEstoqueProauto.csproj|d:\\controledeestoque\\services\\produtoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8E9575FE-C210-4F84-BA9D-1CE6538C1FB7}|ControleDeEstoqueProauto.csproj|solutionrelative:services\\produtoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,11 +26,37 @@
       "DocumentGroups": [
         {
           "DockedWidth": 335,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MainWindow.Designer.cs",
+              "DocumentMoniker": "D:\\ControleDeEstoque\\MainWindow.Designer.cs",
+              "RelativeDocumentMoniker": "MainWindow.Designer.cs",
+              "ToolTip": "D:\\ControleDeEstoque\\MainWindow.Designer.cs*",
+              "RelativeToolTip": "MainWindow.Designer.cs*",
+              "ViewState": "AgIAABkCAAAAAAAAAAApwDICAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-09T12:40:08.154Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ProdutoService.cs",
+              "DocumentMoniker": "D:\\ControleDeEstoque\\Services\\ProdutoService.cs",
+              "RelativeDocumentMoniker": "Services\\ProdutoService.cs",
+              "ToolTip": "D:\\ControleDeEstoque\\Services\\ProdutoService.cs",
+              "RelativeToolTip": "Services\\ProdutoService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAQwBsAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-09T12:15:47.491Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -32,9 +66,9 @@
               "RelativeDocumentMoniker": "MainWindow.cs",
               "ToolTip": "D:\\ControleDeEstoque\\MainWindow.cs*",
               "RelativeToolTip": "MainWindow.cs*",
-              "ViewState": "AgIAAE8BAAAAAAAAAAAUwIcBAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAHIBAAAAAAAAAADwv4kBAABFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-20T15:10:26.48Z",
+              "WhenOpened": "2025-01-09T12:15:21.812Z",
               "EditorCaption": ""
             },
             {
@@ -46,7 +80,7 @@
               "ToolTip": "D:\\ControleDeEstoque\\MainWindow.cs [Projeto]*",
               "RelativeToolTip": "MainWindow.cs [Projeto]*",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-20T15:09:42.565Z",
+              "WhenOpened": "2025-01-09T11:34:30.617Z",
               "EditorCaption": " [Projeto]"
             }
           ]
