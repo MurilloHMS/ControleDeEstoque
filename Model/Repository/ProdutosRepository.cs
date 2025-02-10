@@ -1,0 +1,39 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using ControleDeEstoqueProauto.Interface;
+using ControleDeEstoqueProauto.Models;
+using ControleDeEstoqueProauto.Data;
+using Microsoft.EntityFrameworkCore;
+
+namespace ControleDeEstoqueProauto.Model.Repository
+{
+    internal class ProdutosRepository : IProdutosRepository
+    {
+
+        private readonly AppDbContext _context = new AppDbContext();
+        public async Task<IEnumerable<Produtos>> GetAll()
+        {
+            var produtos = await _context.produtos.ToListAsync();
+            Console.WriteLine($"Produtos carregados: {produtos.Count}"); // Verificação
+            return produtos;
+        }
+
+        public Produtos GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Produtos GetByName(string name)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SaveProduct(int id, Produtos produto)
+        {
+            throw new NotImplementedException();
+        }
+    }
+}
