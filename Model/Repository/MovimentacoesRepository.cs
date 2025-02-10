@@ -20,7 +20,7 @@ namespace ControleDeEstoqueProauto.Model.Repository
 
         public Movimentacoes GetById(int id)
         {
-            var movimentacoes = _context.movimentacoes.FirstOrDefault(m => m.IDSistema == id);
+            var movimentacoes = _context.movimentacoes.Where(m => m.IDSistema == id).OrderByDescending(m => m.Data).FirstOrDefault();
             return movimentacoes;
         }
 
