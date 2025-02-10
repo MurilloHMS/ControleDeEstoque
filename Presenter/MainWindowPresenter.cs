@@ -1,4 +1,5 @@
 ﻿using ControleDeEstoqueProauto.Interface;
+using ControleDeEstoqueProauto.Migrations;
 using ControleDeEstoqueProauto.Models;
 using DocumentFormat.OpenXml.Wordprocessing;
 using System;
@@ -100,6 +101,15 @@ namespace ControleDeEstoqueProauto.Presenter
             {
                 throw;
             }
+        }
+
+        public async Task FiltroDigitacao()
+        {
+            string search = _view.Filtro;
+            var filtro = await _produtosRepository.GetListByFilter(search);
+
+            _view.listaDeProdutos.Clear();
+            _view.listaDeProdutos = (IList<Models.Produtos>)filtro;
         }
     }
 }

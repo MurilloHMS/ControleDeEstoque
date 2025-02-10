@@ -35,5 +35,11 @@ namespace ControleDeEstoqueProauto.Model.Repository
         {
             
         }
+
+        public async Task<IEnumerable<Produtos>> GetListByFilter(string name)
+        {
+            var produtos = await _context.produtos.Where(p => p.Descricao.ToLower().Contains(name)).ToListAsync();
+            return produtos;
+        }
     }
 }

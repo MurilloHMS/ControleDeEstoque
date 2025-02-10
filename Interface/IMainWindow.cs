@@ -23,6 +23,7 @@ namespace ControleDeEstoqueProauto.Interface
         DateTime DataPara { get; set; }
         bool Acrescentar {  get; set; }
         bool Remover { get; set; }
+        string Filtro { get; set; }
 
         Presenter.MainWindowPresenter Presenter { get; set; }
         

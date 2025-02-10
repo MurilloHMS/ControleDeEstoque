@@ -13,5 +13,7 @@ namespace ControleDeEstoqueProauto.Interface
         Produtos GetById(int id);
         Task<Produtos> GetByName(string name);
         void SaveProduct(Produtos produto);
+        Task<IEnumerable<Produtos>> GetListByFilter(string name);
+
     }
 }

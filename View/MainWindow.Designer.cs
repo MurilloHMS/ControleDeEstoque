@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             listBoxProdutos = new ListBox();
             groupBox1 = new GroupBox();
             dtpDataUltimaAlteracao = new DateTimePicker();
@@ -43,7 +43,7 @@
             label6 = new Label();
             label5 = new Label();
             groupBox4 = new GroupBox();
-            textBox1 = new TextBox();
+            txtFiltro = new TextBox();
             pictureBox1 = new PictureBox();
             ckbVerificarEstoqueMin = new CheckBox();
             tabControl1 = new TabControl();
@@ -206,7 +206,7 @@
             // 
             // groupBox4
             // 
-            groupBox4.Controls.Add(textBox1);
+            groupBox4.Controls.Add(txtFiltro);
             groupBox4.Controls.Add(pictureBox1);
             groupBox4.Controls.Add(ckbVerificarEstoqueMin);
             groupBox4.Controls.Add(listBoxProdutos);
@@ -217,14 +217,14 @@
             groupBox4.TabIndex = 2;
             groupBox4.TabStop = false;
             // 
-            // textBox1
+            // txtFiltro
             // 
-            textBox1.Location = new Point(3, 89);
-            textBox1.Name = "textBox1";
-            textBox1.PlaceholderText = "Digite um produto para filtrar";
-            textBox1.Size = new Size(298, 23);
-            textBox1.TabIndex = 3;
-            textBox1.TextChanged += textBox1_TextChanged;
+            txtFiltro.Location = new Point(3, 89);
+            txtFiltro.Name = "txtFiltro";
+            txtFiltro.PlaceholderText = "Digite um produto para filtrar";
+            txtFiltro.Size = new Size(298, 23);
+            txtFiltro.TabIndex = 3;
+            txtFiltro.TextChanged += textBox1_TextChanged;
             // 
             // pictureBox1
             // 
@@ -401,14 +401,14 @@
             dgvMovimentacoes.AllowUserToDeleteRows = false;
             dgvMovimentacoes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvMovimentacoes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Window;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(99, 194, 157);
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
-            dgvMovimentacoes.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(99, 194, 157);
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvMovimentacoes.DefaultCellStyle = dataGridViewCellStyle2;
             dgvMovimentacoes.Dock = DockStyle.Bottom;
             dgvMovimentacoes.Location = new Point(3, 121);
             dgvMovimentacoes.Name = "dgvMovimentacoes";
@@ -467,7 +467,7 @@
             linkLabel1.UseCompatibleTextRendering = true;
             linkLabel1.LinkClicked += linkLabel1_LinkClicked;
             // 
-            // Form1
+            // MainWindow
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -532,7 +532,7 @@
         private Label label1;
         private PictureBox pictureBox1;
         private CheckBox ckbBuscarPorPeriodo;
-        private TextBox textBox1;
+        private TextBox txtFiltro;
         private LinkLabel linkLabel1;
     }
 }

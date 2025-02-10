@@ -108,6 +108,12 @@ namespace ControleDeEstoqueProauto
             set { this.rbRemover.Checked = value; }
         }
 
+        public string Filtro
+        {
+            get { return this.txtFiltro.Text.ToLower(); }
+            set { this.txtFiltro.Text = value; }
+        }
+
         public Presenter.MainWindowPresenter Presenter { get; set; }
 
         public MainWindow()
@@ -330,11 +336,7 @@ namespace ControleDeEstoqueProauto
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            string search = textBox1.Text.ToLower();
-            var filtro = _produtos.Where(p => p.Descricao.ToLower().Contains(search)).ToArray();
-
-            listBoxProdutos.Items.Clear();
-            listBoxProdutos.Items.AddRange(filtro.Select(p => p.Descricao).ToArray());
+            
         }
 
         private void listBoxProdutos_DrawItem(object sender, DrawItemEventArgs e)
