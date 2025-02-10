@@ -68,7 +68,11 @@ namespace ControleDeEstoqueProauto
             get { return int.Parse(this.txtEstoqueMin.Text); }
             set { this.txtEstoqueMin.Text = value.ToString(); }
         }
-        public DateTime DataAtual { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public DateTime DataAtual 
+        {
+            get { return this.dtpData.Value; }
+            set { this.dtpData.Value = value; }
+        }
         public int Quantidade { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public IList<Movimentacoes> MovimentacaoDoProduto { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public DateTime DataDe { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
