@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using ControleDeEstoqueProauto.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal;
 using System.Configuration;
 
-namespace ControleDeEstoqueProauto.Models
+namespace ControleDeEstoqueProauto.Data
 {
     internal class AppDbContext : DbContext
     {
