@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "wklO9lMWcNg=",
+  "dgSpecHash": "1ZbTnsgkBD8=",
   "success": true,
-  "projectFilePath": "D:\\ControleDeEstoque\\ControleDeEstoqueProauto.csproj",
+  "projectFilePath": "D:\\Projetos-Csharp\\ControleDeEstoque\\ControleDeEstoqueProauto.csproj",
   "expectedPackageFiles": [
     "D:\\packages\\NuGet\\cache\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
     "D:\\packages\\NuGet\\cache\\closedxml\\0.102.3\\closedxml.0.102.3.nupkg.sha512",
@@ -147,46 +147,5 @@
     "D:\\packages\\NuGet\\cache\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "D:\\packages\\NuGet\\cache\\xlparser\\1.5.2\\xlparser.1.5.2.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1903",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Microsoft.Extensions.Caching.Memory' 8.0.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-qj66-m88j-hmgj",
-      "libraryId": "Microsoft.Extensions.Caching.Memory",
-      "targetGraphs": [
-        "net8.0-windows7.0"
-      ]
-    },
-    {
-      "code": "NU1903",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'System.IO.Packaging' 6.0.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-f32c-w444-8ppv",
-      "libraryId": "System.IO.Packaging",
-      "targetGraphs": [
-        "net8.0-windows7.0"
-      ]
-    },
-    {
-      "code": "NU1903",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'System.IO.Packaging' 6.0.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-qj66-m88j-hmgj",
-      "libraryId": "System.IO.Packaging",
-      "targetGraphs": [
-        "net8.0-windows7.0"
-      ]
-    },
-    {
-      "code": "NU1903",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'System.Text.Json' 8.0.4 has a known high severity vulnerability, https://github.com/advisories/GHSA-8g4q-xg66-9fp4",
-      "libraryId": "System.Text.Json",
-      "targetGraphs": [
-        "net8.0-windows7.0"
-      ]
-    }
-  ]
+  "logs": []
 }
