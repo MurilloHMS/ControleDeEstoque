@@ -31,9 +31,10 @@ namespace ControleDeEstoqueProauto.Model.Repository
             return mov;
         }
 
-        public void Save(int id, Movimentacoes movimentacoes)
+        public async void Save( Movimentacoes movimentacoes)
         {
-            throw new NotImplementedException();
+            await _context.movimentacoes.AddAsync(movimentacoes);
+            _context.SaveChanges();
         }
     }
 }

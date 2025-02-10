@@ -31,9 +31,9 @@ namespace ControleDeEstoqueProauto.Model.Repository
             return produtos ?? null;
         }
 
-        public void SaveProduct(int id, Produtos produto)
+        public void SaveProduct(Produtos produto)
         {
-            throw new NotImplementedException();
+            
         }
     }
 }

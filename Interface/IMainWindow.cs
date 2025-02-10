@@ -21,6 +21,8 @@ namespace ControleDeEstoqueProauto.Interface
         IList<Movimentacoes> MovimentacaoDoProduto { get; set; }
         DateTime DataDe { get; set; }
         DateTime DataPara { get; set; }
+        bool Acrescentar {  get; set; }
+        bool Remover { get; set; }
 
         Presenter.MainWindowPresenter Presenter { get; set; }
         

@@ -12,6 +12,6 @@ namespace ControleDeEstoqueProauto.Interface
         Task<IEnumerable<Movimentacoes>> GetAll();
         Movimentacoes GetById(int id);
         Task<Movimentacoes> GetByProductName(string name);
-        void Save(int id, Movimentacoes movimentacoes);
+        void Save(Movimentacoes movimentacoes);
     }
 }

@@ -1,7 +1,9 @@
 ﻿using ControleDeEstoqueProauto.Interface;
 using ControleDeEstoqueProauto.Models;
+using DocumentFormat.OpenXml.Wordprocessing;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -41,9 +43,62 @@ namespace ControleDeEstoqueProauto.Presenter
                 _view.IdSistema = mov.IDSistema;
                 _view.Nome = prod.Descricao;
                 _view.EstoqueAtual = mov.Quantidade;
-                _view.Quantidade = mov.Quantidade;
                 _view.DataUltimaAlteracao = mov.Data;
                 _view.EstoqueMinimo = prod.EstoqueMinimo;
+            }
+        }
+
+        public async Task InserirMovimentação()
+        {
+            try
+            {
+                if (_view.Acrescentar || _view.Remover)
+                {
+                    Movimentacoes mov = new Movimentacoes();
+                    mov.IDSistema = _view.IdSistema;
+                    mov.Data = DateTime.Parse(_view.DataAtual.ToString()).ToUniversalTime();
+                    int estoqueAtual = _view.EstoqueAtual;
+                    int estoque = _view.Quantidade;
+                    int valor = 0;
+                    if (estoqueAtual > 0)
+                    {
+                        if (_view.Acrescentar)
+                        {
+                            valor = estoqueAtual + estoque;
+                        }
+                        else if (_view.Remover)
+                        {
+                            valor = estoqueAtual - estoque;
+                        }
+                    }
+                    else
+                    {
+                        valor = estoque;
+                    }
+                    if (valor.Equals(0))
+                    {
+                        MessageBox.Show("Ocorreu um erro ao incluir a movimentacao", "Erro ao incluir movimentacao", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    mov.Quantidade = valor;
+                    _movimentacoesRepository.Save(mov);
+                    MessageBox.Show("Movimentação incluida Com Sucesso!", "Concluido", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    _view.EstoqueAtual = valor;
+                    _view.DataUltimaAlteracao = DateTime.Parse(_view.DataAtual.ToString()).ToUniversalTime();
+                }
+                else
+                {
+                    MessageBox.Show("Atenção Selecione uma opção para remover ou acrescentar o estoque", "Verificação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+            catch (Exception)
+            {
+                throw;
             }
         }
     }

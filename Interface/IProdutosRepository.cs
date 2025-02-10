@@ -12,6 +12,6 @@ namespace ControleDeEstoqueProauto.Interface
         Task<IEnumerable<Produtos>> GetAll();
         Produtos GetById(int id);
         Task<Produtos> GetByName(string name);
-        void SaveProduct(int id, Produtos produto);
+        void SaveProduct(Produtos produto);
     }
 }

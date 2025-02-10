@@ -6,6 +6,7 @@ using ControleDeEstoqueProauto.Interface;
 using ControleDeEstoqueProauto.Model.Services;
 using ControleDeEstoqueProauto.Data;
 using ControleDeEstoqueProauto.Model.Repository;
+using DocumentFormat.OpenXml.Office.PowerPoint.Y2021.M06.Main;
 
 
 namespace ControleDeEstoqueProauto
@@ -61,7 +62,12 @@ namespace ControleDeEstoqueProauto
         public DateTime DataUltimaAlteracao 
         {
             get { return this.dtpDataUltimaAlteracao.Value; }
-            set { this.dtpDataUltimaAlteracao.Value = value; }
+            set 
+            {
+                this.dtpDataUltimaAlteracao.Format = DateTimePickerFormat.Short;
+                this.dtpDataUltimaAlteracao.Value = value;
+           
+            }
         }
         public int? EstoqueMinimo 
         {
@@ -73,17 +79,40 @@ namespace ControleDeEstoqueProauto
             get { return this.dtpData.Value; }
             set { this.dtpData.Value = value; }
         }
-        public int Quantidade { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public int Quantidade 
+        {
+            get { return int.Parse(this.numQuantidade.Value.ToString()); }
+            set { this.numQuantidade.Value =  value; }
+        }
         public IList<Movimentacoes> MovimentacaoDoProduto { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public DateTime DataDe { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public DateTime DataPara { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public DateTime DataDe
+        {
+            get { return this.dtpDe.Value; }
+            set { this.dtpDe.Value = value; }
+        }
+        public DateTime DataPara
+        {
+            get { return this.dtpPara.Value; }
+            set { this.dtpPara.Value = value; }
+        }
+
+        public bool Acrescentar
+        {
+            get { return this.rbAcrescentar.Checked; }
+            set { this.rbAcrescentar.Checked = value; }
+        }
+
+        public bool Remover
+        {
+            get { return this.rbRemover.Checked; }
+            set { this.rbRemover.Checked = value; }
+        }
 
         public Presenter.MainWindowPresenter Presenter { get; set; }
 
         public MainWindow()
         {
             InitializeComponent();
-            //AvisaProdutosComEstoqueMinimo();
 
             var produtoRepository = new ProdutosRepository();
             var movimentacaoRepository = new MovimentacoesRepository();
@@ -187,13 +216,13 @@ namespace ControleDeEstoqueProauto
             {
                 if (!txtEstoqueMin.ReadOnly)
                 {
-                    //Produtos produtos = new Produtos();
-                    //produtos.IDSistema = int.Parse(txtID.Text);
-                    //produtos.Descricao = txtDescricao.Text;
-                    //produtos.EstoqueMinimo = int.TryParse(txtEstoqueMin.Text, out int valor) ? valor : null;
-                    //_context.produtos.Update(produtos);
-                    //_context.SaveChanges();
-                    //txtEstoqueMin.ReadOnly = true;
+                    Produtos produtos = new Produtos();
+                    produtos.IDSistema = int.Parse(txtID.Text);
+                    produtos.Descricao = txtDescricao.Text;
+                    produtos.EstoqueMinimo = int.TryParse(txtEstoqueMin.Text, out int valor) ? valor : null;
+                    _context.produtos.Update(produtos);
+                    _context.SaveChanges();
+                    txtEstoqueMin.ReadOnly = true;
 
                 }
             }
@@ -261,69 +290,21 @@ namespace ControleDeEstoqueProauto
 
         private void btnInserir_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    if (rbAcrescentar.Checked || rbRemover.Checked)
-            //    {
-            //        Movimentacoes mov = new Movimentacoes();
-            //        mov.IDSistema = int.Parse(txtID.Text);
-            //        mov.Data = DateTime.Parse(dtpData.Value.ToString()).ToUniversalTime();
-            //        int estoqueAtual = int.TryParse(txtEstoqueAtual.Text, out int result) ? result : 0;
-            //        int estoque = int.Parse(numQuantidade.Value.ToString());
-            //        int valor = 0;
-            //        if (estoqueAtual > 0)
-            //        {
-            //            if (rbAcrescentar.Checked)
-            //            {
-            //                valor = estoqueAtual + estoque;
-            //            }
-            //            else if (rbRemover.Checked)
-            //            {
-            //                valor = estoqueAtual - estoque;
-            //            }
-            //        }
-            //        else
-            //        {
-            //            valor = estoque;
-            //        }
-            //        if (valor.Equals(0))
-            //        {
-            //            MessageBox.Show("Ocorreu um erro ao incluir a movimentacao", "Erro ao incluir movimentacao", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //            return;
-            //        }
-            //        mov.Quantidade = valor;
-            //        _context.movimentacoes.Add(mov);
-            //        _context.SaveChanges();
-            //        MessageBox.Show("Movimentação incluida Com Sucesso!", "Concluido", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //        txtEstoqueAtual.Text = valor.ToString();
-            //        dtpDataUltimaAlteracao.Value = DateTime.Parse(dtpData.Value.ToString()).ToUniversalTime();
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("Aten��o Selecione uma op��o para remover ou acrescentar o estoque", "Verifica��o", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //    }
 
-            //}
-            //catch (SqlException)
-            //{
-            //    throw;
-            //}
-            //catch (Exception)
-            //{
-            //    throw;
-            //}
+            Presenter.InserirMovimentação();
+            
         }
 
         private void ckbVerificarEstoqueMin_CheckedChanged(object sender, EventArgs e)
         {
-            //if (ckbVerificarEstoqueMin.Checked)
-            //{
-            //    RetornaRegistrosComEstoqueMinimo();
-            //}
-            //else
-            //{
-            //    AtualizarProdutos();
-            //}
+            if (ckbVerificarEstoqueMin.Checked)
+            {
+                
+            }
+            else
+            {
+                
+            }
 
         }
 
@@ -336,12 +317,12 @@ namespace ControleDeEstoqueProauto
                     DataGridViewRow selectedRow = dgvMovimentacoes.SelectedRows[0];
                     var cellValue = selectedRow.Cells["ID"].Value.ToString();
 
-                    DialogResult msg = MessageBox.Show("Aten��o!\nDeseja Deletar o registro informado? \nEssa a��o � irrevers�vel!", "Deletar Registro", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    DialogResult msg = MessageBox.Show("Atenção!\nDeseja Deletar o registro informado? \nEssa ação é irreversével!", "Deletar Registro", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (msg is DialogResult.Yes)
                     {
-                        //Movimentacoes mov = new Movimentacoes();
-                        //mov.ID = int.Parse(cellValue);
-                        //_context.movimentacoes.Remove(mov);
+                        Movimentacoes mov = new Movimentacoes();
+                        mov.ID = int.Parse(cellValue);
+                        _context.movimentacoes.Remove(mov);
                     }
                 }
             }
@@ -389,7 +370,7 @@ namespace ControleDeEstoqueProauto
             }
             catch (Exception ex)
             {
-                MessageBox.Show("N�o foi possível abrir o link. Erro: " + ex.Message);
+                MessageBox.Show("Não foi possível abrir o link. Erro: " + ex.Message);
             }
         }
 
