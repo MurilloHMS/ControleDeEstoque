@@ -26,43 +26,69 @@ namespace ControleDeEstoqueProauto
                 this.listBoxProdutos.DisplayMember = "Descricao";
             }
         }
-        public int IdSistema { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public string Nome { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public int EstoqueAtual { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public DateTime DataUltimaAlteracao { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public int EstoqueMinimo { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+        public string ProdutoSelecionado 
+        {
+            get => (listBoxProdutos.SelectedItem as Produtos)?.Descricao ?? string.Empty;
+            set
+            {
+                foreach (Produtos produto in listBoxProdutos.Items)
+                {
+                    if (produto.Descricao == value)
+                    {
+                        listBoxProdutos.SelectedItem = produto;
+                        break;
+                    }
+                }
+            }
+        }
+        public int IdSistema 
+        {
+            get { return int.Parse(this.txtID.Text); }
+            set { this.txtID.Text = value.ToString(); }
+        }
+
+        public string Nome 
+        {
+            get { return this.txtDescricao.Text; }
+            set { this.txtDescricao.Text = value; } 
+        }
+        public int EstoqueAtual 
+        {
+            get { return int.Parse(this.txtEstoqueAtual.Text); }
+            set { this.txtEstoqueAtual.Text = value.ToString(); }
+        }
+        public DateTime DataUltimaAlteracao 
+        {
+            get { return this.dtpDataUltimaAlteracao.Value; }
+            set { this.dtpDataUltimaAlteracao.Value = value; }
+        }
+        public int? EstoqueMinimo 
+        {
+            get { return int.Parse(this.txtEstoqueMin.Text); }
+            set { this.txtEstoqueMin.Text = value.ToString(); }
+        }
         public DateTime DataAtual { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public int Quantidade { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public IList<Movimentacoes> MovimentacaoDoProduto { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public DateTime DataDe { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public DateTime DataPara { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
-        public Presenter.ProdutosPresenter Presenter { get; set; }
+        public Presenter.MainWindowPresenter Presenter { get; set; }
 
         public MainWindow()
         {
             InitializeComponent();
-            AtualizarProdutos();
             //AvisaProdutosComEstoqueMinimo();
 
-            var repository = new ProdutosRepository();
-            Presenter = new Presenter.ProdutosPresenter(this, repository);
+            var produtoRepository = new ProdutosRepository();
+            var movimentacaoRepository = new MovimentacoesRepository();
+            Presenter = new Presenter.MainWindowPresenter(this, produtoRepository, movimentacaoRepository);
 
             listBoxProdutos.DrawMode = DrawMode.OwnerDrawFixed;
             listBoxProdutos.DrawItem += new DrawItemEventHandler(listBoxProdutos_DrawItem);
         }
         #region Metodos 
-        private async Task AtualizarProdutos()
-        {
-            try
-            {
-                this.Cursor = Cursors.WaitCursor;
-            }
-            finally
-            {
-                this.Cursor = Cursors.Default;
-            }
-        }
 
         //private async Task AvisaProdutosComEstoqueMinimo()
         //{
@@ -209,32 +235,19 @@ namespace ControleDeEstoqueProauto
                 dtpDataUltimaAlteracao.Format = DateTimePickerFormat.Custom;
                 dtpDataUltimaAlteracao.CustomFormat = " ";
                 numQuantidade.Value = 0;
-                var descricao = listBoxProdutos.SelectedItem;
 
-                Produtos produtos = new Produtos();
-                var retorno = await _context.produtos.Where(p => p.Descricao == descricao.ToString()).FirstOrDefaultAsync();
-                Movimentacoes mov = new Movimentacoes();
-                var retornoMov = await _context.movimentacoes.Where(m => m.IDSistema == retorno.IDSistema).FirstOrDefaultAsync();
-                if (retornoMov != null)
-                {
-                    txtEstoqueAtual.Text = retornoMov.Quantidade.ToString();
-                    dtpDataUltimaAlteracao.Format = DateTimePickerFormat.Short;
-                    dtpDataUltimaAlteracao.Value = retornoMov.Data;
-                }
-                txtDescricao.Text = retorno.Descricao;
-                txtID.Text = retorno.IDSistema.ToString();
-                txtEstoqueMin.Text = retorno.EstoqueMinimo.ToString();
+                Presenter.AtualizarDadosProdutosView(ProdutoSelecionado.ToString());
 
-                if (!ckbBuscarPorPeriodo.Checked)
-                {
-                    var data = _context.movimentacoes.Where(m => m.IDSistema == retorno.IDSistema).ToListAsync();
-                    dgvMovimentacoes.DataSource = data;
-                }
-                else
-                {
-                    var data = await _context.movimentacoes.Where(m => m.Data >= dtpDe.Value && m.Data <= dtpPara.Value).ToListAsync();
-                    dgvMovimentacoes.DataSource = data;
-                }
+                //if (!ckbBuscarPorPeriodo.Checked)
+                //{
+                //    var data = _context.movimentacoes.Where(m => m.IDSistema == retorno.IDSistema).ToListAsync();
+                //    dgvMovimentacoes.DataSource = data;
+                //}
+                //else
+                //{
+                //    var data = await _context.movimentacoes.Where(m => m.Data >= dtpDe.Value && m.Data <= dtpPara.Value).ToListAsync();
+                //    dgvMovimentacoes.DataSource = data;
+                //}
             }
             catch (Exception)
             {

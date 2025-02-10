@@ -17,7 +17,6 @@ namespace ControleDeEstoqueProauto.Model.Repository
         public async Task<IEnumerable<Produtos>> GetAll()
         {
             var produtos = await _context.produtos.ToListAsync();
-            Console.WriteLine($"Produtos carregados: {produtos.Count}"); // Verificação
             return produtos;
         }
 
@@ -26,9 +25,10 @@ namespace ControleDeEstoqueProauto.Model.Repository
             throw new NotImplementedException();
         }
 
-        public Produtos GetByName(string name)
+        public async Task<Produtos> GetByName(string name)
         {
-            throw new NotImplementedException();
+            var produtos = await _context.produtos.FirstOrDefaultAsync(p => p.Descricao == name);
+            return produtos ?? null;
         }
 
         public void SaveProduct(int id, Produtos produto)
