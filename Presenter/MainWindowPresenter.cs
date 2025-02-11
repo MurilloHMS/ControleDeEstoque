@@ -1,5 +1,4 @@
 ﻿using ControleDeEstoqueProauto.Interface;
-using ControleDeEstoqueProauto.Migrations;
 using ControleDeEstoqueProauto.Models;
 using DocumentFormat.OpenXml.Wordprocessing;
 using System;
@@ -110,6 +109,23 @@ namespace ControleDeEstoqueProauto.Presenter
 
             _view.listaDeProdutos.Clear();
             _view.listaDeProdutos = (IList<Models.Produtos>)filtro;
+        }
+
+        public async Task AtualizarCadastroProduto()
+        {
+
+            try
+            {
+                Produtos produto = _produtosRepository.GetById(_view.IdSistema);
+                produto.EstoqueMinimo = _view.EstoqueMinimo;
+                _produtosRepository.SaveProduct(produto);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            
+            
         }
     }
 }

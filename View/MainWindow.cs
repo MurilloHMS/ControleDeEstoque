@@ -222,14 +222,8 @@ namespace ControleDeEstoqueProauto
             {
                 if (!txtEstoqueMin.ReadOnly)
                 {
-                    Produtos produtos = new Produtos();
-                    produtos.IDSistema = int.Parse(txtID.Text);
-                    produtos.Descricao = txtDescricao.Text;
-                    produtos.EstoqueMinimo = int.TryParse(txtEstoqueMin.Text, out int valor) ? valor : null;
-                    _context.produtos.Update(produtos);
-                    _context.SaveChanges();
+                    Presenter.AtualizarCadastroProduto();
                     txtEstoqueMin.ReadOnly = true;
-
                 }
             }
         }
@@ -336,7 +330,7 @@ namespace ControleDeEstoqueProauto
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            
+            Presenter.FiltroDigitacao();
         }
 
         private void listBoxProdutos_DrawItem(object sender, DrawItemEventArgs e)

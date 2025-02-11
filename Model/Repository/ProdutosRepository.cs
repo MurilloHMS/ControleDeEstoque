@@ -22,7 +22,8 @@ namespace ControleDeEstoqueProauto.Model.Repository
 
         public Produtos GetById(int id)
         {
-            throw new NotImplementedException();
+            var produto = _context.produtos.FirstOrDefault(p => p.IDSistema == id);
+            return produto ?? null;
         }
 
         public async Task<Produtos> GetByName(string name)
@@ -33,7 +34,8 @@ namespace ControleDeEstoqueProauto.Model.Repository
 
         public void SaveProduct(Produtos produto)
         {
-            
+             _context.produtos.Update(produto);
+            _context.SaveChanges();
         }
 
         public async Task<IEnumerable<Produtos>> GetListByFilter(string name)
