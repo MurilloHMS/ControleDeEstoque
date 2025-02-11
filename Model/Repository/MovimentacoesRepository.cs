@@ -13,9 +13,10 @@ namespace ControleDeEstoqueProauto.Model.Repository
     internal class MovimentacoesRepository : IMovimentacoesRepository
     {
         private readonly AppDbContext _context = new AppDbContext();
-        public Task<IEnumerable<Movimentacoes>> GetAll()
+        public async Task<IEnumerable<Movimentacoes>> GetAll()
         {
-            throw new NotImplementedException();
+            var movimentacoes = await _context.movimentacoes.ToListAsync();
+            return movimentacoes;
         }
 
         public Movimentacoes GetById(int id)

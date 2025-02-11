@@ -299,11 +299,11 @@ namespace ControleDeEstoqueProauto
         {
             if (ckbVerificarEstoqueMin.Checked)
             {
-                
+                Presenter.AtualizarListaDeProdutosComEstoqueMinimo();
             }
             else
             {
-                
+                Presenter.AtualizarListaDeProdutos();
             }
 
         }

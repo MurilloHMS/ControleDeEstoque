@@ -34,6 +34,20 @@ namespace ControleDeEstoqueProauto.Presenter
             _view.ProdutoSelecionado = produtoSelecionado;
         }
 
+        public async void AtualizarListaDeProdutosComEstoqueMinimo()
+        {
+            var produto = await _produtosRepository.GetAll();
+            var movimentacoes = await _movimentacoesRepository.GetAll();
+
+            var produtosComEstoqueBaixo = produto.Select(produto => new
+            {
+                Produto = produto,
+                QuantidadeTotal = movimentacoes.Where(m => m.IDSistema == produto.IDSistema).Sum(m => m.Quantidade)
+            }).Where(p => p.Produto.EstoqueMinimo.HasValue && p.QuantidadeTotal <= p.Produto.EstoqueMinimo.Value).Select(p => p.Produto).ToList();
+
+            _view.listaDeProdutos = produtosComEstoqueBaixo;
+        }
+
         public async Task AtualizarDadosProdutosView(string p)
         {
             var prod = await _produtosRepository.GetByName(p);
