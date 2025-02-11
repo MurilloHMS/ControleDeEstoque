@@ -2,6 +2,7 @@
 using System.IO;
 using ControleDeEstoqueProauto.Models;
 using ClosedXML.Excel;
+using ControleDeEstoqueProauto.Data;
 
 namespace ControleDeEstoqueProauto
 {

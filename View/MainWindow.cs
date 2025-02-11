@@ -1,38 +1,135 @@
 using ControleDeEstoqueProauto.Models;
 using System.Data.SqlClient;
 using System.Text;
-using ControleDeEstoqueProauto.Services;
+using ControleDeEstoqueProauto.Model.Services;
 using Microsoft.EntityFrameworkCore;
+using ControleDeEstoqueProauto.Interface;
+using ControleDeEstoqueProauto.Model.Repository;
+using ControleDeEstoqueProauto.Data;
 
 
 namespace ControleDeEstoqueProauto
 {
-    public partial class MainWindow : Form
+    public partial class MainWindow : Form, IMainWindow
     {
         private readonly AppDbContext _context = new AppDbContext();
-        private IEnumerable<Produtos>? _produtos;
+        private IEnumerable<Produtos> _produtos;
+
+        private System.Windows.Forms.Timer timer;
+
+        public IList<Produtos> listaDeProdutos 
+        {
+            get { return (IList<Produtos>)this.listBoxProdutos.DataSource; }
+            set 
+            { 
+                this.listBoxProdutos.DataSource = value;
+                this.listBoxProdutos.DisplayMember = "Descricao";
+            }
+        }
+
+        public string ProdutoSelecionado 
+        {
+            get => (listBoxProdutos.SelectedItem as Produtos)?.Descricao ?? string.Empty;
+            set
+            {
+                foreach (Produtos produto in listBoxProdutos.Items)
+                {
+                    if (produto.Descricao == value)
+                    {
+                        listBoxProdutos.SelectedItem = produto;
+                        break;
+                    }
+                }
+            }
+        }
+        public int IdSistema 
+        {
+            get { return int.Parse(this.txtID.Text); }
+            set { this.txtID.Text = value.ToString(); }
+        }
+
+        public string Nome 
+        {
+            get { return this.txtDescricao.Text; }
+            set { this.txtDescricao.Text = value; } 
+        }
+        public int EstoqueAtual 
+        {
+            get { return int.Parse(this.txtEstoqueAtual.Text); }
+            set { this.txtEstoqueAtual.Text = value.ToString(); }
+        }
+        public DateTime DataUltimaAlteracao 
+        {
+            get { return this.dtpDataUltimaAlteracao.Value; }
+            set 
+            {
+                this.dtpDataUltimaAlteracao.Format = DateTimePickerFormat.Short;
+                this.dtpDataUltimaAlteracao.Value = value;
+           
+            }
+        }
+        public int? EstoqueMinimo 
+        {
+            get { return int.Parse(this.txtEstoqueMin.Text); }
+            set { this.txtEstoqueMin.Text = value.ToString(); }
+        }
+        public DateTime DataAtual 
+        {
+            get { return this.dtpData.Value; }
+            set { this.dtpData.Value = value; }
+        }
+        public int Quantidade 
+        {
+            get { return int.Parse(this.numQuantidade.Value.ToString()); }
+            set { this.numQuantidade.Value =  value; }
+        }
+        public IList<Movimentacoes> MovimentacaoDoProduto { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public DateTime DataDe
+        {
+            get { return this.dtpDe.Value; }
+            set { this.dtpDe.Value = value; }
+        }
+        public DateTime DataPara
+        {
+            get { return this.dtpPara.Value; }
+            set { this.dtpPara.Value = value; }
+        }
+
+        public bool Acrescentar
+        {
+            get { return this.rbAcrescentar.Checked; }
+            set { this.rbAcrescentar.Checked = value; }
+        }
+
+        public bool Remover
+        {
+            get { return this.rbRemover.Checked; }
+            set { this.rbRemover.Checked = value; }
+        }
+
+        public string Filtro
+        {
+            get { return this.txtFiltro.Text.ToLower(); }
+            set { this.txtFiltro.Text = value; }
+        }
+
+        public Presenter.MainWindowPresenter Presenter { get; set; }
+
         public MainWindow()
         {
             InitializeComponent();
-            AtualizarProdutos();
-            AvisaProdutosComEstoqueMinimo();
+
+            var produtoRepository = new ProdutosRepository();
+            var movimentacaoRepository = new MovimentacoesRepository();
+            Presenter = new Presenter.MainWindowPresenter(this, produtoRepository, movimentacaoRepository);
+
             listBoxProdutos.DrawMode = DrawMode.OwnerDrawFixed;
-            listBoxProdutos.DrawItem += new DrawItemEventHandler(listBoxProdutos_DrawItem!);
+            listBoxProdutos.DrawItem += new DrawItemEventHandler(listBoxProdutos_DrawItem);
+
+            AvisaProdutosComEstoqueMinimo();
         }
         #region Metodos 
-        private async Task AtualizarProdutos()
-        {
-            try
-            {
-                this.Cursor = Cursors.WaitCursor;
-                var produtos = await _context.produtos.ToListAsync();
-                await AtualizarListaDeProdutos(produtos);
-            }
-            finally
-            {
-                this.Cursor = Cursors.Default;
-            }
-        }
+
         private async Task AvisaProdutosComEstoqueMinimo()
         {
             try
@@ -50,67 +147,8 @@ namespace ControleDeEstoqueProauto
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ocorreu um erro ao verificar o estoque mínimo: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ocorreu um erro ao verificar o estoque m�nimo: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-        private async Task RetornaRegistrosComEstoqueMinimo()
-        {
-            Produtos produtos = new Produtos();
-            _produtos = await new ProdutoService().ObterProdutosComEstoqueBaixo();
-            listBoxProdutos.Items.Clear();
-            listBoxProdutos.Items.AddRange(_produtos.Select(p => p.Descricao).ToArray());
-            listBoxProdutos.Sorted = true;
-        }
-
-        private async Task IncluirNovosRegistros()
-        {
-            try
-            {
-                this.Cursor = Cursors.WaitCursor;
-                var dados = ProdutoService.ObterProdutosDoExcel();
-                if (!dados.Any() && dados is null) return;
-
-                listBoxProdutos.Items.Clear();
-                _produtos = await _context.produtos.ToListAsync();
-                foreach (var i in dados)
-                {
-                    Produtos produto = new Produtos
-                    {
-                        IDSistema = i.IDSistema,
-                        Descricao = i.Descricao,
-                        EstoqueMinimo = i.EstoqueMinimo ?? null
-                    };
-                    if (_produtos.Any(p => p.IDSistema == i.IDSistema))
-                    {
-                        _context.produtos.Update(produto);
-                    }
-                    else
-                    {
-                        _context.produtos.Add(produto);
-                    }
-
-                    _context.SaveChanges();
-                }
-                _produtos = await _context.produtos.ToListAsync();
-                listBoxProdutos.Items.AddRange(_produtos.Select(p => p.Descricao).ToArray());
-                listBoxProdutos.Sorted = true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao incluir ou atualizar registros: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                this.Cursor = Cursors.Default; // Restaura o cursor original
-            }
-        }
-
-        private async Task AtualizarListaDeProdutos(IEnumerable<Produtos> obterProdutos)
-        {
-            _produtos = obterProdutos;
-            listBoxProdutos.Items.Clear();
-            listBoxProdutos.Items.AddRange(_produtos.Select(p => p.Descricao).ToArray());
-            listBoxProdutos.Sorted = true;
         }
         #endregion
 
@@ -128,13 +166,7 @@ namespace ControleDeEstoqueProauto
             {
                 if (!txtEstoqueMin.ReadOnly)
                 {
-                    Produtos produto = _context.produtos.Where(p => p.IDSistema == int.Parse(txtID.Text))
-                        .FirstOrDefault();
-                    produto.IDSistema = int.Parse(txtID.Text);
-                    produto.Descricao = txtDescricao.Text;
-                    produto.EstoqueMinimo = int.TryParse(txtEstoqueMin.Text, out int valor) ? valor : null;
-                    _context.produtos.Update(produto);
-                    _context.SaveChanges();
+                    Presenter.AtualizarCadastroProduto();
                     txtEstoqueMin.ReadOnly = true;
 
                 }
@@ -144,11 +176,11 @@ namespace ControleDeEstoqueProauto
         {
             if (e.KeyCode == Keys.F6)
             {
-                IncluirNovosRegistros();
+                Presenter.IncluirNovosRegistros();
             }
             else if (e.KeyCode == Keys.F5)
             {
-                AtualizarProdutos();
+                Presenter.AtualizarListaDeProdutos();
             }
         }
 
@@ -161,6 +193,7 @@ namespace ControleDeEstoqueProauto
         {
             if (e.Button == MouseButtons.Right)
             {
+
                 Frm_Configuracoes frm = new Frm_Configuracoes();
                 frm.ShowDialog();
             }
@@ -182,30 +215,18 @@ namespace ControleDeEstoqueProauto
                 numQuantidade.Value = 0;
                 var descricao = listBoxProdutos.SelectedItem;
 
-                Produtos produtos = new Produtos();
-                var retorno = await _context.produtos.Where(p => p.Descricao == descricao.ToString()).FirstOrDefaultAsync();
-                Movimentacoes mov = new Movimentacoes();
-                var retornoMov = await _context.movimentacoes.Where(m => m.IDSistema == retorno.IDSistema).FirstOrDefaultAsync();
-                if (retornoMov != null)
-                {
-                    txtEstoqueAtual.Text = retornoMov.Quantidade.ToString();
-                    dtpDataUltimaAlteracao.Format = DateTimePickerFormat.Short;
-                    dtpDataUltimaAlteracao.Value = retornoMov.Data;
-                }
-                txtDescricao.Text = retorno.Descricao;
-                txtID.Text = retorno.IDSistema.ToString();
-                txtEstoqueMin.Text = retorno.EstoqueMinimo.ToString();
+                Presenter.AtualizarDadosProdutosView(ProdutoSelecionado.ToString());
 
-                if (!ckbBuscarPorPeriodo.Checked)
-                {
-                    var data = _context.movimentacoes.Where(m => m.IDSistema == retorno.IDSistema).ToListAsync();
-                    dgvMovimentacoes.DataSource = data;
-                }
-                else
-                {
-                    var data = await _context.movimentacoes.Where(m => m.Data >= dtpDe.Value && m.Data <= dtpPara.Value).ToListAsync();
-                    dgvMovimentacoes.DataSource = data;
-                }
+                //if (!ckbBuscarPorPeriodo.Checked)
+                //{
+                //    var data = _context.movimentacoes.Where(m => m.IDSistema == retorno.IDSistema).ToListAsync();
+                //    dgvMovimentacoes.DataSource = data;
+                //}
+                //else
+                //{
+                //    var data = await _context.movimentacoes.Where(m => m.Data >= dtpDe.Value && m.Data <= dtpPara.Value).ToListAsync();
+                //    dgvMovimentacoes.DataSource = data;
+                //}
             }
             catch (Exception)
             {
@@ -215,68 +236,20 @@ namespace ControleDeEstoqueProauto
 
         private void btnInserir_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (rbAcrescentar.Checked || rbRemover.Checked)
-                {
-                    Movimentacoes mov = new Movimentacoes();
-                    mov.IDSistema = int.Parse(txtID.Text);
-                    mov.Data = DateTime.Parse(dtpData.Value.ToString()).ToUniversalTime();
-                    int estoqueAtual = int.TryParse(txtEstoqueAtual.Text, out int result) ? result : 0;
-                    int estoque = int.Parse(numQuantidade.Value.ToString());
-                    int valor = 0;
-                    if (estoqueAtual > 0)
-                    {
-                        if (rbAcrescentar.Checked)
-                        {
-                            valor = estoqueAtual + estoque;
-                        }
-                        else if (rbRemover.Checked)
-                        {
-                            valor = estoqueAtual - estoque;
-                        }
-                    }
-                    else
-                    {
-                        valor = estoque;
-                    }
-                    if (valor.Equals(0))
-                    {
-                        MessageBox.Show("Ocorreu um erro ao incluir a movimentacao", "Erro ao incluir movimentacao", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                    mov.Quantidade = valor;
-                    _context.movimentacoes.Add(mov);
-                    _context.SaveChanges();
-                    MessageBox.Show("Movimentação incluida Com Sucesso!", "Concluido", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txtEstoqueAtual.Text = valor.ToString();
-                    dtpDataUltimaAlteracao.Value = DateTime.Parse(dtpData.Value.ToString()).ToUniversalTime();
-                }
-                else
-                {
-                    MessageBox.Show("Atenção Selecione uma op��o para remover ou acrescentar o estoque", "Verificação", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
 
-            }
-            catch (SqlException)
-            {
-                throw;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            Presenter.InserirMovimentação();
+            
         }
 
         private void ckbVerificarEstoqueMin_CheckedChanged(object sender, EventArgs e)
         {
             if (ckbVerificarEstoqueMin.Checked)
             {
-                RetornaRegistrosComEstoqueMinimo();
+                Presenter.AtualizarListaDeProdutosComEstoqueMinimo();
             }
             else
             {
-                AtualizarProdutos();
+                Presenter.AtualizarListaDeProdutos();
             }
 
         }
@@ -290,7 +263,7 @@ namespace ControleDeEstoqueProauto
                     DataGridViewRow selectedRow = dgvMovimentacoes.SelectedRows[0];
                     var cellValue = selectedRow.Cells["ID"].Value.ToString();
 
-                    DialogResult msg = MessageBox.Show("Aten��o!\nDeseja Deletar o registro informado? \nEssa a��o � irrevers�vel!", "Deletar Registro", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    DialogResult msg = MessageBox.Show("Atenção!\nDeseja Deletar o registro informado? \nEssa ação é irreversével!", "Deletar Registro", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (msg is DialogResult.Yes)
                     {
                         Movimentacoes mov = new Movimentacoes();
@@ -303,11 +276,7 @@ namespace ControleDeEstoqueProauto
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            string search = textBox1.Text.ToLower();
-            var filtro = _produtos.Where(p => p.Descricao.ToLower().Contains(search)).ToArray();
-
-            listBoxProdutos.Items.Clear();
-            listBoxProdutos.Items.AddRange(filtro.Select(p => p.Descricao).ToArray());
+            Presenter.FiltroDigitacao();
         }
 
         private void listBoxProdutos_DrawItem(object sender, DrawItemEventArgs e)
@@ -366,12 +335,12 @@ namespace ControleDeEstoqueProauto
 
         private void incluirNovosRegistrosToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            IncluirNovosRegistros();
+            Presenter.IncluirNovosRegistros();
         }
 
         private void atualizarListaDeItensToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AtualizarProdutos();
+            Presenter.AtualizarListaDeProdutos();
         }
 
         private void baixarMovimentaçõesPorDataToolStripMenuItem1_Click(object sender, EventArgs e)

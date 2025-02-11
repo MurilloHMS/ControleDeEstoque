@@ -30,7 +30,7 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             linkLabel1 = new LinkLabel();
             menuStrip1 = new MenuStrip();
             cadastrosToolStripMenuItem1 = new ToolStripMenuItem();
@@ -50,7 +50,7 @@
             toolStripStatusLabelTimer = new ToolStripStatusLabel();
             groupBox4 = new GroupBox();
             listBoxProdutos = new ListBox();
-            textBox1 = new TextBox();
+            txtFiltro = new TextBox();
             ckbVerificarEstoqueMin = new CheckBox();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
@@ -259,7 +259,7 @@
             // groupBox4
             // 
             groupBox4.Controls.Add(listBoxProdutos);
-            groupBox4.Controls.Add(textBox1);
+            groupBox4.Controls.Add(txtFiltro);
             groupBox4.Controls.Add(ckbVerificarEstoqueMin);
             groupBox4.Controls.Add(pictureBox1);
             groupBox4.Dock = DockStyle.Left;
@@ -281,15 +281,15 @@
             listBoxProdutos.SelectedIndexChanged += listBoxProdutos_SelectedIndexChanged;
             listBoxProdutos.KeyDown += listBoxProdutos_KeyDown;
             // 
-            // textBox1
+            // txtFiltro
             // 
-            textBox1.Dock = DockStyle.Top;
-            textBox1.Location = new Point(3, 86);
-            textBox1.Name = "textBox1";
-            textBox1.PlaceholderText = "Digite um produto para filtrar";
-            textBox1.Size = new Size(298, 23);
-            textBox1.TabIndex = 5;
-            textBox1.TextChanged += textBox1_TextChanged;
+            txtFiltro.Dock = DockStyle.Top;
+            txtFiltro.Location = new Point(3, 86);
+            txtFiltro.Name = "txtFiltro";
+            txtFiltro.PlaceholderText = "Digite um produto para filtrar";
+            txtFiltro.Size = new Size(298, 23);
+            txtFiltro.TabIndex = 5;
+            txtFiltro.TextChanged += textBox1_TextChanged;
             // 
             // ckbVerificarEstoqueMin
             // 
@@ -507,14 +507,14 @@
             dgvMovimentacoes.AllowUserToDeleteRows = false;
             dgvMovimentacoes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvMovimentacoes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Window;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(99, 194, 157);
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dgvMovimentacoes.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(99, 194, 157);
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvMovimentacoes.DefaultCellStyle = dataGridViewCellStyle2;
             dgvMovimentacoes.Dock = DockStyle.Bottom;
             dgvMovimentacoes.Location = new Point(3, 121);
             dgvMovimentacoes.Name = "dgvMovimentacoes";
@@ -644,7 +644,7 @@
         private Label label1;
         private ToolStripStatusLabel toolStripStatusLabelTimer;
         private System.Windows.Forms.Timer timer1;
-        private TextBox textBox1;
+        private TextBox txtFiltro;
         private CheckBox ckbVerificarEstoqueMin;
         private ListBox listBoxProdutos;
     }
