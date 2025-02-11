@@ -12,10 +12,6 @@ namespace ControleDeEstoqueProauto
 {
     public partial class MainWindow : Form, IMainWindow
     {
-        private readonly AppDbContext _context = new AppDbContext();
-        private IEnumerable<Produtos> _produtos;
-
-        private System.Windows.Forms.Timer timer;
 
         public IList<Produtos> listaDeProdutos 
         {
@@ -268,7 +264,7 @@ namespace ControleDeEstoqueProauto
                     {
                         Movimentacoes mov = new Movimentacoes();
                         mov.ID = int.Parse(cellValue);
-                        _context.movimentacoes.Remove(mov);
+                        //_context.movimentacoes.Remove(mov);
                     }
                 }
             }
