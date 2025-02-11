@@ -37,6 +37,11 @@ namespace ControleDeEstoqueProauto.Model.Repository
              _context.produtos.Update(produto);
             _context.SaveChanges();
         }
+        public void SaveNewProduct(Produtos produto)
+        {
+            _context.produtos.Add(produto);
+            _context.SaveChanges();
+        }
 
         public async Task<IEnumerable<Produtos>> GetListByFilter(string name)
         {

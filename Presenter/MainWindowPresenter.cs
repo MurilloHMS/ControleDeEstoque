@@ -1,4 +1,5 @@
 ﻿using ControleDeEstoqueProauto.Interface;
+using ControleDeEstoqueProauto.Model.Services;
 using ControleDeEstoqueProauto.Models;
 using DocumentFormat.OpenXml.Wordprocessing;
 using System;
@@ -140,6 +141,38 @@ namespace ControleDeEstoqueProauto.Presenter
             }
             
             
+        }
+
+        public async Task IncluirNovosRegistros()
+        {
+            try
+            {
+                var dados = ProdutoService.ObterProdutosDoExcel();
+                _view.listaDeProdutos.Clear();
+                var produtos = await _produtosRepository.GetAll();
+                foreach (var i in dados)
+                {
+                    Produtos produto = new Produtos
+                    {
+                        IDSistema = i.IDSistema,
+                        Descricao = i.Descricao,
+                        EstoqueMinimo = i.EstoqueMinimo ?? null
+                    };
+                    if (produtos.Any(p => p.IDSistema == i.IDSistema))
+                    {
+                        _produtosRepository.SaveProduct(produto);
+                    }
+                    else
+                    {
+                        _produtosRepository.SaveNewProduct(produto);
+                    }
+                }
+                AtualizarListaDeProdutos();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao incluir ou atualizar registros: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
