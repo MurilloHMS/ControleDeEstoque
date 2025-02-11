@@ -13,17 +13,17 @@ namespace ControleDeEstoqueProauto
     public partial class MainWindow : Form, IMainWindow
     {
 
-        public IList<Produtos> listaDeProdutos 
+        public IList<Produtos> listaDeProdutos
         {
             get { return (IList<Produtos>)this.listBoxProdutos.DataSource; }
-            set 
-            { 
+            set
+            {
                 this.listBoxProdutos.DataSource = value;
                 this.listBoxProdutos.DisplayMember = "Descricao";
             }
         }
 
-        public string ProdutoSelecionado 
+        public string ProdutoSelecionado
         {
             get => (listBoxProdutos.SelectedItem as Produtos)?.Descricao ?? string.Empty;
             set
@@ -38,46 +38,46 @@ namespace ControleDeEstoqueProauto
                 }
             }
         }
-        public int IdSistema 
+        public int IdSistema
         {
             get { return int.Parse(this.txtID.Text); }
             set { this.txtID.Text = value.ToString(); }
         }
 
-        public string Nome 
+        public string Nome
         {
             get { return this.txtDescricao.Text; }
-            set { this.txtDescricao.Text = value; } 
+            set { this.txtDescricao.Text = value; }
         }
-        public int EstoqueAtual 
+        public int EstoqueAtual
         {
             get { return int.Parse(this.txtEstoqueAtual.Text); }
             set { this.txtEstoqueAtual.Text = value.ToString(); }
         }
-        public DateTime DataUltimaAlteracao 
+        public DateTime DataUltimaAlteracao
         {
             get { return this.dtpDataUltimaAlteracao.Value; }
-            set 
+            set
             {
                 this.dtpDataUltimaAlteracao.Format = DateTimePickerFormat.Short;
                 this.dtpDataUltimaAlteracao.Value = value;
-           
+
             }
         }
-        public int? EstoqueMinimo 
+        public int? EstoqueMinimo
         {
             get { return int.Parse(this.txtEstoqueMin.Text); }
             set { this.txtEstoqueMin.Text = value.ToString(); }
         }
-        public DateTime DataAtual 
+        public DateTime DataAtual
         {
             get { return this.dtpData.Value; }
             set { this.dtpData.Value = value; }
         }
-        public int Quantidade 
+        public int Quantidade
         {
             get { return int.Parse(this.numQuantidade.Value.ToString()); }
-            set { this.numQuantidade.Value =  value; }
+            set { this.numQuantidade.Value = value; }
         }
         public IList<Movimentacoes> MovimentacaoDoProduto { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public DateTime DataDe
@@ -234,7 +234,7 @@ namespace ControleDeEstoqueProauto
         {
 
             Presenter.InserirMovimentação();
-            
+
         }
 
         private void ckbVerificarEstoqueMin_CheckedChanged(object sender, EventArgs e)
@@ -354,7 +354,5 @@ namespace ControleDeEstoqueProauto
         {
             toolStripStatusLabelTimer.Text = DateTime.Now.ToString();
         }
-
-        
     }
 }
