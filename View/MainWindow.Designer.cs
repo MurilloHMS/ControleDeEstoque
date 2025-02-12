@@ -30,8 +30,7 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            linkLabel1 = new LinkLabel();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             menuStrip1 = new MenuStrip();
             cadastrosToolStripMenuItem1 = new ToolStripMenuItem();
             incluirNovosRegistrosToolStripMenuItem1 = new ToolStripMenuItem();
@@ -76,6 +75,8 @@
             dtpDe = new DateTimePicker();
             label1 = new Label();
             timer1 = new System.Windows.Forms.Timer(components);
+            label9 = new Label();
+            linkLabel1 = new LinkLabel();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numQuantidade).BeginInit();
@@ -89,20 +90,6 @@
             groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvMovimentacoes).BeginInit();
             SuspendLayout();
-            // 
-            // linkLabel1
-            // 
-            linkLabel1.AutoSize = true;
-            linkLabel1.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            linkLabel1.LinkArea = new LinkArea(18, 22);
-            linkLabel1.Location = new Point(1053, 24);
-            linkLabel1.Name = "linkLabel1";
-            linkLabel1.Size = new Size(131, 20);
-            linkLabel1.TabIndex = 4;
-            linkLabel1.TabStop = true;
-            linkLabel1.Text = "Desenvolvido Por: MHMS";
-            linkLabel1.UseCompatibleTextRendering = true;
-            linkLabel1.LinkClicked += linkLabel1_LinkClicked;
             // 
             // menuStrip1
             // 
@@ -507,14 +494,14 @@
             dgvMovimentacoes.AllowUserToDeleteRows = false;
             dgvMovimentacoes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvMovimentacoes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(99, 194, 157);
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dgvMovimentacoes.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Window;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(99, 194, 157);
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            dgvMovimentacoes.DefaultCellStyle = dataGridViewCellStyle1;
             dgvMovimentacoes.Dock = DockStyle.Bottom;
             dgvMovimentacoes.Location = new Point(3, 121);
             dgvMovimentacoes.Name = "dgvMovimentacoes";
@@ -565,17 +552,42 @@
             timer1.Interval = 1000;
             timer1.Tick += timer1_Tick;
             // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(20, 683);
+            label9.Name = "label9";
+            label9.Size = new Size(37, 15);
+            label9.TabIndex = 10;
+            label9.Text = "v1.0.8";
+            // 
+            // linkLabel1
+            // 
+            linkLabel1.AutoSize = true;
+            linkLabel1.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            linkLabel1.LinkArea = new LinkArea(18, 22);
+            linkLabel1.Location = new Point(63, 682);
+            linkLabel1.Name = "linkLabel1";
+            linkLabel1.Size = new Size(131, 20);
+            linkLabel1.TabIndex = 12;
+            linkLabel1.TabStop = true;
+            linkLabel1.Text = "Desenvolvido Por: MHMS";
+            linkLabel1.UseCompatibleTextRendering = true;
+            linkLabel1.LinkClicked += linkLabel1_LinkClicked;
+            // 
             // MainWindow
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1184, 701);
+            Controls.Add(linkLabel1);
+            Controls.Add(label9);
             Controls.Add(tabControl1);
             Controls.Add(groupBox4);
             Controls.Add(statusStrip1);
-            Controls.Add(linkLabel1);
             Controls.Add(menuStrip1);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
             Name = "MainWindow";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Controle de Estoque";
@@ -602,7 +614,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private ToolStripMenuItem cadastrosToolStripMenuItem1;
         private ToolStripMenuItem incluirNovosRegistrosToolStripMenuItem1;
@@ -647,5 +658,7 @@
         private TextBox txtFiltro;
         private CheckBox ckbVerificarEstoqueMin;
         private ListBox listBoxProdutos;
+        private Label label9;
+        private LinkLabel linkLabel1;
     }
 }
