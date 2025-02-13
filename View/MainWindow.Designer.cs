@@ -531,6 +531,7 @@
             label2.Size = new Size(18, 15);
             label2.TabIndex = 2;
             label2.Text = "ID";
+            label2.MouseDoubleClick += label2_MouseDoubleClick;
             // 
             // label4
             // 

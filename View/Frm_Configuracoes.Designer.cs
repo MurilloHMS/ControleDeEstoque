@@ -40,6 +40,7 @@
             label2 = new Label();
             label1 = new Label();
             TxtConnectionString = new TextBox();
+            button1 = new Button();
             toolStrip1.SuspendLayout();
             groupBox1.SuspendLayout();
             SuspendLayout();
@@ -90,6 +91,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(button1);
             groupBox1.Controls.Add(lblTipoBase);
             groupBox1.Controls.Add(cbProvider);
             groupBox1.Controls.Add(label2);
@@ -136,7 +138,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(211, 65);
+            label1.Location = new Point(181, 65);
             label1.Name = "label1";
             label1.Size = new Size(105, 15);
             label1.TabIndex = 1;
@@ -144,10 +146,20 @@
             // 
             // TxtConnectionString
             // 
-            TxtConnectionString.Location = new Point(211, 83);
+            TxtConnectionString.Location = new Point(181, 83);
             TxtConnectionString.Name = "TxtConnectionString";
             TxtConnectionString.Size = new Size(631, 23);
             TxtConnectionString.TabIndex = 0;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(813, 82);
+            button1.Name = "button1";
+            button1.Size = new Size(38, 23);
+            button1.TabIndex = 4;
+            button1.Text = "...";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // Frm_Configuracoes
             // 
@@ -181,5 +193,6 @@
         private Label label2;
         private Label label1;
         private TextBox TxtConnectionString;
+        private Button button1;
     }
 }
