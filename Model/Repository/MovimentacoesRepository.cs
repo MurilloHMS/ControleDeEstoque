@@ -37,5 +37,12 @@ namespace ControleDeEstoqueProauto.Model.Repository
             await _context.movimentacoes.AddAsync(movimentacoes);
             _context.SaveChanges();
         }
+
+        public async Task<IList<Movimentacoes>> GetForName(string name)
+        {
+            var produto = await _context.produtos.FirstOrDefaultAsync(p => p.Descricao == name);
+            var movimentacoes = await _context.movimentacoes.Where(m => m.IDSistema == produto.IDSistema).ToListAsync();
+            return movimentacoes;
+        }
     }
 }

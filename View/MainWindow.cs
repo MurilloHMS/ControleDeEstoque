@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using ControleDeEstoqueProauto.Interface;
 using ControleDeEstoqueProauto.Model.Repository;
 using ControleDeEstoqueProauto.Data;
+using System.ComponentModel;
 
 
 namespace ControleDeEstoqueProauto
@@ -79,7 +80,11 @@ namespace ControleDeEstoqueProauto
             get { return int.Parse(this.numQuantidade.Value.ToString()); }
             set { this.numQuantidade.Value = value; }
         }
-        public IList<Movimentacoes> MovimentacaoDoProduto { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public IList<Movimentacoes> MovimentacaoDoProduto 
+        { 
+            get { return (IList<Movimentacoes>)this.dgvMovimentacoes.DataSource; } 
+            set { this.dgvMovimentacoes.DataSource = new BindingList<Movimentacoes>(value); } 
+        }
         public DateTime DataDe
         {
             get { return this.dtpDe.Value; }
@@ -122,31 +127,8 @@ namespace ControleDeEstoqueProauto
             listBoxProdutos.DrawMode = DrawMode.OwnerDrawFixed;
             listBoxProdutos.DrawItem += new DrawItemEventHandler(listBoxProdutos_DrawItem);
 
-            AvisaProdutosComEstoqueMinimo();
+            Presenter.AvisaProdutosComEstoqueMinimo();
         }
-        #region Metodos 
-
-        private async Task AvisaProdutosComEstoqueMinimo()
-        {
-            try
-            {
-                var produto = await new ProdutoService().ObterProdutosComEstoqueBaixo();
-                if (produto.Count() < 1) { return; }
-                StringBuilder sb = new StringBuilder();
-                sb.AppendLine("Atenção os itens abaixo estão com o estoque abaixo do mínimo:");
-                sb.AppendLine();
-                foreach (var i in produto)
-                {
-                    sb.AppendLine(i.ToString());
-                }
-                MessageBox.Show(sb.ToString(), "Itens com estoque baixo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ocorreu um erro ao verificar o estoque m�nimo: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-        #endregion
 
         private void txtEstoqueMin_MouseDoubleClick(object sender, MouseEventArgs e)
         {
@@ -213,16 +195,16 @@ namespace ControleDeEstoqueProauto
 
                 Presenter.AtualizarDadosProdutosView(ProdutoSelecionado.ToString());
 
-                //if (!ckbBuscarPorPeriodo.Checked)
-                //{
-                //    var data = _context.movimentacoes.Where(m => m.IDSistema == retorno.IDSistema).ToListAsync();
-                //    dgvMovimentacoes.DataSource = data;
-                //}
-                //else
-                //{
-                //    var data = await _context.movimentacoes.Where(m => m.Data >= dtpDe.Value && m.Data <= dtpPara.Value).ToListAsync();
-                //    dgvMovimentacoes.DataSource = data;
-                //}
+                if (!ckbBuscarPorPeriodo.Checked)
+                {
+                    Presenter.BuscarMovimentacoesPorData();
+                }
+                else
+                {
+                    //var data = await _context.movimentacoes.Where(m => m.Data >= dtpDe.Value && m.Data <= dtpPara.Value).ToListAsync();
+                    //dgvMovimentacoes.DataSource = data;
+                    Presenter.BuscarMovimentacoesPorData(true);
+                }
             }
             catch (Exception)
             {
@@ -295,23 +277,6 @@ namespace ControleDeEstoqueProauto
             e.DrawFocusRectangle();
         }
 
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            try
-            {
-                var psi = new System.Diagnostics.ProcessStartInfo
-                {
-                    FileName = @"https://github.com/murillohms",
-                    UseShellExecute = true // Abre o link no navegador padrão
-                };
-                System.Diagnostics.Process.Start(psi);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Não foi possível abrir o link. Erro: " + ex.Message);
-            }
-        }
-
         private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
         {
             try
@@ -353,6 +318,28 @@ namespace ControleDeEstoqueProauto
         private void timer1_Tick(object sender, EventArgs e)
         {
             toolStripStatusLabelTimer.Text = DateTime.Now.ToString();
+        }
+
+        private void groupBox3_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripStatusLabel1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var psi = new System.Diagnostics.ProcessStartInfo
+                {
+                    FileName = @"https://murillohms.vercel.app",
+                    UseShellExecute = true // Abre o link no navegador padrão
+                };
+                System.Diagnostics.Process.Start(psi);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Não foi possível abrir o link. Erro: " + ex.Message);
+            }
         }
     }
 }

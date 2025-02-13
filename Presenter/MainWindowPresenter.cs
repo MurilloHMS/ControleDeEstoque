@@ -174,5 +174,54 @@ namespace ControleDeEstoqueProauto.Presenter
                 MessageBox.Show("Erro ao incluir ou atualizar registros: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        public async Task BuscarMovimentacoesPorData()
+        {
+            try
+            {
+                var movimentacoes = await _movimentacoesRepository.GetForName(_view.ProdutoSelecionado);
+                _view.MovimentacaoDoProduto = movimentacoes;
+            }catch(Exception ex)
+            {
+                throw;
+            }
+        }
+        public async Task BuscarMovimentacoesPorData(bool buscaPorData)
+        {
+            if (buscaPorData)
+            {
+                try
+                {
+                    var movimentacoes = await _movimentacoesRepository.GetForName(_view.ProdutoSelecionado);
+                    var movimentacoesFiltradasPorData = movimentacoes.Where(m => m.Data >= _view.DataDe && m.Data <= _view.DataPara).ToList();
+                    _view.MovimentacaoDoProduto = movimentacoesFiltradasPorData;
+                }
+                catch (Exception ex)
+                {
+                    throw;
+                }
+            }
+        }
+
+        public async Task AvisaProdutosComEstoqueMinimo()
+        {
+            try
+            {
+                var produto = await new ProdutoService().ObterProdutosComEstoqueBaixo();
+                if (produto.Count() < 1) { return; }
+                StringBuilder sb = new StringBuilder();
+                sb.AppendLine("Atenção os itens abaixo estão com o estoque abaixo do mínimo:");
+                sb.AppendLine();
+                foreach (var i in produto)
+                {
+                    sb.AppendLine(i.ToString());
+                }
+                MessageBox.Show(sb.ToString(), "Itens com estoque baixo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocorreu um erro ao verificar o estoque m�nimo: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

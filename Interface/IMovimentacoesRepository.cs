@@ -8,5 +8,6 @@ namespace ControleDeEstoqueProauto.Interface
         Movimentacoes GetById(int id);
         Task<Movimentacoes> GetByProductName(string name);
         void Save(Movimentacoes movimentacoes);
+        Task<IList<Movimentacoes>> GetForName(string name);
     }
 }
