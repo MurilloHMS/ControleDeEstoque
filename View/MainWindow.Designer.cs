@@ -39,20 +39,31 @@
             sairToolStripMenuItem = new ToolStripMenuItem();
             toolTip1 = new ToolTip(components);
             pictureBox1 = new PictureBox();
+            txtEstoqueMin = new TextBox();
             btnInserir = new Button();
             rbRemover = new RadioButton();
             rbAcrescentar = new RadioButton();
             numQuantidade = new NumericUpDown();
             dtpData = new DateTimePicker();
-            txtEstoqueMin = new TextBox();
             statusStrip1 = new StatusStrip();
             toolStripStatusLabelTimer = new ToolStripStatusLabel();
+            toolStripStatusLabel1 = new ToolStripStatusLabel();
+            toolStripStatusLabel2 = new ToolStripStatusLabel();
             groupBox4 = new GroupBox();
             listBoxProdutos = new ListBox();
             txtFiltro = new TextBox();
             ckbVerificarEstoqueMin = new CheckBox();
-            tabControl1 = new TabControl();
-            tabPage1 = new TabPage();
+            timer1 = new System.Windows.Forms.Timer(components);
+            panel1 = new Panel();
+            groupBox3 = new GroupBox();
+            panel3 = new Panel();
+            dgvMovimentacoes = new DataGridView();
+            panel2 = new Panel();
+            ckbBuscarPorPeriodo = new CheckBox();
+            dtpPara = new DateTimePicker();
+            label3 = new Label();
+            dtpDe = new DateTimePicker();
+            label1 = new Label();
             groupBox2 = new GroupBox();
             label7 = new Label();
             label8 = new Label();
@@ -66,29 +77,18 @@
             label4 = new Label();
             label6 = new Label();
             label5 = new Label();
-            tabPage2 = new TabPage();
-            groupBox3 = new GroupBox();
-            ckbBuscarPorPeriodo = new CheckBox();
-            dgvMovimentacoes = new DataGridView();
-            dtpPara = new DateTimePicker();
-            label3 = new Label();
-            dtpDe = new DateTimePicker();
-            label1 = new Label();
-            timer1 = new System.Windows.Forms.Timer(components);
-            label9 = new Label();
-            linkLabel1 = new LinkLabel();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numQuantidade).BeginInit();
             statusStrip1.SuspendLayout();
             groupBox4.SuspendLayout();
-            tabControl1.SuspendLayout();
-            tabPage1.SuspendLayout();
+            panel1.SuspendLayout();
+            groupBox3.SuspendLayout();
+            panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvMovimentacoes).BeginInit();
+            panel2.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
-            tabPage2.SuspendLayout();
-            groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvMovimentacoes).BeginInit();
             SuspendLayout();
             // 
             // menuStrip1
@@ -160,22 +160,30 @@
             toolTip1.SetToolTip(pictureBox1, resources.GetString("pictureBox1.ToolTip"));
             pictureBox1.MouseClick += pictureBox1_MouseClick;
             // 
+            // txtEstoqueMin
+            // 
+            txtEstoqueMin.Location = new Point(702, 68);
+            txtEstoqueMin.Name = "txtEstoqueMin";
+            txtEstoqueMin.ReadOnly = true;
+            txtEstoqueMin.Size = new Size(100, 23);
+            txtEstoqueMin.TabIndex = 7;
+            toolTip1.SetToolTip(txtEstoqueMin, "Clique Duas Vezes com o botão do mouse para habilitar a edição e\r\npressione ENTER para salvar");
+            // 
             // btnInserir
             // 
-            btnInserir.Location = new Point(577, 74);
+            btnInserir.Location = new Point(596, 38);
             btnInserir.Name = "btnInserir";
             btnInserir.Size = new Size(116, 23);
             btnInserir.TabIndex = 13;
             btnInserir.Text = "Inserir";
             toolTip1.SetToolTip(btnInserir, "Registra a movimentação do produto");
             btnInserir.UseVisualStyleBackColor = true;
-            btnInserir.Click += btnInserir_Click;
             // 
             // rbRemover
             // 
             rbRemover.AutoSize = true;
             rbRemover.FlatStyle = FlatStyle.System;
-            rbRemover.Location = new Point(456, 80);
+            rbRemover.Location = new Point(475, 44);
             rbRemover.Name = "rbRemover";
             rbRemover.Size = new Size(84, 20);
             rbRemover.TabIndex = 12;
@@ -188,7 +196,7 @@
             // 
             rbAcrescentar.AutoSize = true;
             rbAcrescentar.FlatStyle = FlatStyle.System;
-            rbAcrescentar.Location = new Point(351, 80);
+            rbAcrescentar.Location = new Point(370, 44);
             rbAcrescentar.Name = "rbAcrescentar";
             rbAcrescentar.Size = new Size(109, 20);
             rbAcrescentar.TabIndex = 11;
@@ -199,7 +207,7 @@
             // 
             // numQuantidade
             // 
-            numQuantidade.Location = new Point(207, 76);
+            numQuantidade.Location = new Point(226, 40);
             numQuantidade.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
             numQuantidade.Name = "numQuantidade";
             numQuantidade.Size = new Size(120, 23);
@@ -209,27 +217,15 @@
             // dtpData
             // 
             dtpData.Format = DateTimePickerFormat.Short;
-            dtpData.Location = new Point(44, 76);
+            dtpData.Location = new Point(63, 40);
             dtpData.Name = "dtpData";
             dtpData.Size = new Size(105, 23);
             dtpData.TabIndex = 10;
             toolTip1.SetToolTip(dtpData, "Data do registro da movimentação \r\n\r\nEx: \r\n\r\nProduto movimentado hoje, mantenha a data atual\r\n\r\nProduto com movimentação dia 22/12/2024, altere a data para 22/12/2024");
             // 
-            // txtEstoqueMin
-            // 
-            txtEstoqueMin.Location = new Point(702, 68);
-            txtEstoqueMin.Name = "txtEstoqueMin";
-            txtEstoqueMin.ReadOnly = true;
-            txtEstoqueMin.Size = new Size(100, 23);
-            txtEstoqueMin.TabIndex = 7;
-            toolTip1.SetToolTip(txtEstoqueMin, "Clique Duas Vezes com o botão do mouse para habilitar a edição e\r\npressione ENTER para salvar");
-            txtEstoqueMin.KeyDown += txtEstoqueMin_KeyDown;
-            txtEstoqueMin.KeyPress += txtEstoqueMin_KeyPress;
-            txtEstoqueMin.MouseDoubleClick += txtEstoqueMin_MouseDoubleClick;
-            // 
             // statusStrip1
             // 
-            statusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabelTimer });
+            statusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabelTimer, toolStripStatusLabel2, toolStripStatusLabel1 });
             statusStrip1.Location = new Point(0, 679);
             statusStrip1.Name = "statusStrip1";
             statusStrip1.RightToLeft = RightToLeft.Yes;
@@ -239,9 +235,26 @@
             // 
             // toolStripStatusLabelTimer
             // 
+            toolStripStatusLabelTimer.Margin = new Padding(0, 3, 15, 2);
             toolStripStatusLabelTimer.Name = "toolStripStatusLabelTimer";
             toolStripStatusLabelTimer.Size = new Size(118, 17);
             toolStripStatusLabelTimer.Text = "toolStripStatusLabel1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            toolStripStatusLabel1.IsLink = true;
+            toolStripStatusLabel1.Margin = new Padding(0, 3, 10, 2);
+            toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            toolStripStatusLabel1.Size = new Size(142, 17);
+            toolStripStatusLabel1.Text = "Desenvolvido Por: MHMS";
+            toolStripStatusLabel1.Click += toolStripStatusLabel1_Click;
+            // 
+            // toolStripStatusLabel2
+            // 
+            toolStripStatusLabel2.Margin = new Padding(0, 3, 15, 2);
+            toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            toolStripStatusLabel2.Size = new Size(37, 17);
+            toolStripStatusLabel2.Text = "v1.0.8";
             // 
             // groupBox4
             // 
@@ -290,28 +303,124 @@
             ckbVerificarEstoqueMin.UseVisualStyleBackColor = true;
             ckbVerificarEstoqueMin.CheckedChanged += ckbVerificarEstoqueMin_CheckedChanged;
             // 
-            // tabControl1
+            // timer1
             // 
-            tabControl1.Controls.Add(tabPage1);
-            tabControl1.Controls.Add(tabPage2);
-            tabControl1.Dock = DockStyle.Fill;
-            tabControl1.Location = new Point(304, 24);
-            tabControl1.Name = "tabControl1";
-            tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(880, 655);
-            tabControl1.TabIndex = 9;
+            timer1.Enabled = true;
+            timer1.Interval = 1000;
+            timer1.Tick += timer1_Tick;
             // 
-            // tabPage1
+            // panel1
             // 
-            tabPage1.Controls.Add(groupBox2);
-            tabPage1.Controls.Add(groupBox1);
-            tabPage1.Location = new Point(4, 24);
-            tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(872, 627);
-            tabPage1.TabIndex = 0;
-            tabPage1.Text = "Movimentação Produto";
-            tabPage1.UseVisualStyleBackColor = true;
+            panel1.Controls.Add(groupBox3);
+            panel1.Controls.Add(groupBox2);
+            panel1.Controls.Add(groupBox1);
+            panel1.Dock = DockStyle.Fill;
+            panel1.Location = new Point(304, 24);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(880, 655);
+            panel1.TabIndex = 13;
+            // 
+            // groupBox3
+            // 
+            groupBox3.Controls.Add(panel3);
+            groupBox3.Controls.Add(panel2);
+            groupBox3.Dock = DockStyle.Fill;
+            groupBox3.Location = new Point(0, 211);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new Size(880, 444);
+            groupBox3.TabIndex = 21;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "Ultimas Movimentações";
+            groupBox3.Enter += groupBox3_Enter;
+            // 
+            // panel3
+            // 
+            panel3.Controls.Add(dgvMovimentacoes);
+            panel3.Dock = DockStyle.Fill;
+            panel3.Location = new Point(3, 94);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(874, 347);
+            panel3.TabIndex = 16;
+            // 
+            // dgvMovimentacoes
+            // 
+            dgvMovimentacoes.AllowUserToAddRows = false;
+            dgvMovimentacoes.AllowUserToDeleteRows = false;
+            dgvMovimentacoes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvMovimentacoes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Window;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(99, 194, 157);
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            dgvMovimentacoes.DefaultCellStyle = dataGridViewCellStyle1;
+            dgvMovimentacoes.Dock = DockStyle.Fill;
+            dgvMovimentacoes.Location = new Point(0, 0);
+            dgvMovimentacoes.Name = "dgvMovimentacoes";
+            dgvMovimentacoes.ReadOnly = true;
+            dgvMovimentacoes.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            dgvMovimentacoes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvMovimentacoes.Size = new Size(874, 347);
+            dgvMovimentacoes.TabIndex = 21;
+            // 
+            // panel2
+            // 
+            panel2.Controls.Add(ckbBuscarPorPeriodo);
+            panel2.Controls.Add(dtpPara);
+            panel2.Controls.Add(label3);
+            panel2.Controls.Add(dtpDe);
+            panel2.Controls.Add(label1);
+            panel2.Dock = DockStyle.Top;
+            panel2.Location = new Point(3, 19);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(874, 75);
+            panel2.TabIndex = 15;
+            // 
+            // ckbBuscarPorPeriodo
+            // 
+            ckbBuscarPorPeriodo.AutoSize = true;
+            ckbBuscarPorPeriodo.Location = new Point(526, 42);
+            ckbBuscarPorPeriodo.Name = "ckbBuscarPorPeriodo";
+            ckbBuscarPorPeriodo.Size = new Size(126, 19);
+            ckbBuscarPorPeriodo.TabIndex = 24;
+            ckbBuscarPorPeriodo.Text = "Buscar Por Periodo";
+            ckbBuscarPorPeriodo.UseVisualStyleBackColor = true;
+            // 
+            // dtpPara
+            // 
+            dtpPara.Format = DateTimePickerFormat.Short;
+            dtpPara.Location = new Point(413, 39);
+            dtpPara.Name = "dtpPara";
+            dtpPara.Size = new Size(105, 23);
+            dtpPara.TabIndex = 22;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(371, 45);
+            label3.Name = "label3";
+            label3.Size = new Size(36, 15);
+            label3.TabIndex = 20;
+            label3.Text = "PARA";
+            // 
+            // dtpDe
+            // 
+            dtpDe.Format = DateTimePickerFormat.Short;
+            dtpDe.Location = new Point(250, 39);
+            dtpDe.Name = "dtpDe";
+            dtpDe.Size = new Size(105, 23);
+            dtpDe.TabIndex = 23;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(223, 45);
+            label1.Name = "label1";
+            label1.Size = new Size(21, 15);
+            label1.TabIndex = 21;
+            label1.Text = "DE";
             // 
             // groupBox2
             // 
@@ -323,17 +432,17 @@
             groupBox2.Controls.Add(dtpData);
             groupBox2.Controls.Add(label8);
             groupBox2.Dock = DockStyle.Top;
-            groupBox2.Location = new Point(3, 129);
+            groupBox2.Location = new Point(0, 126);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(866, 138);
-            groupBox2.TabIndex = 17;
+            groupBox2.Size = new Size(880, 85);
+            groupBox2.TabIndex = 20;
             groupBox2.TabStop = false;
             groupBox2.Text = "Inserir Movimentação";
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(44, 58);
+            label7.Location = new Point(63, 22);
             label7.Name = "label7";
             label7.Size = new Size(35, 15);
             label7.TabIndex = 2;
@@ -342,7 +451,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(207, 58);
+            label8.Location = new Point(226, 22);
             label8.Name = "label8";
             label8.Size = new Size(80, 15);
             label8.TabIndex = 2;
@@ -361,10 +470,10 @@
             groupBox1.Controls.Add(label6);
             groupBox1.Controls.Add(label5);
             groupBox1.Dock = DockStyle.Top;
-            groupBox1.Location = new Point(3, 3);
+            groupBox1.Location = new Point(0, 0);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(866, 126);
-            groupBox1.TabIndex = 14;
+            groupBox1.Size = new Size(880, 126);
+            groupBox1.TabIndex = 15;
             groupBox1.TabStop = false;
             groupBox1.Text = "Dados Produto";
             // 
@@ -422,7 +531,6 @@
             label2.Size = new Size(18, 15);
             label2.TabIndex = 2;
             label2.Text = "ID";
-            label2.MouseDoubleClick += label2_MouseDoubleClick;
             // 
             // label4
             // 
@@ -451,138 +559,12 @@
             label5.TabIndex = 2;
             label5.Text = "DATA ULTIMA ALTERAÇÃO";
             // 
-            // tabPage2
-            // 
-            tabPage2.Controls.Add(groupBox3);
-            tabPage2.Location = new Point(4, 24);
-            tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(872, 627);
-            tabPage2.TabIndex = 1;
-            tabPage2.Text = "Filtro Movimentações";
-            tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // groupBox3
-            // 
-            groupBox3.Controls.Add(ckbBuscarPorPeriodo);
-            groupBox3.Controls.Add(dgvMovimentacoes);
-            groupBox3.Controls.Add(dtpPara);
-            groupBox3.Controls.Add(label3);
-            groupBox3.Controls.Add(dtpDe);
-            groupBox3.Controls.Add(label1);
-            groupBox3.Dock = DockStyle.Top;
-            groupBox3.Location = new Point(3, 3);
-            groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(866, 621);
-            groupBox3.TabIndex = 17;
-            groupBox3.TabStop = false;
-            groupBox3.Text = "Ultimas Movimentações";
-            // 
-            // ckbBuscarPorPeriodo
-            // 
-            ckbBuscarPorPeriodo.AutoSize = true;
-            ckbBuscarPorPeriodo.Location = new Point(462, 49);
-            ckbBuscarPorPeriodo.Name = "ckbBuscarPorPeriodo";
-            ckbBuscarPorPeriodo.Size = new Size(126, 19);
-            ckbBuscarPorPeriodo.TabIndex = 14;
-            ckbBuscarPorPeriodo.Text = "Buscar Por Periodo";
-            ckbBuscarPorPeriodo.UseVisualStyleBackColor = true;
-            // 
-            // dgvMovimentacoes
-            // 
-            dgvMovimentacoes.AllowUserToAddRows = false;
-            dgvMovimentacoes.AllowUserToDeleteRows = false;
-            dgvMovimentacoes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvMovimentacoes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Window;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(99, 194, 157);
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
-            dgvMovimentacoes.DefaultCellStyle = dataGridViewCellStyle1;
-            dgvMovimentacoes.Dock = DockStyle.Bottom;
-            dgvMovimentacoes.Location = new Point(3, 121);
-            dgvMovimentacoes.Name = "dgvMovimentacoes";
-            dgvMovimentacoes.ReadOnly = true;
-            dgvMovimentacoes.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            dgvMovimentacoes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvMovimentacoes.Size = new Size(860, 497);
-            dgvMovimentacoes.TabIndex = 12;
-            dgvMovimentacoes.KeyDown += dgvMovimentacoes_KeyDown;
-            // 
-            // dtpPara
-            // 
-            dtpPara.Format = DateTimePickerFormat.Short;
-            dtpPara.Location = new Point(349, 46);
-            dtpPara.Name = "dtpPara";
-            dtpPara.Size = new Size(105, 23);
-            dtpPara.TabIndex = 10;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(307, 52);
-            label3.Name = "label3";
-            label3.Size = new Size(36, 15);
-            label3.TabIndex = 2;
-            label3.Text = "PARA";
-            // 
-            // dtpDe
-            // 
-            dtpDe.Format = DateTimePickerFormat.Short;
-            dtpDe.Location = new Point(186, 46);
-            dtpDe.Name = "dtpDe";
-            dtpDe.Size = new Size(105, 23);
-            dtpDe.TabIndex = 10;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(159, 52);
-            label1.Name = "label1";
-            label1.Size = new Size(21, 15);
-            label1.TabIndex = 2;
-            label1.Text = "DE";
-            // 
-            // timer1
-            // 
-            timer1.Enabled = true;
-            timer1.Interval = 1000;
-            timer1.Tick += timer1_Tick;
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Location = new Point(20, 683);
-            label9.Name = "label9";
-            label9.Size = new Size(37, 15);
-            label9.TabIndex = 10;
-            label9.Text = "v1.0.8";
-            // 
-            // linkLabel1
-            // 
-            linkLabel1.AutoSize = true;
-            linkLabel1.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            linkLabel1.LinkArea = new LinkArea(18, 22);
-            linkLabel1.Location = new Point(63, 682);
-            linkLabel1.Name = "linkLabel1";
-            linkLabel1.Size = new Size(131, 20);
-            linkLabel1.TabIndex = 12;
-            linkLabel1.TabStop = true;
-            linkLabel1.Text = "Desenvolvido Por: MHMS";
-            linkLabel1.UseCompatibleTextRendering = true;
-            linkLabel1.LinkClicked += linkLabel1_LinkClicked;
-            // 
             // MainWindow
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1184, 701);
-            Controls.Add(linkLabel1);
-            Controls.Add(label9);
-            Controls.Add(tabControl1);
+            Controls.Add(panel1);
             Controls.Add(groupBox4);
             Controls.Add(statusStrip1);
             Controls.Add(menuStrip1);
@@ -599,16 +581,16 @@
             statusStrip1.PerformLayout();
             groupBox4.ResumeLayout(false);
             groupBox4.PerformLayout();
-            tabControl1.ResumeLayout(false);
-            tabPage1.ResumeLayout(false);
+            panel1.ResumeLayout(false);
+            groupBox3.ResumeLayout(false);
+            panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvMovimentacoes).EndInit();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
-            tabPage2.ResumeLayout(false);
-            groupBox3.ResumeLayout(false);
-            groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvMovimentacoes).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -624,16 +606,12 @@
         private StatusStrip statusStrip1;
         private GroupBox groupBox4;
         private PictureBox pictureBox1;
-        private TabControl tabControl1;
-        private TabPage tabPage1;
-        private GroupBox groupBox2;
-        private Button btnInserir;
-        private RadioButton rbRemover;
-        private RadioButton rbAcrescentar;
-        private Label label7;
-        private NumericUpDown numQuantidade;
-        private DateTimePicker dtpData;
-        private Label label8;
+        private ToolStripStatusLabel toolStripStatusLabelTimer;
+        private System.Windows.Forms.Timer timer1;
+        private TextBox txtFiltro;
+        private CheckBox ckbVerificarEstoqueMin;
+        private ListBox listBoxProdutos;
+        private Panel panel1;
         private GroupBox groupBox1;
         private DateTimePicker dtpDataUltimaAlteracao;
         private TextBox txtEstoqueMin;
@@ -645,20 +623,24 @@
         private Label label4;
         private Label label6;
         private Label label5;
-        private TabPage tabPage2;
         private GroupBox groupBox3;
+        private GroupBox groupBox2;
+        private Button btnInserir;
+        private RadioButton rbRemover;
+        private RadioButton rbAcrescentar;
+        private Label label7;
+        private NumericUpDown numQuantidade;
+        private DateTimePicker dtpData;
+        private Label label8;
+        private Panel panel2;
         private CheckBox ckbBuscarPorPeriodo;
-        private DataGridView dgvMovimentacoes;
         private DateTimePicker dtpPara;
         private Label label3;
         private DateTimePicker dtpDe;
         private Label label1;
-        private ToolStripStatusLabel toolStripStatusLabelTimer;
-        private System.Windows.Forms.Timer timer1;
-        private TextBox txtFiltro;
-        private CheckBox ckbVerificarEstoqueMin;
-        private ListBox listBoxProdutos;
-        private Label label9;
-        private LinkLabel linkLabel1;
+        private Panel panel3;
+        private DataGridView dgvMovimentacoes;
+        private ToolStripStatusLabel toolStripStatusLabel1;
+        private ToolStripStatusLabel toolStripStatusLabel2;
     }
 }
