@@ -47,8 +47,8 @@
             dtpData = new DateTimePicker();
             statusStrip1 = new StatusStrip();
             toolStripStatusLabelTimer = new ToolStripStatusLabel();
-            toolStripStatusLabel1 = new ToolStripStatusLabel();
             toolStripStatusLabel2 = new ToolStripStatusLabel();
+            toolStripStatusLabel1 = new ToolStripStatusLabel();
             groupBox4 = new GroupBox();
             listBoxProdutos = new ListBox();
             txtFiltro = new TextBox();
@@ -240,6 +240,13 @@
             toolStripStatusLabelTimer.Size = new Size(118, 17);
             toolStripStatusLabelTimer.Text = "toolStripStatusLabel1";
             // 
+            // toolStripStatusLabel2
+            // 
+            toolStripStatusLabel2.Margin = new Padding(0, 3, 15, 2);
+            toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            toolStripStatusLabel2.Size = new Size(37, 17);
+            toolStripStatusLabel2.Text = "v1.0.9";
+            // 
             // toolStripStatusLabel1
             // 
             toolStripStatusLabel1.IsLink = true;
@@ -248,13 +255,6 @@
             toolStripStatusLabel1.Size = new Size(142, 17);
             toolStripStatusLabel1.Text = "Desenvolvido Por: MHMS";
             toolStripStatusLabel1.Click += toolStripStatusLabel1_Click;
-            // 
-            // toolStripStatusLabel2
-            // 
-            toolStripStatusLabel2.Margin = new Padding(0, 3, 15, 2);
-            toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            toolStripStatusLabel2.Size = new Size(37, 17);
-            toolStripStatusLabel2.Text = "v1.0.8";
             // 
             // groupBox4
             // 
