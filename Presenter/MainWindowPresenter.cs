@@ -133,7 +133,7 @@ namespace ControleDeEstoqueProauto.Presenter
             {
                 Produtos produto = _produtosRepository.GetById(_view.IdSistema);
                 produto.EstoqueMinimo = _view.EstoqueMinimo;
-                _produtosRepository.SaveProduct(produto);
+                _produtosRepository.InsertOrUpdate(produto);
             }
             catch (Exception ex)
             {

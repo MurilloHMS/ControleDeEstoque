@@ -9,6 +9,7 @@ namespace ControleDeEstoqueProauto.Interface
         Task<Produtos> GetByName(string name);
         void SaveProduct(Produtos produto);
         void SaveNewProduct(Produtos produto);
+        Task InsertOrUpdate(Produtos produto);
         Task<IEnumerable<Produtos>> GetListByFilter(string name);
 
     }
