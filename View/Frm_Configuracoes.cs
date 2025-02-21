@@ -1,4 +1,5 @@
-﻿using ControleDeEstoqueProauto.Data;
+﻿
+using ControleDeEstoqueProauto.Data;
 using ControleDeEstoqueProauto.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
