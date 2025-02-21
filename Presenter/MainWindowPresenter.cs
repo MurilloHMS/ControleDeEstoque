@@ -53,13 +53,17 @@ namespace ControleDeEstoqueProauto.Presenter
         {
             var prod = await _produtosRepository.GetByName(p);
             var mov = _movimentacoesRepository.GetById(prod.IDSistema);
+            if (prod != null)
+            {
+                _view.IdSistema = prod.IDSistema;
+                _view.Nome = prod.Descricao;
+                _view.EstoqueMinimo = prod.EstoqueMinimo;
+            }
+            
             if (mov != null)
             {
-                _view.IdSistema = mov.IDSistema;
-                _view.Nome = prod.Descricao;
                 _view.EstoqueAtual = mov.Quantidade;
                 _view.DataUltimaAlteracao = mov.Data;
-                _view.EstoqueMinimo = prod.EstoqueMinimo;
             }
         }
 
@@ -107,13 +111,13 @@ namespace ControleDeEstoqueProauto.Presenter
                 }
 
             }
-            catch (SqlException)
+            catch (SqlException sqlEx)
             {
-                throw;
+                MessageBox.Show("Ocorreu um erro ao inserir a movimentação \nError:" + sqlEx, "Erro SQL", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                MessageBox.Show("Ocorreu um erro ao inserir a movimentação \nError:" + ex, "Erro Desconhecido" , MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -123,7 +127,7 @@ namespace ControleDeEstoqueProauto.Presenter
             var filtro = await _produtosRepository.GetListByFilter(search);
 
             _view.listaDeProdutos.Clear();
-            _view.listaDeProdutos = (IList<Models.Produtos>)filtro;
+            _view.listaDeProdutos = (IList<Produtos>)filtro;
         }
 
         public async Task AtualizarCadastroProduto()
@@ -216,12 +220,17 @@ namespace ControleDeEstoqueProauto.Presenter
                 {
                     sb.AppendLine(i.ToString());
                 }
-                MessageBox.Show(sb.ToString(), "Itens com estoque baixo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(sb.ToString(), "Itens com estoque baixo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ocorreu um erro ao verificar o estoque m�nimo: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ocorreu um erro ao verificar o estoque mínimo: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+        
+        public async Task DeletaMovimentacaoProduto(Movimentacoes movimentacao)
+        {
+            await _movimentacoesRepository.DeleteById(movimentacao.ID);
         }
     }
 }

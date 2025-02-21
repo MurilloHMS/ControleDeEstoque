@@ -168,6 +168,9 @@
             txtEstoqueMin.Size = new Size(100, 23);
             txtEstoqueMin.TabIndex = 7;
             toolTip1.SetToolTip(txtEstoqueMin, "Clique Duas Vezes com o botão do mouse para habilitar a edição e\r\npressione ENTER para salvar");
+            txtEstoqueMin.KeyDown += txtEstoqueMin_KeyDown;
+            txtEstoqueMin.KeyPress += txtEstoqueMin_KeyPress;
+            txtEstoqueMin.MouseDoubleClick += txtEstoqueMin_MouseDoubleClick;
             // 
             // btnInserir
             // 
@@ -178,6 +181,7 @@
             btnInserir.Text = "Inserir";
             toolTip1.SetToolTip(btnInserir, "Registra a movimentação do produto");
             btnInserir.UseVisualStyleBackColor = true;
+            btnInserir.Click += btnInserir_Click;
             // 
             // rbRemover
             // 
@@ -364,6 +368,7 @@
             dgvMovimentacoes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvMovimentacoes.Size = new Size(874, 347);
             dgvMovimentacoes.TabIndex = 21;
+            dgvMovimentacoes.KeyDown += dgvMovimentacoes_KeyDown;
             // 
             // panel2
             // 
@@ -531,6 +536,7 @@
             label2.Size = new Size(18, 15);
             label2.TabIndex = 2;
             label2.Text = "ID";
+            label2.MouseDoubleClick += label2_MouseDoubleClick;
             // 
             // label4
             // 

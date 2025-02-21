@@ -52,7 +52,7 @@ namespace ControleDeEstoqueProauto
         }
         public int EstoqueAtual
         {
-            get { return int.Parse(this.txtEstoqueAtual.Text); }
+            get { return int.TryParse(this.txtEstoqueAtual.Text, out var resultEstoque) ? resultEstoque : 0; }
             set { this.txtEstoqueAtual.Text = value.ToString(); }
         }
         public DateTime DataUltimaAlteracao
@@ -246,7 +246,7 @@ namespace ControleDeEstoqueProauto
                     {
                         Movimentacoes mov = new Movimentacoes();
                         mov.ID = int.Parse(cellValue);
-                        //_context.movimentacoes.Remove(mov);
+                        Presenter.DeletaMovimentacaoProduto(mov);
                     }
                 }
             }
