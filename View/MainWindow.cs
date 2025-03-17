@@ -80,10 +80,10 @@ namespace ControleDeEstoqueProauto
             get { return int.Parse(this.numQuantidade.Value.ToString()); }
             set { this.numQuantidade.Value = value; }
         }
-        public IList<Movimentacoes> MovimentacaoDoProduto 
-        { 
-            get { return (IList<Movimentacoes>)this.dgvMovimentacoes.DataSource; } 
-            set { this.dgvMovimentacoes.DataSource = new BindingList<Movimentacoes>(value); } 
+        public IList<Movimentacoes> MovimentacaoDoProduto
+        {
+            get { return (IList<Movimentacoes>)this.dgvMovimentacoes.DataSource; }
+            set { this.dgvMovimentacoes.DataSource = new BindingList<Movimentacoes>(value); }
         }
         public DateTime DataDe
         {
@@ -147,6 +147,13 @@ namespace ControleDeEstoqueProauto
                     Presenter.AtualizarCadastroProduto();
                     txtEstoqueMin.ReadOnly = true;
 
+                }
+            }
+            else if (e.KeyCode == Keys.Escape)
+            {
+                if (!txtEstoqueMin.ReadOnly)
+                {
+                    txtEstoqueMin.ReadOnly= true;
                 }
             }
         }

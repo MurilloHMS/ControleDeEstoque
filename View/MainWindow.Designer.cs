@@ -111,7 +111,7 @@
             // 
             incluirNovosRegistrosToolStripMenuItem1.Image = Properties.Resources.Plus;
             incluirNovosRegistrosToolStripMenuItem1.Name = "incluirNovosRegistrosToolStripMenuItem1";
-            incluirNovosRegistrosToolStripMenuItem1.Size = new Size(241, 22);
+            incluirNovosRegistrosToolStripMenuItem1.Size = new Size(240, 22);
             incluirNovosRegistrosToolStripMenuItem1.Text = "Incluir Novos Registros";
             incluirNovosRegistrosToolStripMenuItem1.Click += incluirNovosRegistrosToolStripMenuItem1_Click;
             // 
@@ -119,7 +119,7 @@
             // 
             atualizarListaDeItensToolStripMenuItem.Image = Properties.Resources.Update_Left_Rotation;
             atualizarListaDeItensToolStripMenuItem.Name = "atualizarListaDeItensToolStripMenuItem";
-            atualizarListaDeItensToolStripMenuItem.Size = new Size(241, 22);
+            atualizarListaDeItensToolStripMenuItem.Size = new Size(240, 22);
             atualizarListaDeItensToolStripMenuItem.Text = "Atualizar Lista de Itens";
             atualizarListaDeItensToolStripMenuItem.Click += atualizarListaDeItensToolStripMenuItem_Click;
             // 
@@ -127,7 +127,7 @@
             // 
             baixarMovimentaçõesPorDataToolStripMenuItem1.Image = Properties.Resources.Downloading_Updates;
             baixarMovimentaçõesPorDataToolStripMenuItem1.Name = "baixarMovimentaçõesPorDataToolStripMenuItem1";
-            baixarMovimentaçõesPorDataToolStripMenuItem1.Size = new Size(241, 22);
+            baixarMovimentaçõesPorDataToolStripMenuItem1.Size = new Size(240, 22);
             baixarMovimentaçõesPorDataToolStripMenuItem1.Text = "Baixar Movimentações por data";
             baixarMovimentaçõesPorDataToolStripMenuItem1.Click += baixarMovimentaçõesPorDataToolStripMenuItem1_Click;
             // 
@@ -202,7 +202,7 @@
             rbAcrescentar.FlatStyle = FlatStyle.System;
             rbAcrescentar.Location = new Point(370, 44);
             rbAcrescentar.Name = "rbAcrescentar";
-            rbAcrescentar.Size = new Size(109, 20);
+            rbAcrescentar.Size = new Size(110, 20);
             rbAcrescentar.TabIndex = 11;
             rbAcrescentar.TabStop = true;
             rbAcrescentar.Text = "ACRESCENTAR";
@@ -449,7 +449,7 @@
             label7.AutoSize = true;
             label7.Location = new Point(63, 22);
             label7.Name = "label7";
-            label7.Size = new Size(35, 15);
+            label7.Size = new Size(36, 15);
             label7.TabIndex = 2;
             label7.Text = "DATA";
             // 
@@ -458,7 +458,7 @@
             label8.AutoSize = true;
             label8.Location = new Point(226, 22);
             label8.Name = "label8";
-            label8.Size = new Size(80, 15);
+            label8.Size = new Size(81, 15);
             label8.TabIndex = 2;
             label8.Text = "QUANTIDADE";
             // 
@@ -543,7 +543,7 @@
             label4.AutoSize = true;
             label4.Location = new Point(403, 50);
             label4.Name = "label4";
-            label4.Size = new Size(94, 15);
+            label4.Size = new Size(96, 15);
             label4.TabIndex = 2;
             label4.Text = "ESTOQUE ATUAL";
             // 
@@ -552,7 +552,7 @@
             label6.AutoSize = true;
             label6.Location = new Point(702, 50);
             label6.Name = "label6";
-            label6.Size = new Size(105, 15);
+            label6.Size = new Size(106, 15);
             label6.TabIndex = 2;
             label6.Text = "ESTOQUE MINIMO";
             // 
@@ -561,7 +561,7 @@
             label5.AutoSize = true;
             label5.Location = new Point(520, 50);
             label5.Name = "label5";
-            label5.Size = new Size(147, 15);
+            label5.Size = new Size(150, 15);
             label5.TabIndex = 2;
             label5.Text = "DATA ULTIMA ALTERAÇÃO";
             // 
