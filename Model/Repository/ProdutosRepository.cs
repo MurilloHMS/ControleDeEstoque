@@ -43,6 +43,21 @@ namespace ControleDeEstoqueProauto.Model.Repository
             _context.SaveChanges();
         }
 
+        public async Task InsertOrUpdate(Produtos product)
+        {
+            var productFound = await _context.produtos.FirstOrDefaultAsync(p => p.IDSistema == product.IDSistema);
+
+            if (productFound != null)
+            {
+                _context.produtos.Entry(productFound).CurrentValues.SetValues(product);
+            }
+            else
+            {
+                await _context.produtos.AddAsync(product);
+            }
+            _context.SaveChanges();
+        }
+
         public async Task<IEnumerable<Produtos>> GetListByFilter(string name)
         {
             var produtos = await _context.produtos.Where(p => p.Descricao.ToLower().Contains(name)).ToListAsync();
