@@ -40,7 +40,6 @@ public class ProdutoService
         {
             var planilha = workbook.Worksheets.First();
             produtos = planilha.RowsUsed()
-                .Skip(1)
                 .Select(row => new Produtos
                 {
                     IDSistema = row.Cell(1).GetValue<int>(),

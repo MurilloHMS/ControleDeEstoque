@@ -249,7 +249,7 @@
             toolStripStatusLabel2.Margin = new Padding(0, 3, 15, 2);
             toolStripStatusLabel2.Name = "toolStripStatusLabel2";
             toolStripStatusLabel2.Size = new Size(37, 17);
-            toolStripStatusLabel2.Text = "v1.0.9";
+            toolStripStatusLabel2.Text = "v1.1.1";
             // 
             // toolStripStatusLabel1
             // 

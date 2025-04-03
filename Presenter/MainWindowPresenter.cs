@@ -156,22 +156,10 @@ namespace ControleDeEstoqueProauto.Presenter
                 var produtos = await _produtosRepository.GetAll();
                 foreach (var i in dados)
                 {
-                    Produtos produto = new Produtos
-                    {
-                        IDSistema = i.IDSistema,
-                        Descricao = i.Descricao,
-                        EstoqueMinimo = i.EstoqueMinimo ?? null
-                    };
-                    if (produtos.Any(p => p.IDSistema == i.IDSistema))
-                    {
-                        _produtosRepository.SaveProduct(produto);
-                    }
-                    else
-                    {
-                        _produtosRepository.SaveNewProduct(produto);
-                    }
+                    await _produtosRepository.InsertOrUpdate(i);
                 }
                 AtualizarListaDeProdutos();
+                MessageBox.Show("Produtos atualizados com sucesso", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
